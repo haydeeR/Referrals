@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,32 +16,79 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        GIDSignIn.sharedInstance().clientID = "77774559179-3cv4ibai8j5jadt8sg9c08pvfq994hvu.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        verifyAuth()
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])-> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: [:])
     }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: sourceApplication,
+                                                 annotation: annotation)
+        
     }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
 
 }
 
+extension AppDelegate: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+            initView(with: StoryboardPath.login.rawValue, viewControllerName: ViewControllerPath.loginViewController.rawValue)
+        } else {
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            print("""
+                userId = \(String(describing: userId))
+                idToken = \(String(describing: idToken))
+                fullname = \(String(describing: fullName))
+                givenName = \(String(describing: givenName))
+                familyName = \(String(describing: familyName))
+                email = \(String(describing: email))
+            """)
+            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.openingsViewController.rawValue)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+extension AppDelegate {
+   
+    func verifyAuth() {
+        var storyboard: String
+        var initialViewController: String
+        
+        if GIDSignIn.sharedInstance().currentUser != nil {
+            storyboard =  StoryboardPath.main.rawValue
+            initialViewController = ViewControllerPath.openingsViewController.rawValue
+        } else {
+            storyboard =  StoryboardPath.login.rawValue
+            initialViewController = ViewControllerPath.loginViewController.rawValue
+        }
+        initView(with: storyboard, viewControllerName: initialViewController)
+    }
+    
+    func initView(with storyboardName: String, viewControllerName: String) {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerName) as UIViewController
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
+}
