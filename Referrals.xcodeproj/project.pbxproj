@@ -14,9 +14,13 @@
 		9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7376120C839E30020AAD4 /* LaunchScreen.storyboard */; };
 		9BE7377120C83C760020AAD4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7377020C83C760020AAD4 /* Login.storyboard */; };
 		9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */; };
+		9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377520C8539D0020AAD4 /* ProjectPath.swift */; };
+		A8984C502BC132728557D5C6 /* Pods_Referrals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4913B4AC23D83DB1B503C6C9 /* Pods_Referrals.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4913B4AC23D83DB1B503C6C9 /* Pods_Referrals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Referrals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		558F768603252C1E64DAC08C /* Pods-Referrals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.release.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.release.xcconfig"; sourceTree = "<group>"; };
 		9BE7375520C839E20020AAD4 /* Referrals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Referrals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE7375820C839E20020AAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE7375A20C839E20020AAD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		9BE7376420C839E30020AAD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BE7377020C83C760020AAD4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9BE7377520C8539D0020AAD4 /* ProjectPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPath.swift; sourceTree = "<group>"; };
+		BDF9D0AEA7672463E386349D /* Pods-Referrals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8984C502BC132728557D5C6 /* Pods_Referrals.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40FB75BE867B8A6CEF6FD301 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDF9D0AEA7672463E386349D /* Pods-Referrals.debug.xcconfig */,
+				558F768603252C1E64DAC08C /* Pods-Referrals.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9BE7374C20C839E20020AAD4 = {
 			isa = PBXGroup;
 			children = (
 				9BE7375720C839E20020AAD4 /* Referrals */,
 				9BE7375620C839E20020AAD4 /* Products */,
+				40FB75BE867B8A6CEF6FD301 /* Pods */,
+				EFF3A1BFC2689C008FDB1B35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE7375F20C839E30020AAD4 /* Assets.xcassets */,
+				9BE7377520C8539D0020AAD4 /* ProjectPath.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -126,6 +145,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		EFF3A1BFC2689C008FDB1B35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4913B4AC23D83DB1B503C6C9 /* Pods_Referrals.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9BE7376720C839E30020AAD4 /* Build configuration list for PBXNativeTarget "Referrals" */;
 			buildPhases = (
+				D605F1CF1C967261B8934380 /* [CP] Check Pods Manifest.lock */,
 				9BE7375120C839E20020AAD4 /* Sources */,
 				9BE7375220C839E20020AAD4 /* Frameworks */,
 				9BE7375320C839E20020AAD4 /* Resources */,
+				66E0854C715F110F52812021 /* [CP] Embed Pods Frameworks */,
+				B39884615AD343DC738BE72E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,12 +223,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		66E0854C715F110F52812021 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B39884615AD343DC738BE72E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D605F1CF1C967261B8934380 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Referrals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9BE7375120C839E20020AAD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */,
+				9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */,
 				9BE7375B20C839E20020AAD4 /* ViewController.swift in Sources */,
 				9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */,
 			);
@@ -342,6 +434,7 @@
 		};
 		9BE7376820C839E30020AAD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDF9D0AEA7672463E386349D /* Pods-Referrals.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,7 +444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hrodriguez.Referrals;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -360,6 +453,7 @@
 		};
 		9BE7376920C839E30020AAD4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 558F768603252C1E64DAC08C /* Pods-Referrals.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -369,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hrodriguez.Referrals;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
