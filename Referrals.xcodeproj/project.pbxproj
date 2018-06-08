@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375820C839E20020AAD4 /* AppDelegate.swift */; };
-		9BE7375B20C839E20020AAD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375A20C839E20020AAD4 /* ViewController.swift */; };
+		9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */; };
 		9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375C20C839E20020AAD4 /* Main.storyboard */; };
 		9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375F20C839E30020AAD4 /* Assets.xcassets */; };
 		9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7376120C839E30020AAD4 /* LaunchScreen.storyboard */; };
 		9BE7377120C83C760020AAD4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7377020C83C760020AAD4 /* Login.storyboard */; };
 		9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */; };
 		9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377520C8539D0020AAD4 /* ProjectPath.swift */; };
+		9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377720C87A910020AAD4 /* APIManager.swift */; };
+		9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377920C87A990020AAD4 /* APIRouter.swift */; };
+		9BE7377C20C87AA10020AAD4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377B20C87AA10020AAD4 /* Server.swift */; };
+		9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377D20C87AAD0020AAD4 /* APIHandler.swift */; };
+		9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7377F20C87E1C0020AAD4 /* DataHandler.swift */; };
+		9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7378120C87F610020AAD4 /* DataParser.swift */; };
+		9BE7378420C87FED0020AAD4 /* Opening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7378320C87FED0020AAD4 /* Opening.swift */; };
+		9BE7378720C882E90020AAD4 /* String+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7378620C882E90020AAD4 /* String+Decode.swift */; };
 		A8984C502BC132728557D5C6 /* Pods_Referrals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4913B4AC23D83DB1B503C6C9 /* Pods_Referrals.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +31,7 @@
 		558F768603252C1E64DAC08C /* Pods-Referrals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.release.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.release.xcconfig"; sourceTree = "<group>"; };
 		9BE7375520C839E20020AAD4 /* Referrals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Referrals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE7375820C839E20020AAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9BE7375A20C839E20020AAD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningListTVC.swift; sourceTree = "<group>"; };
 		9BE7375D20C839E20020AAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BE7375F20C839E30020AAD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE7376220C839E30020AAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +39,14 @@
 		9BE7377020C83C760020AAD4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9BE7377520C8539D0020AAD4 /* ProjectPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPath.swift; sourceTree = "<group>"; };
+		9BE7377720C87A910020AAD4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		9BE7377920C87A990020AAD4 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		9BE7377B20C87AA10020AAD4 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		9BE7377D20C87AAD0020AAD4 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		9BE7377F20C87E1C0020AAD4 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		9BE7378120C87F610020AAD4 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		9BE7378320C87FED0020AAD4 /* Opening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opening.swift; sourceTree = "<group>"; };
+		9BE7378620C882E90020AAD4 /* String+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Decode.swift"; sourceTree = "<group>"; };
 		BDF9D0AEA7672463E386349D /* Pods-Referrals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +107,7 @@
 		9BE7376A20C83BFD0020AAD4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9BE7378320C87FED0020AAD4 /* Opening.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,7 +122,7 @@
 		9BE7376C20C83C0D0020AAD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9BE7375A20C839E20020AAD4 /* ViewController.swift */,
+				9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */,
 				9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */,
 			);
 			path = Controller;
@@ -115,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				9BE7377220C83C7E0020AAD4 /* API */,
+				9BE7377F20C87E1C0020AAD4 /* DataHandler.swift */,
+				9BE7378120C87F610020AAD4 /* DataParser.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -122,6 +141,7 @@
 		9BE7376E20C83C270020AAD4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9BE7378520C882C90020AAD4 /* Extensions */,
 				9BE7375F20C839E30020AAD4 /* Assets.xcassets */,
 				9BE7377520C8539D0020AAD4 /* ProjectPath.swift */,
 			);
@@ -141,8 +161,20 @@
 		9BE7377220C83C7E0020AAD4 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9BE7377720C87A910020AAD4 /* APIManager.swift */,
+				9BE7377920C87A990020AAD4 /* APIRouter.swift */,
+				9BE7377B20C87AA10020AAD4 /* Server.swift */,
+				9BE7377D20C87AAD0020AAD4 /* APIHandler.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		9BE7378520C882C90020AAD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9BE7378620C882E90020AAD4 /* String+Decode.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EFF3A1BFC2689C008FDB1B35 /* Frameworks */ = {
@@ -231,15 +263,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -289,9 +325,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE7377C20C87AA10020AAD4 /* Server.swift in Sources */,
 				9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */,
+				9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */,
+				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
+				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,
 				9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */,
-				9BE7375B20C839E20020AAD4 /* ViewController.swift in Sources */,
+				9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */,
+				9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */,
+				9BE7378720C882E90020AAD4 /* String+Decode.swift in Sources */,
+				9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */,
+				9BE7378420C87FED0020AAD4 /* Opening.swift in Sources */,
 				9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

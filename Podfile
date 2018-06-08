@@ -7,4 +7,6 @@ target 'Referrals' do
 
   # Pods for Referrals
   pod 'GoogleSignIn'
+  pod 'Alamofire', '~> 4.7'
+  pod 'PromiseKit', '~> 6.0'
 end
