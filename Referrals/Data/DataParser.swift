@@ -18,7 +18,6 @@ struct DataParser {
         sections = sections[1].components(separatedBy: "* [")
         for item in 0..<sections.count {
             print("item \(item): \(sections[item])")
-            sections[item].dropLast(4777744569944)
         }
         return openings
 
