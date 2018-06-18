@@ -31,33 +31,55 @@
             </objects>
             <point key="canvasLocation" x="247" y="115"/>
         </scene>
-        <!--View Controller-->
+        <!--Position Detail View Controller-->
         <scene sceneID="0kX-Rz-5zb">
             <objects>
-                <viewController id="XR6-p9-0zB" sceneMemberID="viewController">
+                <viewController id="XR6-p9-0zB" customClass="PositionDetailViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kw1-3I-suv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-Hu-Es4">
-                                <rect key="frame" x="0.0" y="515" width="375" height="152"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5h-Hu-Es4">
+                                <rect key="frame" x="0.0" y="496" width="375" height="171"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="C6v-Le-EQd"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="XX2-rP-3Wl" kind="embed" id="iY3-Gl-UV8"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PqW-Ex-QFs">
-                                <rect key="frame" x="16" y="479" width="343" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f3B-0s-yCF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="432"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ywk-tZ-8Dk">
+                                <rect key="frame" x="8" y="460" width="359" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Contacto"/>
+                                    <segment title="LinkedIn"/>
+                                    <segment title="Contact"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f5h-Hu-Es4" firstAttribute="trailing" secondItem="VjK-Sj-jg0" secondAttribute="trailing" id="6fP-Im-yC3"/>
+                            <constraint firstItem="f5h-Hu-Es4" firstAttribute="bottom" secondItem="VjK-Sj-jg0" secondAttribute="bottom" id="GrR-te-tBN"/>
+                            <constraint firstItem="f5h-Hu-Es4" firstAttribute="leading" secondItem="VjK-Sj-jg0" secondAttribute="leading" id="JAr-Ea-Ptu"/>
+                            <constraint firstItem="ywk-tZ-8Dk" firstAttribute="leading" secondItem="VjK-Sj-jg0" secondAttribute="leading" constant="8" id="LOU-KG-fe5"/>
+                            <constraint firstItem="f5h-Hu-Es4" firstAttribute="top" secondItem="ywk-tZ-8Dk" secondAttribute="bottom" constant="8" id="Nn8-gw-ljb"/>
+                            <constraint firstItem="f3B-0s-yCF" firstAttribute="trailing" secondItem="VjK-Sj-jg0" secondAttribute="trailing" id="Ta1-7x-Ypv"/>
+                            <constraint firstItem="ywk-tZ-8Dk" firstAttribute="top" secondItem="f3B-0s-yCF" secondAttribute="bottom" constant="8" id="Wm4-qP-4zV"/>
+                            <constraint firstItem="f3B-0s-yCF" firstAttribute="leading" secondItem="VjK-Sj-jg0" secondAttribute="leading" id="Y4B-B9-ka7"/>
+                            <constraint firstItem="f3B-0s-yCF" firstAttribute="top" secondItem="VjK-Sj-jg0" secondAttribute="top" id="et7-In-1gM"/>
+                            <constraint firstItem="VjK-Sj-jg0" firstAttribute="trailing" secondItem="ywk-tZ-8Dk" secondAttribute="trailing" constant="8" id="fFu-Di-fAn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VjK-Sj-jg0"/>
                     </view>
+                    <connections>
+                        <outlet property="linkedInContainer" destination="f5h-Hu-Es4" id="HUA-LB-dJe"/>
+                        <outlet property="tableView" destination="f3B-0s-yCF" id="eGL-ej-OgP"/>
+                        <outlet property="typeOfViewSegment" destination="ywk-tZ-8Dk" id="Sx3-3w-Ly1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ay7-4k-IBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,7 +90,7 @@
             <objects>
                 <viewController id="XX2-rP-3Wl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Udp-Bs-0dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lrk-hG-Jio"/>
