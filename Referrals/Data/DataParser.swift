@@ -17,9 +17,13 @@ struct DataParser {
         sections = sections[0].components(separatedBy: "<!-- yaspeller ignore:start -->")
         sections = sections[1].components(separatedBy: "* [")
         for item in 0..<sections.count {
-            print("item \(item): \(sections[item])")
+            print("item \(item): \(sections[item])")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         }
         return openings
 
+    }
+
+    static func getOpenings(dataOriginal: String) {
+       
     }
 }

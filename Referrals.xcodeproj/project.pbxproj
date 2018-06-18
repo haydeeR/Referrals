@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9B169CAF20CEDFB700895300 /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B169CAE20CEDFB700895300 /* linkedin-sdk.framework */; };
+		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
+		9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */; };
+		9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD953520D42DEE008B0A87 /* Recruiter.swift */; };
 		9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375820C839E20020AAD4 /* AppDelegate.swift */; };
 		9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */; };
 		9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375C20C839E20020AAD4 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 		4913B4AC23D83DB1B503C6C9 /* Pods_Referrals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Referrals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		558F768603252C1E64DAC08C /* Pods-Referrals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.release.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.release.xcconfig"; sourceTree = "<group>"; };
 		9B169CAE20CEDFB700895300 /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
+		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
+		9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
+		9BCD953520D42DEE008B0A87 /* Recruiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recruiter.swift; sourceTree = "<group>"; };
 		9BE7375520C839E20020AAD4 /* Referrals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Referrals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE7375820C839E20020AAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningListTVC.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9BE7378320C87FED0020AAD4 /* Opening.swift */,
+				9BCD953520D42DEE008B0A87 /* Recruiter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 		9BE7376B20C83C060020AAD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */,
+				9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +262,7 @@
 				9BE7377120C83C760020AAD4 /* Login.storyboard in Resources */,
 				9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */,
 				9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */,
+				9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */,
 				9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +281,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -279,6 +290,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,11 +346,13 @@
 				9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */,
 				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
 				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,
+				9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */,
 				9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */,
 				9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */,
 				9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */,
 				9BE7378720C882E90020AAD4 /* String+Decode.swift in Sources */,
 				9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */,
+				9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */,
 				9BE7378420C87FED0020AAD4 /* Opening.swift in Sources */,
 				9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */,
 			);

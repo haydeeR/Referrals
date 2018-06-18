@@ -7,7 +7,15 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct Opening {
+struct Opening: Mappable {
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        
+    }
     
 }
