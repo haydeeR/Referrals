@@ -7,23 +7,12 @@
 //
 
 import Foundation
+import ObjectMapper
 
 struct DataParser {
-    static let numberOfSection = 2
-    
-    static func parseOpenings(with data: String) -> [Opening] {
-        let openings: [Opening] = []
-        var sections = data.components(separatedBy: "<!-- yaspeller ignore:end -->")
-        sections = sections[0].components(separatedBy: "<!-- yaspeller ignore:start -->")
-        sections = sections[1].components(separatedBy: "* [")
-        for item in 0..<sections.count {
-            print("item \(item): \(sections[item])")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-        }
+    static func parseOpenings(with json: [[String: Any]]) -> [Opening] {
+        var openings = [Opening]()
+        openings = Mapper<Opening>().mapArray(JSONArray: json)
         return openings
-
-    }
-
-    static func getOpenings(dataOriginal: String) {
-       
     }
 }
