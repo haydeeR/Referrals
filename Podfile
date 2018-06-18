@@ -9,4 +9,5 @@ target 'Referrals' do
   pod 'GoogleSignIn'
   pod 'Alamofire', '~> 4.7'
   pod 'PromiseKit', '~> 6.0'
+  pod 'ObjectMapper', '~> 3.2'
 end

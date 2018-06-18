@@ -20,6 +20,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.15)
   - GTMSessionFetcher/Full (1.1.15):
     - GTMSessionFetcher/Core (= 1.1.15)
+  - ObjectMapper (3.2.0)
   - PromiseKit (6.2.8):
     - PromiseKit/CorePromise (= 6.2.8)
     - PromiseKit/Foundation (= 6.2.8)
@@ -33,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - GoogleSignIn
+  - ObjectMapper (~> 3.2)
   - PromiseKit (~> 6.0)
 
 SPEC CHECKSUMS:
@@ -41,8 +43,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
 
-PODFILE CHECKSUM: bb6423a781c85ec32aa1f5111e2eed7d1fce02ae
+PODFILE CHECKSUM: c255ee64a010e7017e51af1f512440c8470d5daf
 
 COCOAPODS: 1.4.0
