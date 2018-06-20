@@ -24,7 +24,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="XR6-p9-0zB" kind="show" id="Vu2-IP-3vT"/>
+                        <segue destination="XR6-p9-0zB" kind="show" identifier="detailPosition" id="Vu2-IP-3vT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpW-hy-W2d" userLabel="First Responder" sceneMemberID="firstResponder"/>

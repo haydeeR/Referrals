@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "77774559179-3cv4ibai8j5jadt8sg9c08pvfq994hvu.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         verifyAuth()
+        
         return true
     }
     
@@ -34,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  annotation: annotation)
         
     }
+    
+    
+    
 
 }
 
