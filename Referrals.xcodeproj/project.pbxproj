@@ -11,6 +11,8 @@
 		9B39807220D813E5003FE747 /* ReusableIdenfier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39807120D813E5003FE747 /* ReusableIdenfier.swift */; };
 		9B39807420D81A16003FE747 /* PositionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39807320D81A16003FE747 /* PositionDetailViewController.swift */; };
 		9B39809620DAF08F003FE747 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809520DAF08F003FE747 /* SegueIdentifier.swift */; };
+		9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809720DD4F97003FE747 /* ContactViewController.swift */; };
+		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
 		9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */; };
 		9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD953520D42DEE008B0A87 /* Recruiter.swift */; };
@@ -41,6 +43,8 @@
 		9B39807320D81A16003FE747 /* PositionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailViewController.swift; sourceTree = "<group>"; };
 		9B39809420DABFE2003FE747 /* Referral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Referral-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B39809520DAF08F003FE747 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
+		9B39809720DD4F97003FE747 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		9B39809920DD5CF0003FE747 /* ReferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferViewController.swift; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
 		9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
 		9BCD953520D42DEE008B0A87 /* Recruiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recruiter.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */,
 				9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */,
 				9B39807320D81A16003FE747 /* PositionDetailViewController.swift */,
+				9B39809720DD4F97003FE747 /* ContactViewController.swift */,
+				9B39809920DD5CF0003FE747 /* ReferViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 				9B39807220D813E5003FE747 /* ReusableIdenfier.swift in Sources */,
 				9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */,
 				9B39807420D81A16003FE747 /* PositionDetailViewController.swift in Sources */,
+				9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */,
 				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
 				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,
 				9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */,
@@ -365,6 +372,7 @@
 				9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */,
 				9BE7378720C882E90020AAD4 /* String+Decode.swift in Sources */,
 				9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */,
+				9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */,
 				9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */,
 				9BE7378420C87FED0020AAD4 /* Opening.swift in Sources */,
 				9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */,

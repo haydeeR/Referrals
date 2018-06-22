@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,16 +86,149 @@
             </objects>
             <point key="canvasLocation" x="938.39999999999998" y="104.7976011994003"/>
         </scene>
-        <!--View Controller-->
+        <!--Refer View Controller-->
+        <scene sceneID="7hc-5b-cpA">
+            <objects>
+                <viewController id="hfe-65-K2H" customClass="ReferViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cj6-WV-AAD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="itQ-8T-BTx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="333.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="axf-kB-CB6">
+                                <rect key="frame" x="16" y="383.5" width="343" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strong referral?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvw-dK-eOl">
+                                        <rect key="frame" x="0.0" y="0.0" width="243.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGB-sR-GOJ">
+                                        <rect key="frame" x="243.5" y="0.0" width="101.5" height="31"/>
+                                        <connections>
+                                            <action selector="changeViewAction:" destination="hfe-65-K2H" eventType="valueChanged" id="2hU-ZY-ceb"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XcT-ob-dla">
+                                <rect key="frame" x="16" y="444.5" width="343" height="206.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-Ss-kKT">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="62"/>
+                                        <color key="backgroundColor" red="0.9426611075129534" green="0.9426611075129534" blue="0.9426611075129534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkK-JL-R1u">
+                                        <rect key="frame" x="0.0" y="72" width="343" height="62.5"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Why do you recommend him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qt-7G-V4r">
+                                        <rect key="frame" x="0.0" y="144.5" width="343" height="62"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="itQ-8T-BTx" firstAttribute="leading" secondItem="fho-c8-HQs" secondAttribute="leading" id="1tL-je-fJq"/>
+                            <constraint firstItem="itQ-8T-BTx" firstAttribute="top" secondItem="fho-c8-HQs" secondAttribute="top" id="5aP-Ux-ZWb"/>
+                            <constraint firstItem="fho-c8-HQs" firstAttribute="bottom" secondItem="XcT-ob-dla" secondAttribute="bottom" constant="16" id="9cB-Wa-4We"/>
+                            <constraint firstItem="axf-kB-CB6" firstAttribute="leading" secondItem="fho-c8-HQs" secondAttribute="leading" constant="16" id="KdW-nQ-1hz"/>
+                            <constraint firstItem="XcT-ob-dla" firstAttribute="leading" secondItem="fho-c8-HQs" secondAttribute="leading" constant="16" id="RG8-Cm-6PP"/>
+                            <constraint firstItem="itQ-8T-BTx" firstAttribute="trailing" secondItem="fho-c8-HQs" secondAttribute="trailing" id="Woc-nU-uic"/>
+                            <constraint firstItem="itQ-8T-BTx" firstAttribute="height" secondItem="cj6-WV-AAD" secondAttribute="height" multiplier="1:2" id="dBV-2Z-v05"/>
+                            <constraint firstItem="fho-c8-HQs" firstAttribute="trailing" secondItem="XcT-ob-dla" secondAttribute="trailing" constant="16" id="r0d-28-t9f"/>
+                            <constraint firstItem="axf-kB-CB6" firstAttribute="top" secondItem="itQ-8T-BTx" secondAttribute="bottom" constant="30" id="uVc-cn-ptI"/>
+                            <constraint firstItem="fho-c8-HQs" firstAttribute="trailing" secondItem="axf-kB-CB6" secondAttribute="trailing" constant="16" id="wPI-n3-l8m"/>
+                            <constraint firstItem="XcT-ob-dla" firstAttribute="top" secondItem="axf-kB-CB6" secondAttribute="bottom" constant="30" id="wxF-zE-1fJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fho-c8-HQs"/>
+                    </view>
+                    <connections>
+                        <outlet property="stackStrongReferral" destination="XcT-ob-dla" id="TbH-bQ-Xyk"/>
+                        <outlet property="switchTypeReferral" destination="XGB-sR-GOJ" id="89p-3h-8Hh"/>
+                        <outlet property="tableView" destination="itQ-8T-BTx" id="fBE-IP-37k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCl-Xl-rzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.8" y="307.1964017991005"/>
+        </scene>
+        <!--Contact View Controller-->
         <scene sceneID="LgE-g9-yPM">
             <objects>
-                <viewController id="XX2-rP-3Wl" sceneMemberID="viewController">
+                <viewController id="XX2-rP-3Wl" customClass="ContactViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Udp-Bs-0dq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DBM-GD-2NM">
+                                <rect key="frame" x="16" y="20" width="343" height="141"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Vt-eK-TMT">
+                                        <rect key="frame" x="0.0" y="15.5" width="193" height="110"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WzF-xH-w4A">
+                                                <rect key="frame" x="0.0" y="0.0" width="193" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-Wr-z2R">
+                                                <rect key="frame" x="0.0" y="40" width="193" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resume:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-uP-zqb">
+                                                <rect key="frame" x="0.0" y="80" width="193" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhy-N4-eoR">
+                                        <rect key="frame" x="193" y="55.5" width="150" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="CsF-jJ-zQL"/>
+                                        </constraints>
+                                        <state key="normal" title="Refer"/>
+                                        <connections>
+                                            <action selector="sendReferAction:" destination="XX2-rP-3Wl" eventType="touchUpInside" id="ZCp-s0-GfM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DBM-GD-2NM" firstAttribute="leading" secondItem="lrk-hG-Jio" secondAttribute="leading" constant="16" id="Sx4-kS-qMy"/>
+                            <constraint firstItem="DBM-GD-2NM" firstAttribute="top" secondItem="lrk-hG-Jio" secondAttribute="top" constant="20" id="gqT-lU-aOz"/>
+                            <constraint firstItem="lrk-hG-Jio" firstAttribute="bottom" secondItem="DBM-GD-2NM" secondAttribute="bottom" constant="10" id="sEb-BC-HyS"/>
+                            <constraint firstItem="lrk-hG-Jio" firstAttribute="trailing" secondItem="DBM-GD-2NM" secondAttribute="trailing" constant="16" id="uzp-hi-wF1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lrk-hG-Jio"/>
                     </view>
+                    <connections>
+                        <outlet property="emailRefer" destination="GXY-Wr-z2R" id="yz3-eT-OoR"/>
+                        <outlet property="nameRefer" destination="WzF-xH-w4A" id="w3s-DB-tO9"/>
+                        <outlet property="resumeRefer" destination="hvq-uP-zqb" id="Teh-lx-xNC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAP-28-Uqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

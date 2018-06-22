@@ -10,6 +10,9 @@ import UIKit
 
 class ReferViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var switchTypeReferral: UISwitch!
+    @IBOutlet weak var stackStrongReferral: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +24,7 @@ class ReferViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func changeViewAction(_ sender: UISwitch) {
     }
-    */
-
+    
 }
