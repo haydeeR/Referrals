@@ -14,6 +14,7 @@ class OpeningListTVC: UITableViewController {
     var openings: [Opening] = []
     
     override func viewDidLoad() {
+        setUpView()
         getOpenings()
     }
     
