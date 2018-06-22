@@ -10,4 +10,5 @@ import Foundation
 
 enum ReusableIdentifier: String {
     case positionIdentifier
+    case detailRequirementIdentifier
 }
