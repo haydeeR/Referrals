@@ -28,9 +28,12 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         //}, or: { (error) in
         //    print(error)
         //})
-        
     }
 
+    func setUpView() {
+        tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,7 +48,6 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         requirements = reqCollection.map { sub in
             return String(sub)
         }
-        print(requirements)
         tableView.reloadData()
     }
     
