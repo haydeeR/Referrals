@@ -79,11 +79,11 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
         mailComposerVC.setToRecipients([(recruiter?.email)!])
         mailComposerVC.setSubject("You have a new refer")
         let message = """
-        Refer name: \(String(describing: referred?.name))
-        Refer email \(String(describing: referred?.email))
-        He/She has work at \(whereLabel.text!)
-        He/She worked \(whenLabel!)
-        He/She has referred because: \(whyLabel.text!)
+        Refer name: \(referred?.name ?? "Francisco Neri")
+        Refer email  \(referred?.email ?? "fneri@nearsoft.com")
+        He/She has work at \(whereLabel.text ?? "Company")
+        He/She worked \(whenLabel.text ?? "At time")
+        He/She has referred because: \(whyLabel.text ?? "Best worker")
         """
         mailComposerVC.setMessageBody(message, isHTML: false)
         

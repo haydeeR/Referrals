@@ -10,6 +10,7 @@ import UIKit
 
 class PositionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeOfViewSegment: UISegmentedControl!
     @IBOutlet weak var linkedInContainer: UIView!
@@ -17,6 +18,7 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     var accessToken: LISDKAccessToken?
     var fields: [Field] = []
     fileprivate var contactViewController: ContactViewController?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +37,54 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         //}, or: { (error) in
         //    print(error)
         //})
+        let center: NotificationCenter = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        center.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow() {
+        print ("El teclado se va a aparecer")
+    }
+    
+    @objc func keyboardWillHide() {
+        print("El teclado se va a ocultar")
+    }
+    
+    func setScrollViewPosition(){
+        bottomConstraint.constant = 300 + 20
+        self.view.layoutIfNeeded()
+        
+        // Calculamos la altura de la pantalla
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight: CGFloat = screenSize.height
+        
+        
+        let yPositionField = linkedInContainer.frame.origin.y
+        let heightField = linkedInContainer.frame.size.height
+        let yPositionMaxField = yPositionField + heightField
+        let Ymax = screenHeight - 300
+
+        if Ymax < yPositionMaxField {
+            if yPositionMaxField > screenHeight {
+                let diff = yPositionMaxField - screenHeight
+                print("El UITextField se sale por debajo \(diff) unidades")
+                // Hay que añadir la distancia a la que está por debajo el UITextField ya que se sale del screen height
+               // scrollView.setContentOffset(CGPointMake(0, 300 + diff), animated: true)
+            }else{
+                // El UITextField queda oculto por el teclado, entonces movemos el Scroll View
+               // scrollView.setContentOffset(CGPointMake(0, 300 - 20), animated: true)
+                
+            }
+        }else{print("NO MUEVO EL SCROLL")}
+        
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
