@@ -11,19 +11,16 @@ import ObjectMapper
 
 struct Recruiter: Mappable {
     var name: String
-    var description: String
-    var requirements: [String]
+    var email: String
     
     init?(map: Map) {
         name = ""
-        description = ""
-        requirements = []
+        email = ""
     }
     
     mutating func mapping(map: Map) {
         name <- map["name"]
-        description <- map["description"]
-        requirements <- map["requirements"]
+        email <- map["email"]
     }
     
     

@@ -13,6 +13,9 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var nameRefer: UITextField!
     @IBOutlet weak var emailRefer: UITextField!
     @IBOutlet weak var resumeRefer: UITextField!
+    
+    weak var delegate: PositionDetailViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +33,8 @@ class ContactViewController: UIViewController {
     }
 
     @IBAction func sendReferAction(_ sender: UIButton) {
-        
+        if let name = nameRefer?.text, let email = emailRefer?.text {
+            delegate?.choseRecruiter(name: name, email: email)
+        }
     }
 }

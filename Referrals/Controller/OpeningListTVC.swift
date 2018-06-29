@@ -19,6 +19,7 @@ class OpeningListTVC: UITableViewController {
     }
     
     func setUpView() {
+        navigationItem.title = "Our openings"
         tableView.tableFooterView = UIView(frame: .zero)
     }
     

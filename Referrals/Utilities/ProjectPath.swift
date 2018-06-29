@@ -16,4 +16,5 @@ enum StoryboardPath: String {
 enum ViewControllerPath: String {
     case openingsViewController = "OpeningsViewController"
     case loginViewController = "LoginViewController"
+    case navigationOpenings = "NavigationOpenings"
 }

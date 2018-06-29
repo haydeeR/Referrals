@@ -25,4 +25,18 @@ struct APIHandler {
                 })
         }
     }
+    
+    static func getRecruiters() -> Promise <[[String: Any]]> {
+        return Promise { resolve in
+            sessionManager.request(APIRouter.getRecruiters)
+                .validate()
+                .responseJSON( completionHandler: { response in
+                    if let json = response.result.value as? [[String: Any]] {
+                        resolve.fulfill(json)
+                    } else if let error = response.error {
+                        resolve.reject(error)
+                    }
+                })
+        }
+    }
 }

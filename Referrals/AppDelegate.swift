@@ -62,7 +62,7 @@ extension AppDelegate: GIDSignInDelegate {
                 familyName = \(String(describing: familyName))
                 email = \(String(describing: email))
             """)
-            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.openingsViewController.rawValue)
+            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
         }
     }
     
@@ -81,7 +81,7 @@ extension AppDelegate {
         
         if GIDSignIn.sharedInstance().currentUser != nil {
             storyboard =  StoryboardPath.main.rawValue
-            initialViewController = ViewControllerPath.openingsViewController.rawValue
+            initialViewController = ViewControllerPath.navigationOpenings.rawValue
         } else {
             storyboard =  StoryboardPath.login.rawValue
             initialViewController = ViewControllerPath.loginViewController.rawValue

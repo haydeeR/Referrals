@@ -10,15 +10,12 @@ import UIKit
 
 class PositionTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var nameFieldLabel: UILabel!
+    @IBOutlet weak var descriptionFieldLabel: UILabel!
+   
+    func config(with data: Field) {
+        nameFieldLabel.text = data.fieldName
+        descriptionFieldLabel.text = data.fieldDescription
     }
     
 }
