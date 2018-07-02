@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "77774559179-3cv4ibai8j5jadt8sg9c08pvfq994hvu.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         verifyAuth()
+        
         return true
     }
     
@@ -34,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  annotation: annotation)
         
     }
+    
+    
+    
 
 }
 
@@ -58,7 +62,7 @@ extension AppDelegate: GIDSignInDelegate {
                 familyName = \(String(describing: familyName))
                 email = \(String(describing: email))
             """)
-            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.openingsViewController.rawValue)
+            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
         }
     }
     
@@ -77,7 +81,7 @@ extension AppDelegate {
         
         if GIDSignIn.sharedInstance().currentUser != nil {
             storyboard =  StoryboardPath.main.rawValue
-            initialViewController = ViewControllerPath.openingsViewController.rawValue
+            initialViewController = ViewControllerPath.navigationOpenings.rawValue
         } else {
             storyboard =  StoryboardPath.login.rawValue
             initialViewController = ViewControllerPath.loginViewController.rawValue

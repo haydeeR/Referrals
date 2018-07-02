@@ -11,22 +11,27 @@ import ObjectMapper
 
 struct Opening: Mappable {
     var name: String
-    var responsabilities: String
-    var requirements: String
-    var description: String
+    var responsabilities: [String]
+    var requirements: [String]
+    var description: [String]
+    var skills: [String]
+    var generals: [String]
     
     init?(map: Map) {
         name = ""
-        responsabilities = ""
-        requirements = ""
-        description = ""
+        responsabilities = []
+        requirements = []
+        description = []
+        skills = []
+        generals = []
     }
     
     mutating func mapping(map: Map) {
-        name <- map["name"]
-        responsabilities <- map["responsabilities"]
-        requirements <- map["requirements"]
-        description <- map["description"]
+        name <- map["title"]
+        responsabilities <- map["description.responsibilities"]
+        requirements <- map["description.requirements"]
+        description <- map["description.description"]
+        skills <- map["description.skills"]
+        generals <- map["description.generals"]
     }
-    
 }

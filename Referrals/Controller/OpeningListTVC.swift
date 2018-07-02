@@ -14,10 +14,12 @@ class OpeningListTVC: UITableViewController {
     var openings: [Opening] = []
     
     override func viewDidLoad() {
+        setUpView()
         getOpenings()
     }
     
     func setUpView() {
+        navigationItem.title = "Our openings"
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
@@ -42,5 +44,26 @@ class OpeningListTVC: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let opening = openings[indexPath.row]
+        performSegue(withIdentifier: SegueIdentifier.detailPosition.rawValue, sender: opening)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       guard let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) else {
+            return
+        }
+        if identifier == SegueIdentifier.detailPosition {
+            guard let controller = segue.destination as? PositionDetailViewController else {
+                return
+            }
+            guard let opening = sender as? Opening else {
+                return
+            }
+            controller.opening = opening
+        }
+    }
+    
 }
 

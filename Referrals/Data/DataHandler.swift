@@ -16,4 +16,10 @@ struct DataHandler {
             return DataParser.parseOpenings(with: data)
         }
     }
+    
+    static func getRecruiters() -> Promise<[Recruiter]> {
+        return APIHandler.getRecruiters().map { data -> [Recruiter] in
+            return DataParser.parseRecruiters(with: data)
+        }
+    }
 }

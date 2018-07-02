@@ -11,6 +11,6 @@ import Foundation
 struct APIManager{
   //  static var githubBaseUrl = "https://api.github.com/repos/Nearsoft/jobs/readme"
   //  static var githubBaseUrl = "https://raw.githubusercontent.com/Nearsoft/jobs/master/readme.md"
-    static var githubBaseUrl = "https://my-json-server.typicode.com/haydeeR/API-test/positions"
+    static var githubBaseUrl = "https://referrals-app.herokuapp.com"
     static var linkedInBaseUrl = ""
 }
