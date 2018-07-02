@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="IWb-1x-gfV">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="0cz-rf-Zyd" customClass="LoginViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0cz-rf-Zyd" customClass="LoginViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Imj-o3-gfP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
