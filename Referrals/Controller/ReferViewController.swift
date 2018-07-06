@@ -28,6 +28,7 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
         tableView.delegate = self
         tableView.dataSource = self
         setUpView()
+        registerNibs()
         getRecruiters()
     }
 
@@ -50,6 +51,11 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
         btns.append(btn)
         navigationItem.setRightBarButtonItems(btns, animated: true)
         tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func registerNibs() {
+        let nib = UINib(nibName: RecruiterTableViewCell.reusableID, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: RecruiterTableViewCell.reusableID)
     }
     
     @objc func doneRefer() {
@@ -125,12 +131,16 @@ extension ReferViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: ReusableIdentifier.recruiterIdentifier.rawValue)
-        cell.textLabel?.text = recruiters[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecruiterTableViewCell.reusableID, for: indexPath) as! RecruiterTableViewCell
+        cell.config(with: recruiters[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          recruiter = recruiters[indexPath.row]
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }

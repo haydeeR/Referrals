@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.7.2)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
   - GoogleSignIn (4.1.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -33,12 +35,14 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - AlamofireImage (~> 3.3)
   - GoogleSignIn
   - ObjectMapper (~> 3.2)
   - PromiseKit (~> 6.0)
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
@@ -46,6 +50,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
 
-PODFILE CHECKSUM: c255ee64a010e7017e51af1f512440c8470d5daf
+PODFILE CHECKSUM: 21c253a81264e0ab66dfcbb47c4f490be60980a5
 
 COCOAPODS: 1.4.0

@@ -19,6 +19,8 @@
 		9BBFFE5120E2A6850029A772 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFFE5020E2A6850029A772 /* Field.swift */; };
 		9BBFFE5320E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFFE5220E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift */; };
 		9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD953520D42DEE008B0A87 /* Recruiter.swift */; };
+		9BD1E36020EFBF92009B973C /* RecruiterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BD1E35E20EFBF92009B973C /* RecruiterTableViewCell.xib */; };
+		9BD1E36120EFBF92009B973C /* RecruiterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1E35F20EFBF92009B973C /* RecruiterTableViewCell.swift */; };
 		9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375820C839E20020AAD4 /* AppDelegate.swift */; };
 		9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */; };
 		9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375C20C839E20020AAD4 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		9BBFFE5020E2A6850029A772 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		9BBFFE5220E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReusableIdentifier.swift"; sourceTree = "<group>"; };
 		9BCD953520D42DEE008B0A87 /* Recruiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recruiter.swift; sourceTree = "<group>"; };
+		9BD1E35E20EFBF92009B973C /* RecruiterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecruiterTableViewCell.xib; sourceTree = "<group>"; };
+		9BD1E35F20EFBF92009B973C /* RecruiterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruiterTableViewCell.swift; sourceTree = "<group>"; };
 		9BE7375520C839E20020AAD4 /* Referrals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Referrals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE7375820C839E20020AAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningListTVC.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 			children = (
 				9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */,
 				9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */,
+				9BD1E35E20EFBF92009B973C /* RecruiterTableViewCell.xib */,
+				9BD1E35F20EFBF92009B973C /* RecruiterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 				9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */,
 				9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */,
 				9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */,
+				9BD1E36020EFBF92009B973C /* RecruiterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +311,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Referrals/Pods-Referrals-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -313,6 +321,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -387,6 +396,7 @@
 				9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */,
 				9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */,
 				9BE7378420C87FED0020AAD4 /* Opening.swift in Sources */,
+				9BD1E36120EFBF92009B973C /* RecruiterTableViewCell.swift in Sources */,
 				9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */,
 				9B39809620DAF08F003FE747 /* SegueIdentifier.swift in Sources */,
 			);
@@ -541,10 +551,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Referrals/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Referrals/Referral-Bridging-Header.h";
@@ -566,10 +573,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Referrals/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Referrals/Referral-Bridging-Header.h";
