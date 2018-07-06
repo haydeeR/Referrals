@@ -97,11 +97,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="itQ-8T-BTx">
-                                <rect key="frame" x="0.0" y="20" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="333.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="axf-kB-CB6">
-                                <rect key="frame" x="16" y="383.5" width="343" height="31"/>
+                                <rect key="frame" x="16" y="427.5" width="343" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strong referral?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvw-dK-eOl">
                                         <rect key="frame" x="0.0" y="0.0" width="243.5" height="31"/>
@@ -118,24 +118,24 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XcT-ob-dla">
-                                <rect key="frame" x="16" y="444.5" width="343" height="206.5"/>
+                                <rect key="frame" x="16" y="488.5" width="343" height="162.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-Ss-kKT">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="62"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="47.5"/>
                                         <color key="backgroundColor" red="0.9426611075129534" green="0.9426611075129534" blue="0.9426611075129534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkK-JL-R1u">
-                                        <rect key="frame" x="0.0" y="72" width="343" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="57.5" width="343" height="47.5"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Why do you recommend him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qt-7G-V4r">
-                                        <rect key="frame" x="0.0" y="144.5" width="343" height="62"/>
+                                        <rect key="frame" x="0.0" y="115" width="343" height="47.5"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -263,14 +263,14 @@
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-9t-d44">
-                                                <rect key="frame" x="8" y="460" width="359" height="29"/>
+                                                <rect key="frame" x="8" y="452.5" width="359" height="36.5"/>
                                                 <segments>
-                                                    <segment title="First"/>
-                                                    <segment title="Second"/>
+                                                    <segment title="LinkedIn"/>
+                                                    <segment title="Contact"/>
                                                 </segments>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-20-dDn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -285,6 +285,7 @@
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="top" secondItem="OXi-3v-eCP" secondAttribute="top" id="Pzh-bu-nbj"/>
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="XbA-vV-Qca"/>
                                             <constraint firstAttribute="trailing" secondItem="2ih-9t-d44" secondAttribute="trailing" constant="8" id="cNL-mm-3AU"/>
+                                            <constraint firstItem="jr5-20-dDn" firstAttribute="height" secondItem="OXi-3v-eCP" secondAttribute="height" multiplier="2:3" id="e5o-RW-vFy"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="top" secondItem="2ih-9t-d44" secondAttribute="bottom" constant="8" id="wib-3N-mYi"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="yYQ-ni-hHM"/>
                                         </constraints>
@@ -312,6 +313,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="794-6A-Ubr" id="nE8-HF-xB3"/>
                         <outlet property="linkedInContainer" destination="6al-fg-wkB" id="JW1-KH-hfA"/>
+                        <outlet property="scrollView" destination="Qfx-pF-8D7" id="KHy-M2-tUz"/>
                         <outlet property="tableView" destination="jr5-20-dDn" id="W46-kz-uQL"/>
                         <outlet property="typeOfViewSegment" destination="2ih-9t-d44" id="YME-KK-fZZ"/>
                         <segue destination="hfe-65-K2H" kind="show" identifier="referSegue" id="744-q4-eMe"/>
@@ -342,6 +344,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ONI-L4-3bu"/>
-        <segue reference="qJ4-rV-2KC"/>
+        <segue reference="744-q4-eMe"/>
     </inferredMetricsTieBreakers>
 </document>
