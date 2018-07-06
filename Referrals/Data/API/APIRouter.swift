@@ -12,6 +12,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     case getOpenings
     case getRecruiters
+    case sendEmail
     
     var path: String {
         switch self {
@@ -19,6 +20,8 @@ enum APIRouter: URLRequestConvertible {
             return "jobs"
         case .getRecruiters:
             return "recruiters"
+        case .sendEmail:
+            return "refer"
         }
     }
     
@@ -29,6 +32,8 @@ enum APIRouter: URLRequestConvertible {
             parameters = [:]
         case .getRecruiters:
             parameters = [:]
+        case .sendEmail:
+            parameters = [:]
         }
         return parameters
     }
@@ -37,6 +42,9 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .getOpenings, .getRecruiters:
             return .get
+        case .sendEmail:
+            return .post
+            
         }
     }
     

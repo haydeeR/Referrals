@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct Opening: Mappable {
+    var id: Int
     var name: String
     var responsabilities: [String]
     var requirements: [String]
@@ -18,6 +19,7 @@ struct Opening: Mappable {
     var generals: [String]
     
     init?(map: Map) {
+        id = 0
         name = ""
         responsabilities = []
         requirements = []
@@ -27,6 +29,7 @@ struct Opening: Mappable {
     }
     
     mutating func mapping(map: Map) {
+        id <- map["id"]
         name <- map["title"]
         responsabilities <- map["description.responsibilities"]
         requirements <- map["description.requirements"]

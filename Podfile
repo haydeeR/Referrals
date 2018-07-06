@@ -11,7 +11,6 @@ target 'Referrals' do
   pod 'AlamofireImage', '~> 3.3'
   pod 'PromiseKit', '~> 6.0'
   pod 'ObjectMapper', '~> 3.2'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'SVProgressHUD'
 end

@@ -22,4 +22,6 @@ struct DataHandler {
             return DataParser.parseRecruiters(with: data)
         }
     }
+    
+
 }
