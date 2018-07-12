@@ -8,6 +8,7 @@
 
 import UIKit
 import PromiseKit
+import FacebookShare
 
 class OpeningListTVC: UITableViewController {
 
@@ -48,6 +49,36 @@ class OpeningListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let opening = openings[indexPath.row]
         performSegue(withIdentifier: SegueIdentifier.detailPosition.rawValue, sender: opening)
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, indexPath in
+            self.shareOnFacebook(indexPath: indexPath)
+        }
+        share.backgroundColor = .blue
+        
+        return [share]
+    }
+    
+    func shareOnFacebook(indexPath: IndexPath) {
+        let content = LinkShareContent(url: URL(string: "https://github.com/Nearsoft/jobs/blob/master/readme.md")!)
+        let shareDialog = ShareDialog(content: content)
+        shareDialog.mode = .native
+        shareDialog.failsOnInvalidData = true
+        shareDialog.completion = { result in
+            // Handle share results
+        }
+        do {
+            try shareDialog.show()
+        } catch {
+            //handle error
+            print(error)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        GIDSignIn.sharedInstance().clientID = "77774559179-3cv4ibai8j5jadt8sg9c08pvfq994hvu.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         verifyAuth()
         

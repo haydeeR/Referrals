@@ -8,9 +8,8 @@
 
 import UIKit
 import PromiseKit
-import MessageUI
 
-class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ReferViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var switchTypeReferral: UISwitch!
@@ -18,19 +17,47 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var whenLabel: UITextField!
     @IBOutlet weak var whereLabel: UITextField!
     @IBOutlet weak var whyLabel: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     
     var referred: Referred?
     var recruiters: [Recruiter] = []
     var recruiter: Recruiter?
+    var activeField: UITextField?
+    var lastOffset: CGPoint!
+    var keyboardHeight: CGFloat!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        whenLabel.delegate = self
+        whereLabel.delegate = self
+        whyLabel.delegate = self
+        
+        // Observe keyboard change
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Add touch gesture for contentView
+        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
+        
         setUpView()
+        registerNibs()
         getRecruiters()
     }
 
+    @objc func returnTextView(gesture: UIGestureRecognizer) {
+        guard activeField != nil else {
+            return
+        }
+        
+        activeField?.resignFirstResponder()
+        activeField = nil
+    }
+    
     func getRecruiters() {
         firstly {
             DataHandler.getRecruiters()
@@ -52,6 +79,11 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
+    func registerNibs() {
+        let nib = UINib(nibName: RecruiterTableViewCell.reusableID, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: RecruiterTableViewCell.reusableID)
+    }
+    
     @objc func doneRefer() {
         let alert = UIAlertController(title: "Confirm", message: "Are you sure to refer?", preferredStyle: .actionSheet)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -64,51 +96,44 @@ class ReferViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     func sendEmail() {
-        let mailComposeViewController = configuredMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
-        }
-    }
-    
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        
-        mailComposerVC.setToRecipients([(recruiter?.email)!])
-        mailComposerVC.setSubject("You have a new refer")
-        let message = """
-        Refer name: \(referred?.name ?? "Francisco Neri")
-        Refer email  \(referred?.email ?? "fneri@nearsoft.com")
-        He/She has work at \(whereLabel.text ?? "Company")
-        He/She worked \(whenLabel.text ?? "At time")
-        He/She has referred because: \(whyLabel.text ?? "Best worker")
-        """
-        mailComposerVC.setMessageBody(message, isHTML: false)
-        
-        return mailComposerVC
-    }
-    
-    func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Something wrong", message: "We will send an email with the referred later", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        sendMailErrorAlert.addAction(action)
-        present(sendMailErrorAlert,animated: true, completion: nil)
-    }
-    
-    // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+      //something that send an email
     }
     
     @IBAction func changeViewAction(_ sender: UISwitch) {
         stackStrongReferral.isHidden = !stackStrongReferral.isHidden
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if keyboardHeight != nil {
+            return
+        }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = keyboardSize.height
+            // so increase contentView's height by keyboard height
+            UIView.animate(withDuration: 0.3, animations: {
+                self.bottomContraint.constant += self.keyboardHeight
+            })
+            // move if keyboard hide input field
+            let distanceToBottom = (self.scrollView.frame.size.height) - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
+            let collapseSpace = keyboardHeight - distanceToBottom
+            if collapseSpace < 0 {
+                // no collapse
+                return
+            }
+            // set new offset for scroll view
+            UIView.animate(withDuration: 0.3, animations: {
+                // scroll to the position above keyboard 10 points
+                self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
+            })
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.bottomContraint.constant -= self.keyboardHeight
+            self.scrollView.contentOffset = self.lastOffset
+        }
+        keyboardHeight = nil
     }
     
 }
@@ -125,12 +150,31 @@ extension ReferViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: ReusableIdentifier.recruiterIdentifier.rawValue)
-        cell.textLabel?.text = recruiters[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecruiterTableViewCell.reusableID, for: indexPath) as! RecruiterTableViewCell
+        cell.config(with: recruiters[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          recruiter = recruiters[indexPath.row]
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+extension ReferViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeField = textField
+        lastOffset = self.scrollView.contentOffset
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        activeField?.resignFirstResponder()
+        activeField = nil
+        return true
     }
 }
