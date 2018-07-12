@@ -17,11 +17,12 @@ struct DataHandler {
         }
     }
     
-    static func getRecruiters() -> Promise<[Recruiter]> {
+    static func getRecruiters() -> Promise <[Recruiter]> {
         return APIHandler.getRecruiters().map { data -> [Recruiter] in
             return DataParser.parseRecruiters(with: data)
         }
     }
     
+    //static func login() -> Promise <[]>
 
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import PromiseKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,21 +49,16 @@ extension AppDelegate: GIDSignInDelegate {
             print("\(error.localizedDescription)")
             initView(with: StoryboardPath.login.rawValue, viewControllerName: ViewControllerPath.loginViewController.rawValue)
         } else {
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            print("""
-                userId = \(String(describing: userId))
-                idToken = \(String(describing: idToken))
-                fullname = \(String(describing: fullName))
-                givenName = \(String(describing: givenName))
-                familyName = \(String(describing: familyName))
-                email = \(String(describing: email))
-            """)
-            initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
+            if let idToken = user.authentication.idToken {
+                firstly {
+                    APIHandler.login(token: idToken)
+                    }.done { result in
+                        print(result)
+                    }.catch { error in
+                        print(error.localizedDescription)
+                }
+                initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
+            }
         }
     }
     

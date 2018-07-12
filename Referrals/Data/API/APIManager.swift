@@ -13,4 +13,5 @@ struct APIManager{
   //  static var githubBaseUrl = "https://raw.githubusercontent.com/Nearsoft/jobs/master/readme.md"
     static var githubBaseUrl = "https://referrals-app.herokuapp.com"
     static var linkedInBaseUrl = ""
+    static var githubDevUrl = "https://referrals-dev.herokuapp.com"
 }

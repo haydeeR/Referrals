@@ -13,6 +13,7 @@ enum APIRouter: URLRequestConvertible {
     case getOpenings
     case getRecruiters
     case sendEmail
+    case login(token: String)
     
     var path: String {
         switch self {
@@ -22,6 +23,8 @@ enum APIRouter: URLRequestConvertible {
             return "recruiters"
         case .sendEmail:
             return "refer"
+        case .login:
+            return "login"
         }
     }
     
@@ -34,6 +37,8 @@ enum APIRouter: URLRequestConvertible {
             parameters = [:]
         case .sendEmail:
             parameters = [:]
+        case .login (let token):
+            parameters = ["token_id": token]
         }
         return parameters
     }
@@ -42,7 +47,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .getOpenings, .getRecruiters:
             return .get
-        case .sendEmail:
+        case .sendEmail, .login:
             return .post
             
         }
@@ -53,6 +58,8 @@ enum APIRouter: URLRequestConvertible {
         switch  self {
         case .getOpenings, .getRecruiters:
             url = try APIManager.githubBaseUrl.asURL()
+        case .login:
+            url = try APIManager.githubDevUrl.asURL()
         default:
             url = try APIManager.linkedInBaseUrl.asURL()
         }
