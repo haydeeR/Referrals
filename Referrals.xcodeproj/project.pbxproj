@@ -14,6 +14,7 @@
 		9B39809620DAF08F003FE747 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809520DAF08F003FE747 /* SegueIdentifier.swift */; };
 		9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809720DD4F97003FE747 /* ContactViewController.swift */; };
 		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
+		9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
 		9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */; };
 		9BBFFE5120E2A6850029A772 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFFE5020E2A6850029A772 /* Field.swift */; };
@@ -51,6 +52,7 @@
 		9B39809520DAF08F003FE747 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		9B39809720DD4F97003FE747 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		9B39809920DD5CF0003FE747 /* ReferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferViewController.swift; sourceTree = "<group>"; };
+		9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
 		9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
 		9BBFFE5020E2A6850029A772 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				9BE7378620C882E90020AAD4 /* String+Decode.swift */,
 				9BBFFE5220E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift */,
+				9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */,
 				9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */,
 				9B22E2D720E68400005BA8FA /* Referred.swift in Sources */,
+				9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */,
 				9BE7378720C882E90020AAD4 /* String+Decode.swift in Sources */,
 				9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */,
 				9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */,
@@ -563,7 +567,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Referrals/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Referrals/Referral-Bridging-Header.h";
@@ -585,7 +592,10 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Referrals/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nearsoft.Referrals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Referrals/Referral-Bridging-Header.h";

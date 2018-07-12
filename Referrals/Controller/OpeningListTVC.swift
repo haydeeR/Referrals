@@ -25,12 +25,15 @@ class OpeningListTVC: UITableViewController {
     }
     
     func getOpenings() {
+        toogleHUD(show: true)
         firstly {
            DataHandler.getOpenings()
         }.done { openings in
             self.openings = openings
             self.tableView.reloadData()
+            self.toogleHUD(show: false)
         }.catch { error in
+            self.toogleHUD(show: false)
             print(error.localizedDescription)
         }
     }

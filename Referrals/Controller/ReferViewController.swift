@@ -59,12 +59,15 @@ class ReferViewController: UIViewController {
     }
     
     func getRecruiters() {
+        toogleHUD(show: true)
         firstly {
             DataHandler.getRecruiters()
             }.done { recruiters in
                 self.recruiters = recruiters
                 self.tableView.reloadData()
+                self.toogleHUD(show: false)
             }.catch { error in
+                self.toogleHUD(show: false)
                 print(error.localizedDescription)
         }
     }
@@ -160,7 +163,7 @@ extension ReferViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 }
 
