@@ -66,7 +66,7 @@ class OpeningListTVC: UITableViewController {
     }
     
     func shareOnFacebook(indexPath: IndexPath) {
-        let content = LinkShareContent(url: URL(string: "https://github.com/Nearsoft/jobs#devops-software-engineer-1")!)
+        let content = LinkShareContent(url: URL(string: "https://github.com/Nearsoft/jobs/blob/master/readme.md")!)
         let shareDialog = ShareDialog(content: content)
         shareDialog.mode = .native
         shareDialog.failsOnInvalidData = true
