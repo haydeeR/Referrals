@@ -51,13 +51,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="231.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-Wr-z2R">
                                                 <rect key="frame" x="0.0" y="40" width="231.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resume:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-uP-zqb">
                                                 <rect key="frame" x="0.0" y="80" width="231.5" height="30"/>
@@ -123,14 +123,14 @@
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-9t-d44">
-                                                <rect key="frame" x="8" y="452.5" width="359" height="36.5"/>
+                                                <rect key="frame" x="8" y="460" width="359" height="29"/>
                                                 <segments>
                                                     <segment title="LinkedIn"/>
                                                     <segment title="Contact"/>
                                                 </segments>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-20-dDn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -145,7 +145,7 @@
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="top" secondItem="OXi-3v-eCP" secondAttribute="top" id="Pzh-bu-nbj"/>
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="XbA-vV-Qca"/>
                                             <constraint firstAttribute="trailing" secondItem="2ih-9t-d44" secondAttribute="trailing" constant="8" id="cNL-mm-3AU"/>
-                                            <constraint firstItem="jr5-20-dDn" firstAttribute="height" secondItem="OXi-3v-eCP" secondAttribute="height" multiplier="2:3" id="e5o-RW-vFy"/>
+                                            <constraint firstItem="2ih-9t-d44" firstAttribute="top" secondItem="jr5-20-dDn" secondAttribute="bottom" constant="8" id="rl0-jO-9c4"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="top" secondItem="2ih-9t-d44" secondAttribute="bottom" constant="8" id="wib-3N-mYi"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="yYQ-ni-hHM"/>
                                         </constraints>

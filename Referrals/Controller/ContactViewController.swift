@@ -54,6 +54,9 @@ class ContactViewController: UIViewController {
     }
 
     @IBAction func sendReferAction(_ sender: UIButton) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
         if let name = nameRefer?.text, let email = emailRefer?.text {
             delegate?.choseRecruiter(name: name, email: email)
         }
