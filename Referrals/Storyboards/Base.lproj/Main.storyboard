@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,30 +44,32 @@
                                 <rect key="frame" x="16" y="20" width="343" height="141"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Vt-eK-TMT">
-                                        <rect key="frame" x="0.0" y="15.5" width="231.5" height="110"/>
+                                        <rect key="frame" x="0.0" y="15.5" width="237" height="110"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WzF-xH-w4A">
-                                                <rect key="frame" x="0.0" y="0.0" width="231.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="237" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXY-Wr-z2R">
-                                                <rect key="frame" x="0.0" y="40" width="231.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="40" width="237" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resume:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-uP-zqb">
-                                                <rect key="frame" x="0.0" y="80" width="231.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11h-kb-d4h">
+                                                <rect key="frame" x="0.0" y="80" width="237" height="30"/>
+                                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Add resume"/>
+                                                <connections>
+                                                    <action selector="addResumeAction:" destination="XX2-rP-3Wl" eventType="touchUpInside" id="RgJ-x4-meN"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhy-N4-eoR">
-                                        <rect key="frame" x="231.5" y="55.5" width="111.5" height="30"/>
+                                        <rect key="frame" x="237" y="55.5" width="106" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="CsF-jJ-zQL"/>
                                         </constraints>
@@ -92,7 +93,7 @@
                     <connections>
                         <outlet property="emailRefer" destination="GXY-Wr-z2R" id="yz3-eT-OoR"/>
                         <outlet property="nameRefer" destination="WzF-xH-w4A" id="w3s-DB-tO9"/>
-                        <outlet property="resumeRefer" destination="hvq-uP-zqb" id="Teh-lx-xNC"/>
+                        <outlet property="resumeBtn" destination="11h-kb-d4h" id="eFZ-K7-E63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAP-28-Uqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,14 +124,14 @@
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-9t-d44">
-                                                <rect key="frame" x="8" y="452.5" width="359" height="36.5"/>
+                                                <rect key="frame" x="8" y="460" width="359" height="29"/>
                                                 <segments>
                                                     <segment title="LinkedIn"/>
                                                     <segment title="Contact"/>
                                                 </segments>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-20-dDn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -145,7 +146,7 @@
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="top" secondItem="OXi-3v-eCP" secondAttribute="top" id="Pzh-bu-nbj"/>
                                             <constraint firstItem="jr5-20-dDn" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="XbA-vV-Qca"/>
                                             <constraint firstAttribute="trailing" secondItem="2ih-9t-d44" secondAttribute="trailing" constant="8" id="cNL-mm-3AU"/>
-                                            <constraint firstItem="jr5-20-dDn" firstAttribute="height" secondItem="OXi-3v-eCP" secondAttribute="height" multiplier="2:3" id="e5o-RW-vFy"/>
+                                            <constraint firstItem="2ih-9t-d44" firstAttribute="top" secondItem="jr5-20-dDn" secondAttribute="bottom" constant="8" id="rl0-jO-9c4"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="top" secondItem="2ih-9t-d44" secondAttribute="bottom" constant="8" id="wib-3N-mYi"/>
                                             <constraint firstItem="6al-fg-wkB" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" id="yYQ-ni-hHM"/>
                                         </constraints>
@@ -216,11 +217,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V0c-bc-yg4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="346"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="PyP-6k-PlY">
-                                                <rect key="frame" x="16" y="353.5" width="343" height="31"/>
+                                                <rect key="frame" x="16" y="366" width="343" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strong referral?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7d-4S-T0P">
                                                         <rect key="frame" x="0.0" y="0.0" width="243.5" height="31"/>
@@ -230,34 +231,40 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-sl-4h2">
                                                         <rect key="frame" x="243.5" y="0.0" width="101.5" height="31"/>
+                                                        <connections>
+                                                            <action selector="changeViewAction:" destination="KNp-Vo-Gxp" eventType="valueChanged" id="f5z-es-vBY"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vLq-6F-Oan">
-                                                <rect key="frame" x="16" y="404.5" width="343" height="262.5"/>
+                                                <rect key="frame" x="16" y="417" width="343" height="250"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-I3-Vzm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="73.5"/>
                                                         <color key="backgroundColor" red="0.94266110749999998" green="0.94266110749999998" blue="0.94266110749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gxk-ft-vwM">
-                                                        <rect key="frame" x="0.0" y="92.5" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="88.5" width="343" height="73"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="organization"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Why do you recommend him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-dG-1HK">
-                                                        <rect key="frame" x="0.0" y="185" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="176.5" width="343" height="73.5"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="NFQ-uS-5Sw"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,7 +275,6 @@
                                             <constraint firstAttribute="bottom" secondItem="vLq-6F-Oan" secondAttribute="bottom" id="HXo-6o-zDF"/>
                                             <constraint firstItem="vLq-6F-Oan" firstAttribute="leading" secondItem="fbJ-sN-ukZ" secondAttribute="leading" constant="16" id="ICR-TR-He4"/>
                                             <constraint firstItem="vLq-6F-Oan" firstAttribute="top" secondItem="PyP-6k-PlY" secondAttribute="bottom" constant="20" id="K5c-1J-mvu"/>
-                                            <constraint firstItem="V0c-bc-yg4" firstAttribute="height" secondItem="fbJ-sN-ukZ" secondAttribute="height" multiplier="1:2" id="MZT-lI-sua"/>
                                             <constraint firstItem="PyP-6k-PlY" firstAttribute="top" secondItem="V0c-bc-yg4" secondAttribute="bottom" constant="20" id="U3A-Pn-JQO"/>
                                             <constraint firstItem="V0c-bc-yg4" firstAttribute="leading" secondItem="fbJ-sN-ukZ" secondAttribute="leading" id="XbB-KU-Puo"/>
                                             <constraint firstAttribute="trailing" secondItem="vLq-6F-Oan" secondAttribute="trailing" constant="16" id="fAm-ns-1VR"/>
@@ -299,7 +305,7 @@
                     <connections>
                         <outlet property="bottomContraint" destination="HXo-6o-zDF" id="hfV-eR-LEW"/>
                         <outlet property="contentView" destination="fbJ-sN-ukZ" id="Gcw-b1-ZHY"/>
-                        <outlet property="scrollView" destination="8Qg-TE-tBY" id="7DR-YN-3S3"/>
+                        <outlet property="scrollView" destination="8Qg-TE-tBY" id="T1W-7q-i3v"/>
                         <outlet property="stackStrongReferral" destination="vLq-6F-Oan" id="aFf-3m-8Zr"/>
                         <outlet property="switchTypeReferral" destination="u4F-sl-4h2" id="Boi-Z7-xVF"/>
                         <outlet property="tableView" destination="V0c-bc-yg4" id="h1R-Hm-b3e"/>

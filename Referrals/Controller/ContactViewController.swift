@@ -12,33 +12,44 @@ class ContactViewController: UIViewController {
 
     @IBOutlet weak var nameRefer: UITextField!
     @IBOutlet weak var emailRefer: UITextField!
-    @IBOutlet weak var resumeRefer: UITextField!
+    @IBOutlet weak var resumeBtn: UIButton!
     
     
     weak var delegate: PositionDetailViewController?
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var keyboardAppearObserver: NotificationCenter?
+    var keyboardDisappearObserver: NotificationCenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nameRefer.delegate = self
         emailRefer.delegate = self
-        resumeRefer.delegate = self
         
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver = NotificationCenter.default
+        keyboardDisappearObserver = NotificationCenter.default
+        
         
         // Add touch gesture for contentView
         self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardDisappearObserver?.removeObserver(self)
+        keyboardAppearObserver?.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        keyboardAppearObserver?.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        keyboardDisappearObserver?.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
         }
-        
         activeField?.resignFirstResponder()
         activeField = nil
     }
@@ -49,11 +60,15 @@ class ContactViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let activeFiedl = activeField {
+            activeFiedl.resignFirstResponder()
+        }
     }
 
     @IBAction func sendReferAction(_ sender: UIButton) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
         if let name = nameRefer?.text, let email = emailRefer?.text {
             delegate?.choseRecruiter(name: name, email: email)
         }
@@ -90,6 +105,16 @@ class ContactViewController: UIViewController {
             self.delegate?.scrollView.contentOffset = self.lastOffset
         }
         keyboardHeight = nil
+    }
+    
+    @IBAction func addResumeAction(_ sender: UIButton) {
+        /*
+        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+        
+        let pdfFileName = documentsPath.stringByAppendingPathComponent("chart.pdf")
+        let fileData = NSData(contentsOfFile: pdfFileName)
+        mc.addAttachmentData(fileData, mimeType: "pdf", fileName: chart)
+        */
     }
 }
 

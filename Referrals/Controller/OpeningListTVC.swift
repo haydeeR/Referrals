@@ -9,6 +9,7 @@
 import UIKit
 import PromiseKit
 import FacebookShare
+import Social
 
 class OpeningListTVC: UITableViewController {
 
@@ -25,13 +26,17 @@ class OpeningListTVC: UITableViewController {
     }
     
     func getOpenings() {
+        toogleHUD(show: true)
         firstly {
            DataHandler.getOpenings()
         }.done { openings in
             self.openings = openings
             self.tableView.reloadData()
+            self.toogleHUD(show: false)
         }.catch { error in
+            self.toogleHUD(show: false)
             print(error.localizedDescription)
+            ErrorHandler.handle(spellError: ErrorType.connectivity)
         }
     }
   
@@ -57,12 +62,23 @@ class OpeningListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let share = UITableViewRowAction(style: .normal, title: "Share") { action, indexPath in
+        let shareFacebook  = UITableViewRowAction(style: .normal, title: "Facebook") { action, indexPath in
             self.shareOnFacebook(indexPath: indexPath)
         }
-        share.backgroundColor = .blue
+        let shareTwitter = UITableViewRowAction(style: .normal, title: "Twitter") { (action, indexPath) in
+            self.shareOnTwitter(indexPath: indexPath)
+        }
+        shareFacebook.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
+        shareTwitter.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
         
-        return [share]
+        return [shareFacebook,shareTwitter]
+    }
+    
+    func shareOnTwitter(indexPath: IndexPath) {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc?.add(URL(string: "https://github.com/Nearsoft/jobs/blob/master/readme.md"))
+        vc?.setInitialText("Hey look out all positions")
+        self.present(vc!, animated: true, completion: nil)
     }
     
     func shareOnFacebook(indexPath: IndexPath) {
@@ -76,7 +92,6 @@ class OpeningListTVC: UITableViewController {
         do {
             try shareDialog.show()
         } catch {
-            //handle error
             print(error)
         }
     }

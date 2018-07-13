@@ -27,6 +27,9 @@ class ReferViewController: UIViewController {
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var keyboardAppearObserver: NotificationCenter?
+    var keyboardDisappearObserver: NotificationCenter?
+    let datePicker = UIDatePicker()
     
     
     override func viewDidLoad() {
@@ -38,34 +41,51 @@ class ReferViewController: UIViewController {
         whyLabel.delegate = self
         
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver = NotificationCenter.default
+        keyboardDisappearObserver = NotificationCenter.default
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
         
         setUpView()
+        setUpToolBarDate()
         registerNibs()
         getRecruiters()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
+        keyboardDisappearObserver?.removeObserver(self)
+        keyboardAppearObserver?.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        keyboardAppearObserver?.addObserver(self, selector: #selector(referkeyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        keyboardDisappearObserver?.addObserver(self, selector: #selector(referkeyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
         }
-        
         activeField?.resignFirstResponder()
         activeField = nil
     }
     
     func getRecruiters() {
+        toogleHUD(show: true)
         firstly {
             DataHandler.getRecruiters()
             }.done { recruiters in
                 self.recruiters = recruiters
                 self.tableView.reloadData()
+                self.toogleHUD(show: false)
             }.catch { error in
+                self.toogleHUD(show: false)
                 print(error.localizedDescription)
+                ErrorHandler.handle(spellError: ErrorType.connectivity)
         }
     }
     
@@ -82,6 +102,29 @@ class ReferViewController: UIViewController {
     func registerNibs() {
         let nib = UINib(nibName: RecruiterTableViewCell.reusableID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: RecruiterTableViewCell.reusableID)
+    }
+    
+    func setUpToolBarDate() {
+        let toolbarDate = UIToolbar()
+        toolbarDate.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Guardar", style: .plain, target: self, action: #selector(doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelDatePicker))
+        
+        toolbarDate.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        datePicker.datePickerMode = .date
+        whereLabel.inputAccessoryView = toolbarDate
+    }
+    
+    @objc func doneDatePicker() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        whereLabel.text = dateFormatter.string(from: datePicker.date) + " ago"
+    }
+    
+    @objc func cancelDatePicker() {
+        activeField?.endEditing(true)
     }
     
     @objc func doneRefer() {
@@ -103,7 +146,7 @@ class ReferViewController: UIViewController {
         stackStrongReferral.isHidden = !stackStrongReferral.isHidden
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc func referkeyboardWillShow(notification: NSNotification) {
         if keyboardHeight != nil {
             return
         }
@@ -128,12 +171,18 @@ class ReferViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func referkeyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.3) {
             self.bottomContraint.constant -= self.keyboardHeight
             self.scrollView.contentOffset = self.lastOffset
         }
         keyboardHeight = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
     }
     
 }
@@ -160,7 +209,7 @@ extension ReferViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 }
 
@@ -169,6 +218,9 @@ extension ReferViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
         lastOffset = self.scrollView.contentOffset
+        if textField == whereLabel {
+            textField.inputView = datePicker
+        }
         return true
     }
     

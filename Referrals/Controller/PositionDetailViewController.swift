@@ -19,7 +19,6 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     var accessToken: LISDKAccessToken?
     var fields: [Field] = []
     fileprivate var contactViewController: ContactViewController?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +120,7 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
 }
 
 
-extension PositionDetailViewController{
+extension PositionDetailViewController {
     
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
