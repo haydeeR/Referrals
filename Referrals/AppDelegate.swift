@@ -51,7 +51,7 @@ extension AppDelegate: GIDSignInDelegate {
         } else {
             if let idToken = user.authentication.idToken {
                 firstly {
-                    APIHandler.login(token: idToken)
+                    DataHandler.login(token: idToken)
                     }.done { result in
                         print(result)
                     }.catch { error in

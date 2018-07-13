@@ -23,6 +23,11 @@ struct DataHandler {
         }
     }
     
-    //static func login() -> Promise <[]>
+    static func login(token: String) -> Promise <[String: Any]> {
+        return APIHandler.login(token: token)
+    }
 
+    static func sendRefer() -> Promise <[[String: Any]]> {
+        return APIHandler.sendEmail()
+    }
 }

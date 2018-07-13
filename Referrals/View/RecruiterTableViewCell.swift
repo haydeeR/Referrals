@@ -23,6 +23,8 @@ class RecruiterTableViewCell: UITableViewCell {
         rightLabel.text = data.name
         if let url = URL(string: data.picture) {
             imageRecruiter.af_setImage(withURL: url)
+        } else {
+            imageRecruiter.image = #imageLiteral(resourceName: "default-recruiter")
         }
     }
     
