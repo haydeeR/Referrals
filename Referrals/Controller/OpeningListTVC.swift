@@ -68,8 +68,8 @@ class OpeningListTVC: UITableViewController {
         let shareTwitter = UITableViewRowAction(style: .normal, title: "Twitter") { (action, indexPath) in
             self.shareOnTwitter(indexPath: indexPath)
         }
-        shareFacebook.backgroundColor = .blue
-        shareTwitter.backgroundColor = .cyan
+        shareFacebook.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
+        shareTwitter.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
         
         return [shareFacebook,shareTwitter]
     }

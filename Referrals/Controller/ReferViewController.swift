@@ -29,6 +29,7 @@ class ReferViewController: UIViewController {
     var keyboardHeight: CGFloat!
     var keyboardAppearObserver: NotificationCenter?
     var keyboardDisappearObserver: NotificationCenter?
+    let datePicker = UIDatePicker()
     
     
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ class ReferViewController: UIViewController {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
         
         setUpView()
+        setUpToolBarDate()
         registerNibs()
         getRecruiters()
     }
@@ -100,6 +102,29 @@ class ReferViewController: UIViewController {
     func registerNibs() {
         let nib = UINib(nibName: RecruiterTableViewCell.reusableID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: RecruiterTableViewCell.reusableID)
+    }
+    
+    func setUpToolBarDate() {
+        let toolbarDate = UIToolbar()
+        toolbarDate.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Guardar", style: .plain, target: self, action: #selector(doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelDatePicker))
+        
+        toolbarDate.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        datePicker.datePickerMode = .date
+        whereLabel.inputAccessoryView = toolbarDate
+    }
+    
+    @objc func doneDatePicker() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        whereLabel.text = dateFormatter.string(from: datePicker.date) + " ago"
+    }
+    
+    @objc func cancelDatePicker() {
+        activeField?.endEditing(true)
     }
     
     @objc func doneRefer() {
@@ -193,6 +218,9 @@ extension ReferViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
         lastOffset = self.scrollView.contentOffset
+        if textField == whereLabel {
+            textField.inputView = datePicker
+        }
         return true
     }
     

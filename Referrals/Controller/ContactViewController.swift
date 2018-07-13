@@ -12,7 +12,7 @@ class ContactViewController: UIViewController {
 
     @IBOutlet weak var nameRefer: UITextField!
     @IBOutlet weak var emailRefer: UITextField!
-    @IBOutlet weak var resumeRefer: UITextField!
+    @IBOutlet weak var resumeBtn: UIButton!
     
     
     weak var delegate: PositionDetailViewController?
@@ -26,7 +26,6 @@ class ContactViewController: UIViewController {
         super.viewDidLoad()
         nameRefer.delegate = self
         emailRefer.delegate = self
-        resumeRefer.delegate = self
         
         // Observe keyboard change
         keyboardAppearObserver = NotificationCenter.default
@@ -106,6 +105,16 @@ class ContactViewController: UIViewController {
             self.delegate?.scrollView.contentOffset = self.lastOffset
         }
         keyboardHeight = nil
+    }
+    
+    @IBAction func addResumeAction(_ sender: UIButton) {
+        /*
+        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+        
+        let pdfFileName = documentsPath.stringByAppendingPathComponent("chart.pdf")
+        let fileData = NSData(contentsOfFile: pdfFileName)
+        mc.addAttachmentData(fileData, mimeType: "pdf", fileName: chart)
+        */
     }
 }
 
