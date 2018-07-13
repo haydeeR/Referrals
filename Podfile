@@ -13,4 +13,5 @@ target 'Referrals' do
   pod 'ObjectMapper', '~> 3.2'
   pod 'FacebookShare'
   pod 'SVProgressHUD'
+  pod 'NotificationBannerSwift'
 end
