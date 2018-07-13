@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -216,11 +215,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V0c-bc-yg4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="346"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="PyP-6k-PlY">
-                                                <rect key="frame" x="16" y="353.5" width="343" height="31"/>
+                                                <rect key="frame" x="16" y="366" width="343" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strong referral?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7d-4S-T0P">
                                                         <rect key="frame" x="0.0" y="0.0" width="243.5" height="31"/>
@@ -230,34 +229,40 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-sl-4h2">
                                                         <rect key="frame" x="243.5" y="0.0" width="101.5" height="31"/>
+                                                        <connections>
+                                                            <action selector="changeViewAction:" destination="KNp-Vo-Gxp" eventType="valueChanged" id="f5z-es-vBY"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vLq-6F-Oan">
-                                                <rect key="frame" x="16" y="404.5" width="343" height="262.5"/>
+                                                <rect key="frame" x="16" y="417" width="343" height="250"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="When do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-I3-Vzm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="73.5"/>
                                                         <color key="backgroundColor" red="0.94266110749999998" green="0.94266110749999998" blue="0.94266110749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where do you work with him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gxk-ft-vwM">
-                                                        <rect key="frame" x="0.0" y="92.5" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="88.5" width="343" height="73"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Why do you recommend him/her?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-dG-1HK">
-                                                        <rect key="frame" x="0.0" y="185" width="343" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="176.5" width="343" height="73.5"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="NFQ-uS-5Sw"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,7 +273,6 @@
                                             <constraint firstAttribute="bottom" secondItem="vLq-6F-Oan" secondAttribute="bottom" id="HXo-6o-zDF"/>
                                             <constraint firstItem="vLq-6F-Oan" firstAttribute="leading" secondItem="fbJ-sN-ukZ" secondAttribute="leading" constant="16" id="ICR-TR-He4"/>
                                             <constraint firstItem="vLq-6F-Oan" firstAttribute="top" secondItem="PyP-6k-PlY" secondAttribute="bottom" constant="20" id="K5c-1J-mvu"/>
-                                            <constraint firstItem="V0c-bc-yg4" firstAttribute="height" secondItem="fbJ-sN-ukZ" secondAttribute="height" multiplier="1:2" id="MZT-lI-sua"/>
                                             <constraint firstItem="PyP-6k-PlY" firstAttribute="top" secondItem="V0c-bc-yg4" secondAttribute="bottom" constant="20" id="U3A-Pn-JQO"/>
                                             <constraint firstItem="V0c-bc-yg4" firstAttribute="leading" secondItem="fbJ-sN-ukZ" secondAttribute="leading" id="XbB-KU-Puo"/>
                                             <constraint firstAttribute="trailing" secondItem="vLq-6F-Oan" secondAttribute="trailing" constant="16" id="fAm-ns-1VR"/>
@@ -299,7 +303,7 @@
                     <connections>
                         <outlet property="bottomContraint" destination="HXo-6o-zDF" id="hfV-eR-LEW"/>
                         <outlet property="contentView" destination="fbJ-sN-ukZ" id="Gcw-b1-ZHY"/>
-                        <outlet property="scrollView" destination="8Qg-TE-tBY" id="7DR-YN-3S3"/>
+                        <outlet property="scrollView" destination="8Qg-TE-tBY" id="T1W-7q-i3v"/>
                         <outlet property="stackStrongReferral" destination="vLq-6F-Oan" id="aFf-3m-8Zr"/>
                         <outlet property="switchTypeReferral" destination="u4F-sl-4h2" id="Boi-Z7-xVF"/>
                         <outlet property="tableView" destination="V0c-bc-yg4" id="h1R-Hm-b3e"/>

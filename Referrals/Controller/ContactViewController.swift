@@ -19,6 +19,8 @@ class ContactViewController: UIViewController {
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var keyboardAppearObserver: NotificationCenter?
+    var keyboardDisappearObserver: NotificationCenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +29,28 @@ class ContactViewController: UIViewController {
         resumeRefer.delegate = self
         
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver = NotificationCenter.default
+        keyboardDisappearObserver = NotificationCenter.default
+        
         
         // Add touch gesture for contentView
         self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardDisappearObserver?.removeObserver(self)
+        keyboardAppearObserver?.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        keyboardAppearObserver?.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        keyboardDisappearObserver?.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
         }
-        
         activeField?.resignFirstResponder()
         activeField = nil
     }
@@ -49,8 +61,9 @@ class ContactViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let activeFiedl = activeField {
+            activeFiedl.resignFirstResponder()
+        }
     }
 
     @IBAction func sendReferAction(_ sender: UIButton) {

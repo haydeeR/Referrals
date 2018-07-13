@@ -27,6 +27,8 @@ class ReferViewController: UIViewController {
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
+    var keyboardAppearObserver: NotificationCenter?
+    var keyboardDisappearObserver: NotificationCenter?
     
     
     override func viewDidLoad() {
@@ -38,8 +40,8 @@ class ReferViewController: UIViewController {
         whyLabel.delegate = self
         
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver = NotificationCenter.default
+        keyboardDisappearObserver = NotificationCenter.default
         
         // Add touch gesture for contentView
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
@@ -49,11 +51,23 @@ class ReferViewController: UIViewController {
         getRecruiters()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
+        keyboardDisappearObserver?.removeObserver(self)
+        keyboardAppearObserver?.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        keyboardAppearObserver?.addObserver(self, selector: #selector(referkeyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        keyboardDisappearObserver?.addObserver(self, selector: #selector(referkeyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
         }
-        
         activeField?.resignFirstResponder()
         activeField = nil
     }
@@ -107,7 +121,7 @@ class ReferViewController: UIViewController {
         stackStrongReferral.isHidden = !stackStrongReferral.isHidden
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc func referkeyboardWillShow(notification: NSNotification) {
         if keyboardHeight != nil {
             return
         }
@@ -132,12 +146,18 @@ class ReferViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func referkeyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.3) {
             self.bottomContraint.constant -= self.keyboardHeight
             self.scrollView.contentOffset = self.lastOffset
         }
         keyboardHeight = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let activeField = activeField {
+            activeField.resignFirstResponder()
+        }
     }
     
 }
