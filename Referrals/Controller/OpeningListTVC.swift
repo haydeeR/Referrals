@@ -35,8 +35,7 @@ class OpeningListTVC: UITableViewController {
             self.toogleHUD(show: false)
         }.catch { error in
             self.toogleHUD(show: false)
-            print(error.localizedDescription)
-            ErrorHandler.handle(spellError: ErrorType.connectivity)
+            ErrorHandler.handle(spellError: error as NSError)
         }
     }
   
