@@ -11,16 +11,16 @@ import NotificationBannerSwift
 
 struct ErrorHandler {
     
-    static func handle(spellError error: ErrorType) {
-        switch error {
-        case .connectivity:
+    static func handle(spellError error: NSError) {
+        switch error.code {
+        case NSURLErrorTimedOut:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "Network", subtitle: "You have a problem with your conectivity", style: .danger)
+                let banner = NotificationBanner(title: "TimeOut", subtitle: "The resources you request are no longer available. \n This is normally caused by timeout", style: .danger)
                 banner.show()
             }
-        case .notFound:
+        case NSURLErrorNotConnectedToInternet:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "Not found", subtitle: "You have a problem with your conectivity", style: .danger)
+                let banner = NotificationBanner(title: "Network", subtitle: "You have a problem with your conectivity", style: .danger)
                 banner.show()
             }
         default:

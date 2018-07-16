@@ -16,7 +16,6 @@
 		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
 		9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */; };
 		9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */; };
-		9B6C2C1E20F8F1FE00D47685 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1D20F8F1FE00D47685 /* ErrorType.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
 		9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */; };
 		9BBFFE5120E2A6850029A772 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFFE5020E2A6850029A772 /* Field.swift */; };
@@ -56,7 +55,6 @@
 		9B39809920DD5CF0003FE747 /* ReferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferViewController.swift; sourceTree = "<group>"; };
 		9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
 		9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		9B6C2C1D20F8F1FE00D47685 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
 		9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
 		9BBFFE5020E2A6850029A772 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */,
-				9B6C2C1D20F8F1FE00D47685 /* ErrorType.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -425,7 +422,6 @@
 				9BBFFE5120E2A6850029A772 /* Field.swift in Sources */,
 				9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */,
 				9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */,
-				9B6C2C1E20F8F1FE00D47685 /* ErrorType.swift in Sources */,
 				9BE7377820C87A910020AAD4 /* APIManager.swift in Sources */,
 				9B22E2D720E68400005BA8FA /* Referred.swift in Sources */,
 				9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */,
