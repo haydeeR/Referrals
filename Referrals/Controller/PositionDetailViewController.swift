@@ -15,6 +15,7 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeOfViewSegment: UISegmentedControl!
     @IBOutlet weak var linkedInContainer: UIView!
+   
     var opening: Opening?
     var accessToken: LISDKAccessToken?
     var fields: [Field] = []
@@ -29,7 +30,7 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         contactController.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        registerCells()
+        registerNib()
         setUpView()
         splitRequirements()
         //loadAccount(then: {
@@ -38,22 +39,14 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         //    print(error)
         //})
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
     
     func setUpView() {
-        typeOfViewSegment.selectedSegmentIndex = 1
         navigationItem.title = "Opening"
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.estimatedRowHeight = 200
     }
     
-    func registerCells() {
+    func registerNib() {
         let nib = UINib(nibName: PositionTableViewCell.reusableID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PositionTableViewCell.reusableID)
     }
@@ -117,10 +110,6 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-}
-
-
-extension PositionDetailViewController {
     
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
@@ -166,5 +155,6 @@ extension PositionDetailViewController {
             let field = Field(fieldName: "Generals", fieldDescription: opening.generals)
             fields.append(field)
         }
+        tableView.reloadData()
     }
 }

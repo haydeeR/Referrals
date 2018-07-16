@@ -29,7 +29,7 @@ class ReferViewController: UIViewController {
     var keyboardHeight: CGFloat!
     var keyboardAppearObserver: NotificationCenter?
     var keyboardDisappearObserver: NotificationCenter?
-    let datePicker = UIDatePicker()
+    let expiryDatePicker = MonthYearPickerView()
     
     
     override func viewDidLoad() {
@@ -51,6 +51,8 @@ class ReferViewController: UIViewController {
         setUpToolBarDate()
         registerNibs()
         getRecruiters()
+ //       expiryDatePicker.delegate = self
+       
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,23 +109,24 @@ class ReferViewController: UIViewController {
     func setUpToolBarDate() {
         let toolbarDate = UIToolbar()
         toolbarDate.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Guardar", style: .plain, target: self, action: #selector(doneDatePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelDatePicker))
         
-        toolbarDate.setItems([doneButton,spaceButton,cancelButton], animated: false)
-        datePicker.datePickerMode = .date
-        whereLabel.inputAccessoryView = toolbarDate
+        expiryDatePicker.onDateSelected = { [unowned self] (month: String, year: Int) in
+            let date = String(format: "%@ %d", month, year)
+            self.whenLabel.text = date
+        }
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
+        
+        toolbarDate.setItems([spaceButton,spaceButton,cancelButton], animated: false)
+        whenLabel.inputAccessoryView = toolbarDate
     }
     
     @objc func doneDatePicker() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        whereLabel.text = dateFormatter.string(from: datePicker.date) + " ago"
+        activeField?.endEditing(true)
     }
     
     @objc func cancelDatePicker() {
+        whenLabel.text = ""
         activeField?.endEditing(true)
     }
     
@@ -218,8 +221,8 @@ extension ReferViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
         lastOffset = self.scrollView.contentOffset
-        if textField == whereLabel {
-            textField.inputView = datePicker
+        if textField == whenLabel {
+            textField.inputView = expiryDatePicker
         }
         return true
     }

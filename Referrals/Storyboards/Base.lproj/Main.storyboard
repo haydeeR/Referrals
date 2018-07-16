@@ -175,7 +175,7 @@
                         <outlet property="bottomConstraint" destination="794-6A-Ubr" id="nE8-HF-xB3"/>
                         <outlet property="linkedInContainer" destination="6al-fg-wkB" id="JW1-KH-hfA"/>
                         <outlet property="scrollView" destination="Qfx-pF-8D7" id="KHy-M2-tUz"/>
-                        <outlet property="tableView" destination="jr5-20-dDn" id="W46-kz-uQL"/>
+                        <outlet property="tableView" destination="jr5-20-dDn" id="zHv-jJ-GgG"/>
                         <outlet property="typeOfViewSegment" destination="2ih-9t-d44" id="YME-KK-fZZ"/>
                         <segue destination="KNp-Vo-Gxp" kind="show" identifier="referSegue" id="FwM-rb-35n"/>
                     </connections>
