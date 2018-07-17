@@ -10,7 +10,7 @@
 		9B169CAF20CEDFB700895300 /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B169CAE20CEDFB700895300 /* linkedin-sdk.framework */; };
 		9B22E2D720E68400005BA8FA /* Referred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22E2D620E68400005BA8FA /* Referred.swift */; };
 		9B39807220D813E5003FE747 /* ReusableIdenfier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39807120D813E5003FE747 /* ReusableIdenfier.swift */; };
-		9B39807420D81A16003FE747 /* PositionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39807320D81A16003FE747 /* PositionDetailViewController.swift */; };
+		9B39807420D81A16003FE747 /* OpeningDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39807320D81A16003FE747 /* OpeningDetailsVC.swift */; };
 		9B39809620DAF08F003FE747 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809520DAF08F003FE747 /* SegueIdentifier.swift */; };
 		9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809720DD4F97003FE747 /* ContactViewController.swift */; };
 		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
@@ -50,7 +50,7 @@
 		9B169CAE20CEDFB700895300 /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
 		9B22E2D620E68400005BA8FA /* Referred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Referred.swift; sourceTree = "<group>"; };
 		9B39807120D813E5003FE747 /* ReusableIdenfier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdenfier.swift; sourceTree = "<group>"; };
-		9B39807320D81A16003FE747 /* PositionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailViewController.swift; sourceTree = "<group>"; };
+		9B39807320D81A16003FE747 /* OpeningDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningDetailsVC.swift; sourceTree = "<group>"; };
 		9B39809420DABFE2003FE747 /* Referral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Referral-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B39809520DAF08F003FE747 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		9B39809720DD4F97003FE747 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 			children = (
 				9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */,
 				9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */,
-				9B39807320D81A16003FE747 /* PositionDetailViewController.swift */,
+				9B39807320D81A16003FE747 /* OpeningDetailsVC.swift */,
 				9B39809720DD4F97003FE747 /* ContactViewController.swift */,
 				9B39809920DD5CF0003FE747 /* ReferViewController.swift */,
 			);
@@ -418,7 +418,7 @@
 				9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */,
 				9B39807220D813E5003FE747 /* ReusableIdenfier.swift in Sources */,
 				9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */,
-				9B39807420D81A16003FE747 /* PositionDetailViewController.swift in Sources */,
+				9B39807420D81A16003FE747 /* OpeningDetailsVC.swift in Sources */,
 				9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */,
 				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
 				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,

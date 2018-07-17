@@ -9,6 +9,6 @@
 import Foundation
 
 enum SegueIdentifier: String {
-    case detailPosition
-    case referSegue
+    case openingDetail
+    case referSomeone
 }

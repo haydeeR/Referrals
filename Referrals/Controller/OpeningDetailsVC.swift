@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PositionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OpeningDetailsVC: UIViewController  {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -23,16 +23,17 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+        registerNib()
+        splitRequirements()
         guard let contactController = childViewControllers.first as? ContactViewController else  {
             fatalError("Check storyboard for missing contactController")
         }
         contactViewController = contactController
         contactController.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        registerNib()
-        setUpView()
-        splitRequirements()
+        
+        
+        // MARK:- Linked-In
         //loadAccount(then: {
         //    print("hello")
         //}, or: { (error) in
@@ -42,8 +43,11 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func setUpView() {
         navigationItem.title = "Opening"
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 400
     }
     
     func registerNib() {
@@ -93,37 +97,20 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fields.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as! PositionTableViewCell
-        cell.config(with: fields[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
     
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
             return
         }
         let referred = Referred(name: name, email: email, resume: "No", openingToRefer: opening)
-        performSegue(withIdentifier: SegueIdentifier.referSegue.rawValue, sender: referred)
+        performSegue(withIdentifier: SegueIdentifier.referSomeone.rawValue, sender: referred)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) else {
             return
         }
-        if identifier == SegueIdentifier.referSegue {
+        if identifier == SegueIdentifier.referSomeone {
             guard let controller = segue.destination as? ReferViewController else {
                 return
             }
@@ -136,6 +123,7 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func splitRequirements()
     {
+        fields = []
         guard let opening = opening else {
             return
         }
@@ -157,4 +145,18 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         }
         tableView.reloadData()
     }
+
 }
+extension OpeningDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fields.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as! PositionTableViewCell
+        cell.config(with: fields[indexPath.row])
+        return cell
+    }
+}
+
