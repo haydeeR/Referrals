@@ -15,7 +15,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
     
     var month = Calendar.current.component(.month, from: Date()) {
         didSet {
-            selectRow(month-1, inComponent: 0, animated: false)
+            selectRow(month, inComponent: 0, animated: false)
         }
     }
     
@@ -94,7 +94,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let month = self.selectedRow(inComponent: 0)+1
+        let month = self.selectedRow(inComponent: 0)
         let year = years[self.selectedRow(inComponent: 1)]
         if let block = onDateSelected {
             block(months[month], year)

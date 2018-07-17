@@ -56,9 +56,7 @@ enum APIRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         var url: URL
         switch  self {
-        case .getOpenings, .getRecruiters:
-            url = try APIManager.githubBaseUrl.asURL()
-        case .login:
+        case .login, .getOpenings, .getRecruiters:
             url = try APIManager.githubDevUrl.asURL()
         default:
             url = try APIManager.linkedInBaseUrl.asURL()

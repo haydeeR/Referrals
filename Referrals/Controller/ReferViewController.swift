@@ -114,10 +114,11 @@ class ReferViewController: UIViewController {
             let date = String(format: "%@ %d", month, year)
             self.whenLabel.text = date
         }
+        let okButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(doneDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
         
-        toolbarDate.setItems([spaceButton,spaceButton,cancelButton], animated: false)
+        toolbarDate.setItems([okButton,spaceButton,cancelButton], animated: false)
         whenLabel.inputAccessoryView = toolbarDate
     }
     
