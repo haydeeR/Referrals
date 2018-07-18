@@ -16,6 +16,7 @@
 		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
 		9B5E4BD220FD2BE1005CD336 /* MonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BD120FD2BE1005CD336 /* MonthYearPicker.swift */; };
 		9B5E4BD420FE3C01005CD336 /* OAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BD320FE3C01005CD336 /* OAuthHandler.swift */; };
+		9B5E4BDB20FFB0ED005CD336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E4BDD20FFB0ED005CD336 /* Localizable.strings */; };
 		9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */; };
 		9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
@@ -59,6 +60,8 @@
 		9B5E4BD320FE3C01005CD336 /* OAuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHandler.swift; sourceTree = "<group>"; };
 		9B5E4BD720FFA0E0005CD336 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B5E4BD820FFA0E0005CD336 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		9B5E4BDC20FFB0ED005CD336 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B5E4BDE20FFB67D005CD336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
 		9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 				9BE7376A20C83BFD0020AAD4 /* Model */,
 				9BE7376F20C83C410020AAD4 /* Storyboards */,
 				9BE7375820C839E20020AAD4 /* AppDelegate.swift */,
+				9B5E4BDD20FFB0ED005CD336 /* Localizable.strings */,
 				9BE7376420C839E30020AAD4 /* Info.plist */,
 				9B39809420DABFE2003FE747 /* Referral-Bridging-Header.h */,
 			);
@@ -316,6 +320,7 @@
 				9BE7377120C83C760020AAD4 /* Login.storyboard in Resources */,
 				9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */,
 				9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */,
+				9B5E4BDB20FFB0ED005CD336 /* Localizable.strings in Resources */,
 				9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */,
 				9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */,
 				9BD1E36020EFBF92009B973C /* RecruiterTableViewCell.xib in Resources */,
@@ -449,6 +454,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9B5E4BDD20FFB0ED005CD336 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B5E4BDC20FFB0ED005CD336 /* es */,
+				9B5E4BDE20FFB67D005CD336 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9BE7375C20C839E20020AAD4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -50,14 +50,15 @@ extension AppDelegate: GIDSignInDelegate {
             initView(with: StoryboardPath.login.rawValue, viewControllerName: ViewControllerPath.loginViewController.rawValue)
         } else {
             if let idToken = user.authentication.idToken {
+                print(idToken)
                 firstly {
                     DataHandler.login(token: idToken)
                     }.done { result in
                         print(result)
+                        self.initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
                     }.catch { error in
                         print(error.localizedDescription)
                 }
-                initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
             }
         }
     }

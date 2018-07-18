@@ -10,9 +10,11 @@ import UIKit
 import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
-
+    @IBOutlet weak var referralsTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        referralsTitle.text = NSLocalizedString("Referrals", comment: "")
         GIDSignIn.sharedInstance().uiDelegate = self
         //GIDSignIn.sharedInstance().signIn()
     }

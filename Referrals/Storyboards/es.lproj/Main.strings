@@ -1,30 +1,30 @@
 
 /* Class = "UIButton"; normalTitle = "Add resume"; ObjectID = "11h-kb-d4h"; */
-"11h-kb-d4h.normalTitle" = "Add resume";
+"11h-kb-d4h.normalTitle" = "Agregar curriculum";
 
 /* Class = "UISegmentedControl"; 2ih-9t-d44.segmentTitles[0] = "LinkedIn"; ObjectID = "2ih-9t-d44"; */
 "2ih-9t-d44.segmentTitles[0]" = "LinkedIn";
 
 /* Class = "UISegmentedControl"; 2ih-9t-d44.segmentTitles[1] = "Contact"; ObjectID = "2ih-9t-d44"; */
-"2ih-9t-d44.segmentTitles[1]" = "Contact";
+"2ih-9t-d44.segmentTitles[1]" = "Contacto";
 
 /* Class = "UITextField"; placeholder = "Why do you recommend him/her?"; ObjectID = "FgF-dG-1HK"; */
-"FgF-dG-1HK.placeholder" = "Why do you recommend him/her?";
+"FgF-dG-1HK.placeholder" = "Por que recomiendas a ella/el?";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "GXY-Wr-z2R"; */
-"GXY-Wr-z2R.placeholder" = "Email";
+"GXY-Wr-z2R.placeholder" = "Correo";
 
 /* Class = "UITextField"; placeholder = "Where do you work with him/her?"; ObjectID = "Gxk-ft-vwM"; */
-"Gxk-ft-vwM.placeholder" = "Where do you work with him/her?";
+"Gxk-ft-vwM.placeholder" = "Donde trabajaste con ella/el?";
 
 /* Class = "UITextField"; placeholder = "When do you work with him/her?"; ObjectID = "Ig6-I3-Vzm"; */
-"Ig6-I3-Vzm.placeholder" = "When do you work with him/her?";
+"Ig6-I3-Vzm.placeholder" = "Cuando trabajaste con ella/el?";
 
 /* Class = "UITextField"; placeholder = "Name:"; ObjectID = "WzF-xH-w4A"; */
-"WzF-xH-w4A.placeholder" = "Name:";
+"WzF-xH-w4A.placeholder" = "Nomobre:";
 
 /* Class = "UIButton"; normalTitle = "Refer"; ObjectID = "jhy-N4-eoR"; */
-"jhy-N4-eoR.normalTitle" = "Refer";
+"jhy-N4-eoR.normalTitle" = "Referir";
 
 /* Class = "UILabel"; text = "Strong referral?"; ObjectID = "x7d-4S-T0P"; */
-"x7d-4S-T0P.text" = "Strong referral?";
+"x7d-4S-T0P.text" = "Referencia fuerte?";
