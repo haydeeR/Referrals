@@ -42,7 +42,7 @@ class OpeningDetailsVC: UIViewController  {
     }
     
     func setUpView() {
-        navigationItem.title = "Opening"
+        navigationItem.title = NSLocalizedString("Opening", comment: "")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)

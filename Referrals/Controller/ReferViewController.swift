@@ -51,7 +51,6 @@ class ReferViewController: UIViewController {
         setUpToolBarDate()
         registerNibs()
         getRecruiters()
- //       expiryDatePicker.delegate = self
        
     }
 
@@ -93,8 +92,9 @@ class ReferViewController: UIViewController {
     
     func setUpView() {
         switchTypeReferral.setOn(true, animated: true)
-        navigationItem.title = "Recruiters"
-        let btn = UIBarButtonItem(title: "Enviar", style: .done, target: self, action: #selector(doneRefer))
+        navigationItem.title = NSLocalizedString("Recruitesr", comment: "")
+        let title = NSLocalizedString("Send", comment: "")
+        let btn = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(doneRefer))
         var btns: [UIBarButtonItem] = []
         btns.append(btn)
         navigationItem.setRightBarButtonItems(btns, animated: true)

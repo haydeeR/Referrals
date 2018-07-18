@@ -34,11 +34,9 @@ class OAuthHandler: RequestAdapter {
     
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix(baseURLString) {
-            if urlString.contains("login") == false {
-                var urlRequest = urlRequest
-                urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
-                return urlRequest
-            }
+            var urlRequest = urlRequest
+            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            return urlRequest
         }
         return urlRequest
     }

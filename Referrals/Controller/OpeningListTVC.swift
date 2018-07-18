@@ -21,7 +21,7 @@ class OpeningListTVC: UITableViewController {
     }
     
     func setUpView() {
-        navigationItem.title = "Our openings"
+        navigationItem.title = NSLocalizedString("Our openings", comment: "")
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
