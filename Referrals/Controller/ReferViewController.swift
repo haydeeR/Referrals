@@ -92,7 +92,7 @@ class ReferViewController: UIViewController {
     
     func setUpView() {
         switchTypeReferral.setOn(true, animated: true)
-        navigationItem.title = NSLocalizedString("Recruitesr", comment: "")
+        navigationItem.title = NSLocalizedString("Recruiters", comment: "")
         let title = NSLocalizedString("Send", comment: "")
         let btn = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(doneRefer))
         var btns: [UIBarButtonItem] = []
