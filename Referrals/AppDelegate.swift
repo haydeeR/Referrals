@@ -17,8 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Cambiar las cadenas por las variables
         GIDSignIn.sharedInstance().clientID = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().hostedDomain = "nearsoft.com"
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signOut()
         verifyAuth()
         
         return true
@@ -36,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  annotation: annotation)
         
     }
-    
-    
     
 
 }
@@ -76,6 +77,7 @@ extension AppDelegate {
         var storyboard: String
         var initialViewController: String
         
+     //   GIDSignIn.sharedInstance().signInSilently()
         if GIDSignIn.sharedInstance().currentUser != nil {
             storyboard =  StoryboardPath.main.rawValue
             initialViewController = ViewControllerPath.navigationOpenings.rawValue
