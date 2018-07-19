@@ -13,6 +13,11 @@ class PositionTableViewCell: UITableViewCell {
     @IBOutlet weak var nameFieldLabel: UILabel!
     @IBOutlet weak var descriptionFieldLabel: UILabel!
    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
     func config(with data: Field) {
         nameFieldLabel.text = data.fieldName
         descriptionFieldLabel.text = data.fieldDescription

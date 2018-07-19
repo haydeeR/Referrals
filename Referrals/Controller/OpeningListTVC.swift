@@ -21,7 +21,7 @@ class OpeningListTVC: UITableViewController {
     }
     
     func setUpView() {
-        navigationItem.title = "Our openings"
+        navigationItem.title = NSLocalizedString("Our openings", comment: "")
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
@@ -52,7 +52,7 @@ class OpeningListTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let opening = openings[indexPath.row]
-        performSegue(withIdentifier: SegueIdentifier.detailPosition.rawValue, sender: opening)
+        performSegue(withIdentifier: SegueIdentifier.openingDetail.rawValue, sender: opening)
     }
     
     
@@ -75,13 +75,13 @@ class OpeningListTVC: UITableViewController {
     
     func shareOnTwitter(indexPath: IndexPath) {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        vc?.add(URL(string: "https://github.com/Nearsoft/jobs/blob/master/readme.md"))
+        vc?.add(URL(string: APIManager.linkToShare))
         vc?.setInitialText("Hey look out all positions")
         self.present(vc!, animated: true, completion: nil)
     }
     
     func shareOnFacebook(indexPath: IndexPath) {
-        let content = LinkShareContent(url: URL(string: "https://github.com/Nearsoft/jobs/blob/master/readme.md")!)
+        let content = LinkShareContent(url: URL(string: APIManager.linkToShare)!)
         let shareDialog = ShareDialog(content: content)
         shareDialog.mode = .native
         shareDialog.failsOnInvalidData = true
@@ -99,8 +99,8 @@ class OpeningListTVC: UITableViewController {
        guard let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) else {
             return
         }
-        if identifier == SegueIdentifier.detailPosition {
-            guard let controller = segue.destination as? PositionDetailViewController else {
+        if identifier == SegueIdentifier.openingDetail {
+            guard let controller = segue.destination as? OpeningDetailsVC else {
                 return
             }
             guard let opening = sender as? Opening else {

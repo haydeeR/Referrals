@@ -19,18 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-JA-RII">
-                                <rect key="frame" x="30" y="110" width="315" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-JA-RII">
+                                <rect key="frame" x="30" y="110" width="315" height="55.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="89b-lx-BTh">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="55.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="vwN-NQ-IOd"/>
                                             <constraint firstAttribute="width" secondItem="89b-lx-BTh" secondAttribute="height" multiplier="1:1" id="z1E-fn-fIm"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Referrals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJE-VN-dMG">
-                                        <rect key="frame" x="100" y="0.0" width="215" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Referrals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJE-VN-dMG">
+                                        <rect key="frame" x="85.5" y="0.0" width="229.5" height="55.5"/>
                                         <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,23 +37,29 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ic-Kn-9gQ" customClass="GIDSignInButton">
-                                <rect key="frame" x="30" y="307" width="315" height="53.5"/>
+                                <rect key="frame" x="30" y="282.5" width="315" height="102"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="315" id="iB1-xB-W42"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4ic-Kn-9gQ" firstAttribute="top" secondItem="D8X-JA-RII" secondAttribute="bottom" constant="117" id="1a2-PL-EBJ"/>
                             <constraint firstItem="D8X-JA-RII" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="3f5-Zz-1Lf"/>
-                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="4Rr-GM-Tdx"/>
                             <constraint firstItem="4ic-Kn-9gQ" firstAttribute="centerX" secondItem="Imj-o3-gfP" secondAttribute="centerX" id="Fop-cO-GOs"/>
                             <constraint firstItem="D8X-JA-RII" firstAttribute="top" secondItem="rAS-9z-vzX" secondAttribute="top" constant="90" id="MF5-Od-siF"/>
+                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4ic-Kn-9gQ" secondAttribute="trailing" constant="30" id="Rok-i8-9R5"/>
                             <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="D8X-JA-RII" secondAttribute="trailing" constant="30" id="fpd-SC-yUn"/>
                             <constraint firstItem="4ic-Kn-9gQ" firstAttribute="centerY" secondItem="Imj-o3-gfP" secondAttribute="centerY" id="hqa-q0-khS"/>
-                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="4ic-Kn-9gQ" secondAttribute="trailing" constant="30" id="nuW-J3-wdn"/>
+                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="hrk-0Z-33O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rAS-9z-vzX"/>
                     </view>
+                    <connections>
+                        <outlet property="referralsTitle" destination="RJE-VN-dMG" id="RX3-Q1-mDE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQb-We-hFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

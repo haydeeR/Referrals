@@ -13,6 +13,7 @@ class RecruiterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imageRecruiter: UIImageView!
     @IBOutlet weak var rightLabel: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

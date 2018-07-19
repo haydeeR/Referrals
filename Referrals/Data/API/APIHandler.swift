@@ -62,7 +62,6 @@ struct APIHandler {
                     if let json = response.result.value as? [String:Any] {
                         resolve.fulfill(json)
                     } else if let error = response.error {
-                        ErrorHandler.handle(spellError: error as NSError)
                         resolve.reject(error)
                     }
                 })

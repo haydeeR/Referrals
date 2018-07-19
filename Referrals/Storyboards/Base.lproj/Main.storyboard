@@ -25,7 +25,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="XN7-pg-0Qb"/>
                     <connections>
-                        <segue destination="ghT-fx-6Er" kind="show" identifier="detailPosition" id="Bv1-JM-6Qc"/>
+                        <segue destination="ghT-fx-6Er" kind="show" identifier="openingDetail" id="MXp-0F-1ke"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpW-hy-W2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="1902" y="662"/>
         </scene>
-        <!--Position Detail View Controller-->
+        <!--Opening DetailsVC-->
         <scene sceneID="Lwo-xz-air">
             <objects>
-                <viewController id="ghT-fx-6Er" customClass="PositionDetailViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ghT-fx-6Er" customClass="OpeningDetailsVC" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WhH-oB-snW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6al-fg-wkB">
-                                                <rect key="frame" x="0.0" y="496" width="375" height="171"/>
+                                                <rect key="frame" x="0.0" y="434" width="375" height="171"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="171" id="HhU-iu-1Wy"/>
                                                 </constraints>
@@ -124,14 +124,14 @@
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-9t-d44">
-                                                <rect key="frame" x="8" y="460" width="359" height="29"/>
+                                                <rect key="frame" x="8" y="398" width="359" height="29"/>
                                                 <segments>
                                                     <segment title="LinkedIn"/>
                                                     <segment title="Contact"/>
                                                 </segments>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-20-dDn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="390"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
@@ -139,7 +139,7 @@
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="2ih-9t-d44" firstAttribute="top" secondItem="jr5-20-dDn" secondAttribute="bottom" constant="8" id="4Wb-xQ-uNK"/>
-                                            <constraint firstAttribute="bottom" secondItem="6al-fg-wkB" secondAttribute="bottom" id="794-6A-Ubr"/>
+                                            <constraint firstAttribute="bottom" secondItem="6al-fg-wkB" secondAttribute="bottom" constant="62" id="794-6A-Ubr"/>
                                             <constraint firstItem="2ih-9t-d44" firstAttribute="leading" secondItem="OXi-3v-eCP" secondAttribute="leading" constant="8" id="Ehn-BP-w3c"/>
                                             <constraint firstAttribute="trailing" secondItem="6al-fg-wkB" secondAttribute="trailing" id="Hhn-U6-1Yw"/>
                                             <constraint firstAttribute="trailing" secondItem="jr5-20-dDn" secondAttribute="trailing" id="O5R-jm-xtq"/>
@@ -172,12 +172,12 @@
                         <viewLayoutGuide key="safeArea" id="EMy-a0-Lsi"/>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="794-6A-Ubr" id="nE8-HF-xB3"/>
-                        <outlet property="linkedInContainer" destination="6al-fg-wkB" id="JW1-KH-hfA"/>
-                        <outlet property="scrollView" destination="Qfx-pF-8D7" id="KHy-M2-tUz"/>
-                        <outlet property="tableView" destination="jr5-20-dDn" id="W46-kz-uQL"/>
-                        <outlet property="typeOfViewSegment" destination="2ih-9t-d44" id="YME-KK-fZZ"/>
-                        <segue destination="KNp-Vo-Gxp" kind="show" identifier="referSegue" id="FwM-rb-35n"/>
+                        <outlet property="bottomConstraint" destination="794-6A-Ubr" id="lNl-Ur-Ny3"/>
+                        <outlet property="linkedInContainer" destination="6al-fg-wkB" id="t37-fQ-kcy"/>
+                        <outlet property="scrollView" destination="Qfx-pF-8D7" id="XwV-3o-FES"/>
+                        <outlet property="tableView" destination="jr5-20-dDn" id="BqR-SK-SUk"/>
+                        <outlet property="typeOfViewSegment" destination="2ih-9t-d44" id="dBq-c3-dpU"/>
+                        <segue destination="KNp-Vo-Gxp" kind="show" identifier="referSomeone" id="F3S-iw-w86"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUL-Uw-S5r" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,7 +15,7 @@ class ContactViewController: UIViewController {
     @IBOutlet weak var resumeBtn: UIButton!
     
     
-    weak var delegate: PositionDetailViewController?
+    weak var delegate: OpeningDetailsVC?
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!

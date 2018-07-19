@@ -11,7 +11,13 @@ import Alamofire
 
 struct Server {
     static var manager: SessionManager {
-        let configuration = URLSessionConfiguration.default
-        return Alamofire.SessionManager(configuration: configuration)
+        let oautHandler = OAuthHandler(
+            accessToken: APIManager.token,
+            baseURLString: APIManager.githubDevUrl
+        )
+        let sessionManager = SessionManager()
+        sessionManager.adapter = oautHandler
+        return sessionManager
     }
+    
 }

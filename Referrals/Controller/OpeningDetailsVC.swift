@@ -8,13 +8,14 @@
 
 import UIKit
 
-class PositionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OpeningDetailsVC: UIViewController  {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeOfViewSegment: UISegmentedControl!
     @IBOutlet weak var linkedInContainer: UIView!
+   
     var opening: Opening?
     var accessToken: LISDKAccessToken?
     var fields: [Field] = []
@@ -22,38 +23,34 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+        registerNib()
+        splitRequirements()
         guard let contactController = childViewControllers.first as? ContactViewController else  {
             fatalError("Check storyboard for missing contactController")
         }
         contactViewController = contactController
         contactController.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        registerCells()
-        setUpView()
-        splitRequirements()
+        
+        
+        // MARK:- Linked-In
         //loadAccount(then: {
         //    print("hello")
         //}, or: { (error) in
         //    print(error)
         //})
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
     
     func setUpView() {
-        typeOfViewSegment.selectedSegmentIndex = 1
-        navigationItem.title = "Opening"
+        navigationItem.title = NSLocalizedString("Opening", comment: "")
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 400
     }
     
-    func registerCells() {
+    func registerNib() {
         let nib = UINib(nibName: PositionTableViewCell.reusableID, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PositionTableViewCell.reusableID)
     }
@@ -100,41 +97,20 @@ class PositionDetailViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fields.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as! PositionTableViewCell
-        cell.config(with: fields[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-}
-
-
-extension PositionDetailViewController {
     
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
             return
         }
         let referred = Referred(name: name, email: email, resume: "No", openingToRefer: opening)
-        performSegue(withIdentifier: SegueIdentifier.referSegue.rawValue, sender: referred)
+        performSegue(withIdentifier: SegueIdentifier.referSomeone.rawValue, sender: referred)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) else {
             return
         }
-        if identifier == SegueIdentifier.referSegue {
+        if identifier == SegueIdentifier.referSomeone {
             guard let controller = segue.destination as? ReferViewController else {
                 return
             }
@@ -147,6 +123,7 @@ extension PositionDetailViewController {
     
     func splitRequirements()
     {
+        fields = []
         guard let opening = opening else {
             return
         }
@@ -166,5 +143,20 @@ extension PositionDetailViewController {
             let field = Field(fieldName: "Generals", fieldDescription: opening.generals)
             fields.append(field)
         }
+        tableView.reloadData()
+    }
+
+}
+extension OpeningDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fields.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as! PositionTableViewCell
+        cell.config(with: fields[indexPath.row])
+        return cell
     }
 }
+

@@ -31,10 +31,10 @@ struct Opening: Mappable {
     mutating func mapping(map: Map) {
         id <- map["id"]
         name <- map["title"]
-        responsabilities <- map["description.responsibilities"]
-        requirements <- map["description.requirements"]
-        description <- map["description.description"]
-        skills <- map["description.skills"]
-        generals <- map["description.generals"]
+        responsabilities <- map["jobDescription.responsibilities"]
+        requirements <- map["jobDescription.requirements"]
+        description <- map["jobDescription.description"]
+        skills <- map["jobDescription.skills"]
+        generals <- map["jobDescription.generals"]
     }
 }
