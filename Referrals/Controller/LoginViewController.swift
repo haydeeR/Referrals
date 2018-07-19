@@ -18,5 +18,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         //GIDSignIn.sharedInstance().signIn()
     }
+    
+  
+    
 }
 

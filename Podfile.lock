@@ -8,6 +8,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
+  - Fabric (1.7.7)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -60,6 +63,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.3)
+  - Crashlytics
+  - Fabric
   - FacebookShare
   - GoogleSignIn
   - NotificationBannerSwift
@@ -71,6 +76,8 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
@@ -86,6 +93,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: b7809521cc613148ef35e3e4b7b2425217bd56c7
+PODFILE CHECKSUM: 76f4e6fbcd06323b37152aaa8b038f80f5259203
 
 COCOAPODS: 1.4.0
