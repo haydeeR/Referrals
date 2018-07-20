@@ -8,6 +8,7 @@
 
 import UIKit
 import PromiseKit
+import Validator
 
 class ReferViewController: UIViewController {
 
@@ -20,6 +21,9 @@ class ReferViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    @IBOutlet weak var whenStatusLabel: UILabel!
+    @IBOutlet weak var whereStatusLabel: UILabel!
+    @IBOutlet weak var whyStatusLabel: UILabel!
     
     var referred: Referred?
     var recruiters: [Recruiter] = []
@@ -30,7 +34,9 @@ class ReferViewController: UIViewController {
     var keyboardAppearObserver: NotificationCenter?
     var keyboardDisappearObserver: NotificationCenter?
     let expiryDatePicker = MonthYearPickerView()
-    
+    var whenRuleSet: ValidationRuleSet<String>?
+    var whereRuleSet: ValidationRuleSet<String>?
+    var whyRuleSet: ValidationRuleSet<String>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +54,33 @@ class ReferViewController: UIViewController {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
         
         setUpView()
+        addValidationsForFields()
         setUpToolBarDate()
         registerNibs()
         getRecruiters()
        
     }
 
+    private func addValidationsForFields() {
+        whereRuleSet = ValidationRuleSet<String>()
+        whenRuleSet = ValidationRuleSet<String>()
+        whyRuleSet = ValidationRuleSet<String>()
+        
+        let minLengthRule = ValidationRuleLength(min: 3, error: ValidationError(message: "😫"))
+        whenRuleSet?.add(rule: minLengthRule)
+        whereRuleSet?.add(rule: minLengthRule)
+        whyRuleSet?.add(rule: minLengthRule)
+        
+        whenLabel.validateOnInputChange(enabled: true)
+        whenLabel.validationHandler = { result in self.updateValidationNameState(result: result) }
+        
+        whereLabel.validateOnInputChange(enabled: true)
+        whereLabel.validationHandler = { result in self.updateValidationEmailState(result: result) }
+        
+        whyLabel.validateOnEditingEnd(enabled: true)
+        whereLabel.validationHandler = { result in self.updateValidationWhyState(result: result) }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         if let activeField = activeField {
             activeField.resignFirstResponder()

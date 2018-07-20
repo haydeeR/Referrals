@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import Validator
 
 class ContactViewController: UIViewController {
 
     @IBOutlet weak var nameRefer: UITextField!
     @IBOutlet weak var emailRefer: UITextField!
     @IBOutlet weak var resumeBtn: UIButton!
+    @IBOutlet weak var statusName: UILabel!
+    @IBOutlet weak var statusemail: UILabel!
     
-    
+    var nameRuleSet: ValidationRuleSet<String>? {
+        didSet { nameRefer.validationRules = nameRuleSet }
+    }
+    var emailRuleSet: ValidationRuleSet<String>? {
+        didSet { nameRefer.validationRules = emailRuleSet }
+    }
     weak var delegate: OpeningDetailsVC?
     var activeField: UITextField?
     var lastOffset: CGPoint!
@@ -26,7 +34,7 @@ class ContactViewController: UIViewController {
         super.viewDidLoad()
         nameRefer.delegate = self
         emailRefer.delegate = self
-        
+        addValidationsForFields()
         // Observe keyboard change
         keyboardAppearObserver = NotificationCenter.default
         keyboardDisappearObserver = NotificationCenter.default
@@ -34,6 +42,43 @@ class ContactViewController: UIViewController {
         
         // Add touch gesture for contentView
         self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
+    }
+    
+    private func addValidationsForFields() {
+        nameRuleSet = ValidationRuleSet<String>()
+        emailRuleSet = ValidationRuleSet<String>()
+    
+        let minLengthRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
+        nameRuleSet?.add(rule: minLengthRule)
+        let emailPattern = EmailValidationPattern.simple
+        let emailRule = ValidationRulePattern(pattern: emailPattern, error: ValidationError(message: "😫"))
+        emailRuleSet?.add(rule: emailRule)
+        
+        nameRefer.validateOnInputChange(enabled: true)
+        nameRefer.validationHandler = { result in self.updateValidationNameState(result: result) }
+        
+        emailRefer.validateOnInputChange(enabled: true)
+        emailRefer.validationHandler = { result in self.updateValidationEmailState(result: result) }
+    }
+    
+    private func updateValidationNameState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            nameRefer.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            nameRefer.text = messages.joined(separator: "")
+        }
+    }
+    
+    private func updateValidationEmailState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            emailRefer.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            emailRefer.text = messages.joined(separator: "")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

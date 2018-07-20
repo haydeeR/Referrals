@@ -14,6 +14,7 @@ target 'Referrals' do
   pod 'FacebookShare'
   pod 'SVProgressHUD'
   pod 'NotificationBannerSwift'
+  pod 'Validator'
   pod 'Fabric'
   pod 'Crashlytics'
 end

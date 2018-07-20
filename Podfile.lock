@@ -59,6 +59,7 @@ PODS:
     - PromiseKit/CorePromise
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.5)
+  - Validator (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.2)
   - PromiseKit (~> 6.0)
   - SVProgressHUD
+  - Validator
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -92,7 +94,8 @@ SPEC CHECKSUMS:
   PromiseKit: 6788ce1a0ed5448b83d4aaf56b9fc49fb7647d32
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: 76f4e6fbcd06323b37152aaa8b038f80f5259203
+PODFILE CHECKSUM: d574f388152d2a578a43d93679cfc27f4e1a6974
 
 COCOAPODS: 1.4.0
