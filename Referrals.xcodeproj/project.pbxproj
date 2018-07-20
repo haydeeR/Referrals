@@ -17,7 +17,7 @@
 		9B5E4BD220FD2BE1005CD336 /* MonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BD120FD2BE1005CD336 /* MonthYearPicker.swift */; };
 		9B5E4BD420FE3C01005CD336 /* OAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BD320FE3C01005CD336 /* OAuthHandler.swift */; };
 		9B5E4BDB20FFB0ED005CD336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E4BDD20FFB0ED005CD336 /* Localizable.strings */; };
-		9B5E4BE421021334005CD336 /* ValidatorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BE321021334005CD336 /* ValidatorError.swift */; };
+		9B5E4BE421021334005CD336 /* ValidationErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BE321021334005CD336 /* ValidationErrorType.swift */; };
 		9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */; };
 		9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
@@ -63,7 +63,7 @@
 		9B5E4BD820FFA0E0005CD336 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		9B5E4BDC20FFB0ED005CD336 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B5E4BDE20FFB67D005CD336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9B5E4BE321021334005CD336 /* ValidatorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorError.swift; sourceTree = "<group>"; };
+		9B5E4BE321021334005CD336 /* ValidationErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
 		9B6C2C1320F7B9FD00D47685 /* UIViewController+ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressHUD.swift"; sourceTree = "<group>"; };
 		9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				9BCD953520D42DEE008B0A87 /* Recruiter.swift */,
 				9BBFFE5020E2A6850029A772 /* Field.swift */,
 				9B22E2D620E68400005BA8FA /* Referred.swift */,
-				9B5E4BE321021334005CD336 /* ValidatorError.swift */,
+				9B5E4BE321021334005CD336 /* ValidationErrorType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,7 +451,7 @@
 				9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */,
 				9BBFFE5320E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift in Sources */,
 				9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */,
-				9B5E4BE421021334005CD336 /* ValidatorError.swift in Sources */,
+				9B5E4BE421021334005CD336 /* ValidationErrorType.swift in Sources */,
 				9BBFFE5120E2A6850029A772 /* Field.swift in Sources */,
 				9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */,
 				9BE7378220C87F610020AAD4 /* DataParser.swift in Sources */,

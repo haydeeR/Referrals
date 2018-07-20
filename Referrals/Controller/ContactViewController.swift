@@ -54,9 +54,11 @@ class ContactViewController: UIViewController {
         let emailRule = ValidationRulePattern(pattern: emailPattern, error: ValidationError(message: "😫"))
         emailRuleSet?.add(rule: emailRule)
         
+        nameRefer.validationRules = nameRuleSet
         nameRefer.validateOnInputChange(enabled: true)
         nameRefer.validationHandler = { result in self.updateValidationNameState(result: result) }
         
+        emailRefer.validationRules = emailRuleSet
         emailRefer.validateOnInputChange(enabled: true)
         emailRefer.validationHandler = { result in self.updateValidationEmailState(result: result) }
     }
@@ -64,20 +66,20 @@ class ContactViewController: UIViewController {
     private func updateValidationNameState(result: ValidationResult) {
         switch result {
         case .valid:
-            nameRefer.text = "😀"
+            statusName.text = "😀"
         case .invalid(let failures):
             let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
-            nameRefer.text = messages.joined(separator: "")
+            statusName.text = messages.joined(separator: "")
         }
     }
     
     private func updateValidationEmailState(result: ValidationResult) {
         switch result {
         case .valid:
-            emailRefer.text = "😀"
+            statusemail.text = "😀"
         case .invalid(let failures):
             let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
-            emailRefer.text = messages.joined(separator: "")
+            statusemail.text = messages.joined(separator: "")
         }
     }
     
@@ -114,8 +116,15 @@ class ContactViewController: UIViewController {
         if let activeField = activeField {
             activeField.resignFirstResponder()
         }
-        if let name = nameRefer?.text, let email = emailRefer?.text {
+        if let name = statusName?.text,
+            let email = statusemail?.text,
+            name == "😀", email == "😀"{
             delegate?.choseRecruiter(name: name, email: email)
+        } else {
+            let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OkAction)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -145,9 +154,11 @@ class ContactViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardHeight = keyboardHeight {
         UIView.animate(withDuration: 0.3) {
-            self.delegate?.bottomConstraint.constant -= self.keyboardHeight
+            self.delegate?.bottomConstraint.constant -= keyboardHeight
             self.delegate?.scrollView.contentOffset = self.lastOffset
+            }
         }
         keyboardHeight = nil
     }

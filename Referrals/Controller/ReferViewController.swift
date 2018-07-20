@@ -34,9 +34,15 @@ class ReferViewController: UIViewController {
     var keyboardAppearObserver: NotificationCenter?
     var keyboardDisappearObserver: NotificationCenter?
     let expiryDatePicker = MonthYearPickerView()
-    var whenRuleSet: ValidationRuleSet<String>?
-    var whereRuleSet: ValidationRuleSet<String>?
-    var whyRuleSet: ValidationRuleSet<String>?
+    var whenRuleSet: ValidationRuleSet<String>? {
+        didSet { whenLabel.validationRules = whenRuleSet}
+    }
+    var whereRuleSet: ValidationRuleSet<String>?{
+        didSet { whereLabel.validationRules = whereRuleSet}
+    }
+    var whyRuleSet: ValidationRuleSet<String>? {
+        didSet { whyLabel.validationRules = whyRuleSet }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,14 +77,46 @@ class ReferViewController: UIViewController {
         whereRuleSet?.add(rule: minLengthRule)
         whyRuleSet?.add(rule: minLengthRule)
         
-        whenLabel.validateOnInputChange(enabled: true)
-        whenLabel.validationHandler = { result in self.updateValidationNameState(result: result) }
+        whenLabel.validationRules = whenRuleSet
+        whenLabel.validateOnEditingEnd(enabled: true)
+        whenLabel.validationHandler = { result in self.updateValidationWhenState(result: result) }
         
+        whereLabel.validationRules = whereRuleSet
         whereLabel.validateOnInputChange(enabled: true)
-        whereLabel.validationHandler = { result in self.updateValidationEmailState(result: result) }
+        whereLabel.validationHandler = { result in self.updateValidationWhereState(result: result) }
         
-        whyLabel.validateOnEditingEnd(enabled: true)
-        whereLabel.validationHandler = { result in self.updateValidationWhyState(result: result) }
+        whyLabel.validationRules = whyRuleSet
+        whyLabel.validateOnInputChange(enabled: true)
+        whyLabel.validationHandler = { result in self.updateValidationWhyState(result: result) }
+    }
+    
+    private func updateValidationWhenState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whenStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whenStatusLabel.text = messages.joined(separator: "")
+        }
+    }
+    
+    private func updateValidationWhereState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whereStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whereStatusLabel.text = messages.joined(separator: "")
+        }
+    }
+    private func updateValidationWhyState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whyStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whyStatusLabel.text = messages.joined(separator: "")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -159,6 +197,9 @@ class ReferViewController: UIViewController {
     }
     
     @objc func doneRefer() {
+        guard validateFields() == true else{
+            return
+        }
         let alert = UIAlertController(title: "Confirm", message: "Are you sure to refer?", preferredStyle: .actionSheet)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let actionOk = UIAlertAction(title: "Refer", style: .default) { (action) in
@@ -167,6 +208,22 @@ class ReferViewController: UIViewController {
         alert.addAction(actionCancel)
         alert.addAction(actionOk)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func validateFields() -> Bool {
+        guard let whenStatusLabel = whenStatusLabel.text,
+            let whereStatusLabel = whereStatusLabel.text,
+            let whyStatusLabel = whyStatusLabel.text,
+            whereStatusLabel == "😀",
+            whenStatusLabel == "😀",
+            whyStatusLabel == "😀" else {
+            let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OkAction)
+            present(alert, animated: true, completion: nil)
+                return false
+        }
+        return true
     }
     
     func sendEmail() {
@@ -203,9 +260,11 @@ class ReferViewController: UIViewController {
     }
     
     @objc func referkeyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.3) {
-            self.bottomContraint.constant -= self.keyboardHeight
-            self.scrollView.contentOffset = self.lastOffset
+        if let keyboardHeight = keyboardHeight {
+            UIView.animate(withDuration: 0.3) {
+                self.bottomContraint.constant -= keyboardHeight
+                self.scrollView.contentOffset = self.lastOffset
+            }
         }
         keyboardHeight = nil
     }

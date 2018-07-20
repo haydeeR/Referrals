@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().hostedDomain = "nearsoft.com"
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signOut()
+  //      GIDSignIn.sharedInstance().signOut()
         Fabric.with([Crashlytics.self])
         verifyAuth()
         
