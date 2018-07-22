@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GIDSignIn.sharedInstance().clientID = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().hostedDomain = "nearsoft.com"
@@ -30,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])-> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: [:])
     }
     
@@ -42,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-
 }
 
 extension AppDelegate: GIDSignInDelegate {
@@ -50,7 +48,7 @@ extension AppDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let user = user,
             user.hostedDomain != signIn.hostedDomain {
-            ErrorHandler.handle(spellError: NSError(domain: "LOGIN", code: 001, userInfo: ["Account":"Your hosted domaini has to be nearsoft.com"]) )
+            ErrorHandler.handle(spellError: NSError(domain: "LOGIN", code: 001, userInfo: ["Account": "Your hosted domaini has to be nearsoft.com"]) )
             signIn.disconnect()
             return
         }

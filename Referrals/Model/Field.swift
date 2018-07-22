@@ -12,7 +12,6 @@ struct Field {
     var fieldName: String
     var fieldDescription: String
     
-    
     init (fieldName: String, fieldDescription: [String]) {
         var rows = ""
         self.fieldName = fieldName

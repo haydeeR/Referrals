@@ -23,11 +23,17 @@ struct DataHandler {
         }
     }
     
+    static func getCompanies() -> Promise <[Company]> {
+        return APIHandler.getCompanies().map { data -> [Company] in
+            return DataParser.parseCompanies(with: data)
+        }
+    }
+    
     static func login(token: String) -> Promise <[String: Any]> {
         return APIHandler.login(token: token)
     }
 
-    static func sendRefer() -> Promise <[[String: Any]]> {
-        return APIHandler.sendEmail()
+    static func sendRefer(strong: Bool, year: String, month: String, whereWorked: String, why: String, recruiterId: String, referred: Referred) -> Promise <[[String: Any]]> {
+        return APIHandler.sendEmail(strong: strong, year: year, month: month, whereWorked: whereWorked, why: why, recruiterId: recruiterId, referred: referred)
     }
 }

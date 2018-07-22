@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APIManager{
+struct APIManager {
   //  static var githubBaseUrl = "https://api.github.com/repos/Nearsoft/jobs/readme"
     static var linkToShare = "https://github.com/Nearsoft/jobs/blob/master/readme.md"
     static var githubBaseUrl = "https://referrals-app.herokuapp.com"

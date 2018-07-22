@@ -15,22 +15,34 @@ struct ErrorHandler {
         switch error.code {
         case NSURLErrorTimedOut:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "TimeOut", subtitle: "The resources you request are no longer available. \n This is normally caused by timeout", style: .danger)
+                let banner = NotificationBanner(
+                    title: "TimeOut",
+                    subtitle: "The resources you request are no longer available. \n This is normally caused by timeout",
+                    style: .danger)
                 banner.show()
             }
         case NSURLErrorNotConnectedToInternet:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "Network", subtitle: "You have a problem with your conectivity", style: .danger)
+                let banner = NotificationBanner(
+                    title: "Network",
+                    subtitle: "You have a problem with your conectivity",
+                    style: .danger)
                 banner.show()
             }
         case 001:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "Account", subtitle: "Your hosted domain has to be nearsoft.com", style: .danger)
+                let banner = NotificationBanner(
+                    title: "Account",
+                    subtitle: "Your hosted domain has to be nearsoft.com",
+                    style: .danger)
             banner.show()
         }
         default:
             DispatchQueue.main.async {
-                let banner = NotificationBanner(title: "Error", subtitle: "An error occurred", style: .danger)
+                let banner = NotificationBanner(
+                    title: "Error",
+                    subtitle: "An error occurred",
+                    style: .danger)
                 banner.show()
             }
         }

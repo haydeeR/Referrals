@@ -39,7 +39,6 @@ class ContactViewController: UIViewController {
         keyboardAppearObserver = NotificationCenter.default
         keyboardDisappearObserver = NotificationCenter.default
         
-        
         // Add touch gesture for contentView
         self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
     }
@@ -89,8 +88,16 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        keyboardAppearObserver?.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        keyboardDisappearObserver?.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver?.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil)
+        keyboardDisappearObserver?.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil)
     }
     
     @objc func returnTextView(gesture: UIGestureRecognizer) {
@@ -122,8 +129,8 @@ class ContactViewController: UIViewController {
             delegate?.choseRecruiter(name: name, email: email)
         } else {
             let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
-            let OkAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(OkAction)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
     }
@@ -164,13 +171,7 @@ class ContactViewController: UIViewController {
     }
     
     @IBAction func addResumeAction(_ sender: UIButton) {
-        /*
-        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-        
-        let pdfFileName = documentsPath.stringByAppendingPathComponent("chart.pdf")
-        let fileData = NSData(contentsOfFile: pdfFileName)
-        mc.addAttachmentData(fileData, mimeType: "pdf", fileName: chart)
-        */
+       
     }
 }
 

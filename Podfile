@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+#Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
 target 'Referrals' do
@@ -6,6 +6,7 @@ target 'Referrals' do
   use_frameworks!
 
   # Pods for Referrals
+  pod 'SwiftLint'
   pod 'GoogleSignIn'
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage', '~> 3.3'
@@ -17,12 +18,13 @@ target 'Referrals' do
   pod 'Validator'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod "SearchTextField"
 end
 
-post_install do |installer_representation|
-    installer_representation.pods_project.targets.each do |target|
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = '$(inherited), PodsDummy_Pods=SomeOtherNamePodsDummy_Pods'
+            config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = 'YES'
         end
     end
 end

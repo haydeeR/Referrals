@@ -12,8 +12,10 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     case getOpenings
     case getRecruiters
-    case sendEmail
+    case sendEmail(strong: Bool, year: String, month: String, whereWorked: String, why: String, recruiterId: String, referred: Referred)
     case login(token: String)
+    case getCompanies
+    case getTokenLinkedIn
     
     var path: String {
         switch self {
@@ -25,38 +27,52 @@ enum APIRouter: URLRequestConvertible {
             return "refer"
         case .login:
             return "login"
+        case .getCompanies:
+            return "companies"
+        case .getTokenLinkedIn:
+            return ""
         }
     }
     
     var parameters: [String: Any] {
         var parameters: [String: Any] = [:]
         switch self {
-        case .getOpenings:
-            parameters = [:]
-        case .getRecruiters:
-            parameters = [:]
-        case .sendEmail:
-            parameters = [:]
+        case .sendEmail (let strong, let year, let month,
+                         let whereWorked, let why, let recruiterId, let referred):
+            parameters = [
+                "strong_referral": strong,
+                "year": year,
+                "month": month,
+                "strong_referral_where": whereWorked,
+                "strong_referral_why": why,
+                "recruiter_id": recruiterId,
+                "job_id": referred.openingToRefer.id,
+                "referred_name": referred.name,
+                "referred_email": referred.email,
+                "resume_file": referred.resume]
         case .login (let token):
             parameters = ["token_id": token]
+        default:
+            parameters = [:]
         }
         return parameters
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getOpenings, .getRecruiters:
+        case .getOpenings, .getRecruiters, .getCompanies:
             return .get
         case .sendEmail, .login:
             return .post
-            
+        case .getTokenLinkedIn:
+            return .get
         }
     }
     
     func asURLRequest() throws -> URLRequest {
         var url: URL
         switch  self {
-        case .login, .getOpenings, .getRecruiters:
+        case .login, .getOpenings, .getRecruiters, .getCompanies, .sendEmail:
             url = try APIManager.githubDevUrl.asURL()
         default:
             url = try APIManager.linkedInBaseUrl.asURL()

@@ -40,7 +40,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
     func commonSetup() {
         // population years
         var years: [Int] = []
-        if years.count == 0 {
+        if years.isEmpty == true {
             var year = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.year, from: NSDate() as Date)
             for _ in 1...20 {
                 years.append(year)
@@ -65,7 +65,7 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         self.selectRow(currentMonth - 1, inComponent: 0, animated: false)
     }
     
-    // Mark: UIPicker Delegate / Data Source
+    // MARK: - UIPicker Delegate - Data Source
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

@@ -9,24 +9,18 @@
 import Foundation
 import ObjectMapper
 
-struct Recruiter: Mappable {
+struct Company: Mappable {
     var id: Int
     var name: String
-    var email: String
-    var picture: String
     
     init?(map: Map) {
         id = 0
         name = ""
-        email = ""
-        picture = ""
     }
     
     mutating func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
-        email <- map["email"]
-        picture <- map["picture"]
     }
     
 }

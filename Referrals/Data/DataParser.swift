@@ -21,4 +21,10 @@ struct DataParser {
         recruiters = Mapper<Recruiter>().mapArray(JSONArray: json)
         return recruiters
     }
+    
+    static func parseCompanies(with json: [[String: Any]]) -> [Company] {
+        var companies = [Company]()
+        companies = Mapper<Company>().mapArray(JSONArray: json)
+        return companies
+    }
 }
