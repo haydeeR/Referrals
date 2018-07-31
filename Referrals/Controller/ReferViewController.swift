@@ -73,12 +73,10 @@ class ReferViewController: UIViewController {
     
     private func setUpWhereField() {
         whereLabel.startVisibleWithoutInteraction = false
-        // Set data source
         getCompanies()
-        
     }
 
-    fileprivate func getCompanies() {
+    private func getCompanies() {
         firstly {
             DataHandler.getCompanies()
             }.done { companies in

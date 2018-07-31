@@ -96,7 +96,7 @@ class OpeningDetailsVC: UIViewController {
         guard let opening = opening else {
             return
         }
-        let referred = Referred(name: name, email: email, resume: "No", openingToRefer: opening)
+        let referred = Referred(name: name, email: email, resume: "no", opening: opening, strongRefer: nil)
         performSegue(withIdentifier: SegueIdentifier.referSomeone.rawValue, sender: referred)
     }
     
@@ -139,6 +139,7 @@ class OpeningDetailsVC: UIViewController {
     }
 
 }
+
 extension OpeningDetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

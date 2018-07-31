@@ -8,9 +8,18 @@
 
 import Foundation
 
-struct Referred {
-    let name: String
-    let email: String
-    let resume: String
-    let openingToRefer: Opening
+class Referred {
+    var name: String
+    var email: String
+    var resume: String
+    var openingToRefer: Opening
+    var strongRefer: StrongReferred?
+    
+    init(name: String, email: String, resume: String, opening: Opening, strongRefer: StrongReferred? ) {
+        self.name = name
+        self.email = email
+        self.resume = resume
+        self.openingToRefer = opening
+        self.strongRefer = strongRefer
+    }
 }

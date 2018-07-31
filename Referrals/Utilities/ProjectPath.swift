@@ -11,10 +11,13 @@ import Foundation
 enum StoryboardPath: String {
     case main = "Main"
     case login = "Login"
+    case newDesign = "ReferralsNP"
 }
 
 enum ViewControllerPath: String {
     case openingsViewController = "OpeningsViewController"
     case loginViewController = "LoginViewController"
     case navigationOpenings = "NavigationOpenings"
+    case tabBarOpenings = "TabBarOpenings"
+    case openingViewController = "OpeningViewController"
 }
