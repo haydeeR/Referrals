@@ -21,14 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications()
         GIDSignIn.sharedInstance().clientID = APIManager.googleClientId
-        GIDSignIn.sharedInstance().hostedDomain = "nearsoft.com"
+        GIDSignIn.sharedInstance().hostedDomain = APIManager.hostedDomain
         GIDSignIn.sharedInstance().delegate = self
         //GIDSignIn.sharedInstance().signOut()
         Fabric.with([Crashlytics.self])
         application.applicationIconBadgeNumber = 0
+        customizeAppearance()
         verifyAuth()
-        
         return true
+    }
+    
+    func customizeAppearance() {
+        let navigationAppearance = UINavigationBar.appearance()
+        navigationAppearance.barTintColor = UIColor(red: 229/256, green: 72/256, blue: 0, alpha: 1)
+        navigationAppearance.tintColor = .white
+        navigationAppearance.barStyle = .black
+        navigationAppearance.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor.white
+        tabBarAppearance.tintColor = UIColor(red: 229/256, green: 72/256, blue: 0, alpha: 1)
     }
     
     @available(iOS 9.0, *)
@@ -71,6 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
     }
+    
+    
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

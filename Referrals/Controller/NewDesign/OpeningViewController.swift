@@ -41,6 +41,21 @@ class OpeningViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifierString = segue.identifier, let identifier = SegueIdentifier(rawValue: identifierString) else {
+            return
+        }
+        if identifier == SegueIdentifier.openingNewDetail {
+            guard let controller = segue.destination as? DetailViewController else {
+                return
+            }
+            guard let referred = sender as? Referred else {
+                return
+            }
+            controller.referred = referred
+        }
+    }
+    
 }
 
 extension OpeningViewController: UITableViewDelegate, UITableViewDataSource {
@@ -58,7 +73,7 @@ extension OpeningViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let opening = openings[indexPath.row]
-        performSegue(withIdentifier: SegueIdentifier.openingDetail.rawValue, sender: opening)
+        performSegue(withIdentifier: SegueIdentifier.openingNewDetail.rawValue, sender: opening)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		52524F04DE9514B705431296 /* Pods_Referrals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD27335C3636CCA1C5AD913F /* Pods_Referrals.framework */; };
+		9B1365B42114CD2F000639E7 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */; };
+		9B1365B62114CE93000639E7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1365B52114CE93000639E7 /* DetailViewController.swift */; };
 		9B14223D2104253F0066A3A0 /* StrongReferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14223C2104253F0066A3A0 /* StrongReferred.swift */; };
 		9B14223F2104261E0066A3A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14223E2104261E0066A3A0 /* User.swift */; };
 		9B169CAF20CEDFB700895300 /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B169CAE20CEDFB700895300 /* linkedin-sdk.framework */; };
@@ -17,6 +19,8 @@
 		9B39809620DAF08F003FE747 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809520DAF08F003FE747 /* SegueIdentifier.swift */; };
 		9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809720DD4F97003FE747 /* ContactViewController.swift */; };
 		9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39809920DD5CF0003FE747 /* ReferViewController.swift */; };
+		9B48CEAF2121D24E00C0AA44 /* AuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B48CEAE2121D24E00C0AA44 /* AuthHandler.swift */; };
+		9B48CEB12121ED5800C0AA44 /* ReferNDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B48CEB02121ED5800C0AA44 /* ReferNDViewController.swift */; };
 		9B56EC8F210B6C4D007634D8 /* ReferralsNP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B56EC8E210B6C4D007634D8 /* ReferralsNP.storyboard */; };
 		9B56EC92210B8BAD007634D8 /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B56EC91210B8BAD007634D8 /* OpeningViewController.swift */; };
 		9B5E4BD220FD2BE1005CD336 /* MonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E4BD120FD2BE1005CD336 /* MonthYearPicker.swift */; };
@@ -53,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		2B38A6D5E9DE37B120CCBA76 /* Pods-Referrals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.debug.xcconfig"; sourceTree = "<group>"; };
+		9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		9B1365B52114CE93000639E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9B14223C2104253F0066A3A0 /* StrongReferred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongReferred.swift; sourceTree = "<group>"; };
 		9B14223E2104261E0066A3A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9B15DC692108E62A0032ED8B /* Referrals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Referrals.entitlements; sourceTree = "<group>"; };
@@ -64,6 +70,8 @@
 		9B39809520DAF08F003FE747 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		9B39809720DD4F97003FE747 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		9B39809920DD5CF0003FE747 /* ReferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferViewController.swift; sourceTree = "<group>"; };
+		9B48CEAE2121D24E00C0AA44 /* AuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHandler.swift; sourceTree = "<group>"; };
+		9B48CEB02121ED5800C0AA44 /* ReferNDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferNDViewController.swift; sourceTree = "<group>"; };
 		9B56EC8E210B6C4D007634D8 /* ReferralsNP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReferralsNP.storyboard; sourceTree = "<group>"; };
 		9B56EC91210B8BAD007634D8 /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		9B5E4BD120FD2BE1005CD336 /* MonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPicker.swift; sourceTree = "<group>"; };
@@ -135,10 +143,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9B48CEAD2121D21800C0AA44 /* AuthHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9B48CEAE2121D24E00C0AA44 /* AuthHandler.swift */,
+			);
+			path = AuthHelper;
+			sourceTree = "<group>";
+		};
 		9B56EC90210B8B8D007634D8 /* NewDesign */ = {
 			isa = PBXGroup;
 			children = (
 				9B56EC91210B8BAD007634D8 /* OpeningViewController.swift */,
+				9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */,
+				9B1365B52114CE93000639E7 /* DetailViewController.swift */,
+				9B48CEB02121ED5800C0AA44 /* ReferNDViewController.swift */,
 			);
 			path = NewDesign;
 			sourceTree = "<group>";
@@ -174,8 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				9B15DC692108E62A0032ED8B /* Referrals.entitlements */,
-				9B6C2C1A20F8F1CF00D47685 /* Error */,
 				9BE7376E20C83C270020AAD4 /* Utilities */,
+				9B6C2C1A20F8F1CF00D47685 /* Error */,
+				9B48CEAD2121D21800C0AA44 /* AuthHelper */,
 				9BE7376D20C83C160020AAD4 /* Data */,
 				9BE7376C20C83C0D0020AAD4 /* Controller */,
 				9BE7376B20C83C060020AAD4 /* View */,
@@ -488,14 +508,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE7377C20C87AA10020AAD4 /* Server.swift in Sources */,
+				9B1365B62114CE93000639E7 /* DetailViewController.swift in Sources */,
 				9BE7377420C83CEA0020AAD4 /* LoginViewController.swift in Sources */,
+				9B48CEB12121ED5800C0AA44 /* ReferNDViewController.swift in Sources */,
 				9B39807220D813E5003FE747 /* ReusableIdenfier.swift in Sources */,
 				9BE7377A20C87A990020AAD4 /* APIRouter.swift in Sources */,
 				9B14223F2104261E0066A3A0 /* User.swift in Sources */,
 				9B56EC92210B8BAD007634D8 /* OpeningViewController.swift in Sources */,
 				9B39807420D81A16003FE747 /* OpeningDetailsVC.swift in Sources */,
+				9B48CEAF2121D24E00C0AA44 /* AuthHandler.swift in Sources */,
 				9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */,
 				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
+				9B1365B42114CD2F000639E7 /* ProfileTableViewController.swift in Sources */,
 				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,
 				9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */,
 				9BBFFE5320E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift in Sources */,

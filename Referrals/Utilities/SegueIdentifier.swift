@@ -11,4 +11,6 @@ import Foundation
 enum SegueIdentifier: String {
     case openingDetail
     case referSomeone
+    case openingNewDetail
+    case detailtoCreateRefer
 }
