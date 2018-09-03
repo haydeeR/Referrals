@@ -12,12 +12,11 @@ struct Field {
     var fieldName: String
     var fieldDescription: String
     
-    
     init (fieldName: String, fieldDescription: [String]) {
         var rows = ""
-        self.fieldName = fieldName
+        self.fieldName = " \(fieldName)"
         for row in fieldDescription {
-            rows += "* " + row + "\n"
+            rows += " * \t" + row + "\n"
         }
         self.fieldDescription = rows
     }

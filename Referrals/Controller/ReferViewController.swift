@@ -8,6 +8,8 @@
 
 import UIKit
 import PromiseKit
+import Validator
+import SearchTextField
 
 class ReferViewController: UIViewController {
 
@@ -15,22 +17,35 @@ class ReferViewController: UIViewController {
     @IBOutlet weak var switchTypeReferral: UISwitch!
     @IBOutlet weak var stackStrongReferral: UIStackView!
     @IBOutlet weak var whenLabel: UITextField!
-    @IBOutlet weak var whereLabel: UITextField!
+    @IBOutlet weak var whereLabel: SearchTextField!
     @IBOutlet weak var whyLabel: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    @IBOutlet weak var whenStatusLabel: UILabel!
+    @IBOutlet weak var whereStatusLabel: UILabel!
+    @IBOutlet weak var whyStatusLabel: UILabel!
     
     var referred: Referred?
     var recruiters: [Recruiter] = []
+    var companies: [String] = []
     var recruiter: Recruiter?
     var activeField: UITextField?
+    var oldActiveField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
     var keyboardAppearObserver: NotificationCenter?
     var keyboardDisappearObserver: NotificationCenter?
     let expiryDatePicker = MonthYearPickerView()
-    
+    var whenRuleSet: ValidationRuleSet<String>? {
+        didSet { whenLabel.validationRules = whenRuleSet}
+    }
+    var whereRuleSet: ValidationRuleSet<String>? {
+        didSet { whereLabel.validationRules = whereRuleSet}
+    }
+    var whyRuleSet: ValidationRuleSet<String>? {
+        didSet { whyLabel.validationRules = whyRuleSet }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +63,85 @@ class ReferViewController: UIViewController {
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
         
         setUpView()
+        setUpWhereField()
+        addValidationsForFields()
         setUpToolBarDate()
         registerNibs()
         getRecruiters()
        
     }
+    
+    private func setUpWhereField() {
+        whereLabel.startVisibleWithoutInteraction = false
+        getCompanies()
+    }
 
+    private func getCompanies() {
+        firstly {
+            DataHandler.getCompanies()
+            }.done { companies in
+                self.companies = companies.map({ (company) -> String in
+                    return company.name
+                })
+                self.whereLabel.filterStrings(self.companies)
+            }.catch { error in
+                print(error.localizedDescription)
+                ErrorHandler.handle(spellError: error as NSError)
+        }
+    }
+
+    private func addValidationsForFields() {
+        whereRuleSet = ValidationRuleSet<String>()
+        whenRuleSet = ValidationRuleSet<String>()
+        whyRuleSet = ValidationRuleSet<String>()
+        
+        let minLengthRule = ValidationRuleLength(min: 3, error: ValidationError(message: "😫"))
+        whenRuleSet?.add(rule: minLengthRule)
+        whereRuleSet?.add(rule: minLengthRule)
+        whyRuleSet?.add(rule: minLengthRule)
+        
+        whenLabel.validationRules = whenRuleSet
+        whenLabel.validateOnEditingEnd(enabled: true)
+        whenLabel.validationHandler = { result in self.updateValidationWhenState(result: result) }
+        
+        whereLabel.validationRules = whereRuleSet
+        whereLabel.validateOnInputChange(enabled: true)
+        whereLabel.validationHandler = { result in self.updateValidationWhereState(result: result) }
+        
+        whyLabel.validationRules = whyRuleSet
+        whyLabel.validateOnInputChange(enabled: true)
+        whyLabel.validationHandler = { result in self.updateValidationWhyState(result: result) }
+    }
+    
+    private func updateValidationWhenState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whenStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whenStatusLabel.text = messages.joined(separator: "")
+        }
+    }
+    
+    private func updateValidationWhereState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whereStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whereStatusLabel.text = messages.joined(separator: "")
+        }
+    }
+    private func updateValidationWhyState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            whyStatusLabel.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            whyStatusLabel.text = messages.joined(separator: "")
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         if let activeField = activeField {
             activeField.resignFirstResponder()
@@ -63,14 +151,26 @@ class ReferViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        keyboardAppearObserver?.addObserver(self, selector: #selector(referkeyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        keyboardDisappearObserver?.addObserver(self, selector: #selector(referkeyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver?.addObserver(
+            self,
+            selector: #selector(referkeyboardWillShow(notification:)),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil)
+        keyboardDisappearObserver?.addObserver(
+            self,
+            selector: #selector(referkeyboardWillHide(notification:)),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil)
     }
     
     @objc func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
         }
+        if activeField == whereLabel {
+            whereLabel.startVisible = false
+        }
+        oldActiveField = activeField
         activeField?.resignFirstResponder()
         activeField = nil
     }
@@ -118,7 +218,7 @@ class ReferViewController: UIViewController {
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker))
         
-        toolbarDate.setItems([okButton,spaceButton,cancelButton], animated: false)
+        toolbarDate.setItems([okButton, spaceButton, cancelButton], animated: false)
         whenLabel.inputAccessoryView = toolbarDate
     }
     
@@ -132,9 +232,12 @@ class ReferViewController: UIViewController {
     }
     
     @objc func doneRefer() {
+        guard validateFields() == true else {
+            return
+        }
         let alert = UIAlertController(title: "Confirm", message: "Are you sure to refer?", preferredStyle: .actionSheet)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let actionOk = UIAlertAction(title: "Refer", style: .default) { (action) in
+        let actionOk = UIAlertAction(title: "Refer", style: .default) { (_) in
             self.sendEmail()
         }
         alert.addAction(actionCancel)
@@ -142,8 +245,43 @@ class ReferViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    private func validateFields() -> Bool {
+        guard let whenStatusLabel = whenStatusLabel.text,
+            let whereStatusLabel = whereStatusLabel.text,
+            let whyStatusLabel = whyStatusLabel.text,
+            whereStatusLabel == "😀",
+            whenStatusLabel == "😀",
+            whyStatusLabel == "😀" else {
+            let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+                return false
+        }
+        return true
+    }
+    
     func sendEmail() {
-      //something that send an email
+        let strong = switchTypeReferral.isOn
+        let when = whenLabel.text!
+        let whereWorked = whereLabel.text!
+        let why = whyLabel.text!
+        let recruiterID = String(describing: recruiter?.id)
+        let referred = self.referred!
+        firstly {
+            DataHandler.sendRefer(
+                strong: strong,
+                year: when,
+                month: when,
+                whereWorked: whereWorked,
+                why: why,
+                recruiterId: recruiterID,
+                referred: referred)
+            }.done { _ in 
+            }.catch { error in
+                print(error.localizedDescription)
+                ErrorHandler.handle(spellError: error as NSError)
+        }
     }
     
     @IBAction func changeViewAction(_ sender: UISwitch) {
@@ -158,11 +296,11 @@ class ReferViewController: UIViewController {
             keyboardHeight = keyboardSize.height
             // so increase contentView's height by keyboard height
             UIView.animate(withDuration: 0.3, animations: {
-                self.bottomContraint.constant += self.keyboardHeight
+                self.bottomContraint.constant += self.keyboardHeight + (self.activeField?.frame.height ?? 0.0)
             })
             // move if keyboard hide input field
             let distanceToBottom = (self.scrollView.frame.size.height) - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
-            let collapseSpace = keyboardHeight - distanceToBottom
+            let collapseSpace = keyboardHeight - distanceToBottom -  (self.oldActiveField?.frame.height ?? 0.0)
             if collapseSpace < 0 {
                 // no collapse
                 return
@@ -176,9 +314,11 @@ class ReferViewController: UIViewController {
     }
     
     @objc func referkeyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.3) {
-            self.bottomContraint.constant -= self.keyboardHeight
-            self.scrollView.contentOffset = self.lastOffset
+        if let keyboardHeight = keyboardHeight {
+            UIView.animate(withDuration: 0.3) {
+                self.bottomContraint.constant -= keyboardHeight
+                self.scrollView.contentOffset = self.lastOffset
+            }
         }
         keyboardHeight = nil
     }
@@ -203,7 +343,7 @@ extension ReferViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RecruiterTableViewCell.reusableID, for: indexPath) as! RecruiterTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: RecruiterTableViewCell.reusableID, for: indexPath) as? RecruiterTableViewCell)!
         cell.config(with: recruiters[indexPath.row])
         return cell
     }
@@ -221,9 +361,12 @@ extension ReferViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeField = textField
+        oldActiveField = activeField
         lastOffset = self.scrollView.contentOffset
         if textField == whenLabel {
             textField.inputView = expiryDatePicker
+        } else if textField == whereLabel {
+            whereLabel.startVisible = true
         }
         return true
     }

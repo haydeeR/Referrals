@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,54 +18,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-JA-RII">
-                                <rect key="frame" x="30" y="110" width="315" height="55.5"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="89b-lx-BTh">
-                                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="55.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="89b-lx-BTh" secondAttribute="height" multiplier="1:1" id="z1E-fn-fIm"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Referrals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJE-VN-dMG">
-                                        <rect key="frame" x="85.5" y="0.0" width="229.5" height="55.5"/>
-                                        <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ic-Kn-9gQ" customClass="GIDSignInButton">
-                                <rect key="frame" x="30" y="282.5" width="315" height="102"/>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ic-Kn-9gQ" customClass="GIDSignInButton">
+                                <rect key="frame" x="30" y="537" width="315" height="66"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="iB1-xB-W42"/>
+                                    <constraint firstAttribute="height" constant="66" id="LUh-hG-dxe"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login" translatesAutoresizingMaskIntoConstraints="NO" id="Gve-hV-4tn">
+                                <rect key="frame" x="117" y="100" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gve-hV-4tn" secondAttribute="height" multiplier="1:1" id="9Ad-Y3-yF2"/>
+                                    <constraint firstAttribute="width" constant="140" id="dBL-xW-Jzx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="WELCOME TO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ab-Uj-3GD">
+                                <rect key="frame" x="16" y="248" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="REFERRALS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-P3-Uvl">
+                                <rect key="frame" x="16" y="276" width="343" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="Login to add your referral!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-mf-AiS">
+                                <rect key="frame" x="16" y="476" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" ambiguous="YES" image="footer" translatesAutoresizingMaskIntoConstraints="NO" id="enc-xD-IYm">
+                                <rect key="frame" x="133" y="614" width="109" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="Iao-3z-0OD"/>
+                                    <constraint firstAttribute="height" constant="33" id="Xz0-Nl-Cpz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="top" secondItem="D8X-JA-RII" secondAttribute="bottom" constant="117" id="1a2-PL-EBJ"/>
-                            <constraint firstItem="D8X-JA-RII" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="3f5-Zz-1Lf"/>
-                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="centerX" secondItem="Imj-o3-gfP" secondAttribute="centerX" id="Fop-cO-GOs"/>
-                            <constraint firstItem="D8X-JA-RII" firstAttribute="top" secondItem="rAS-9z-vzX" secondAttribute="top" constant="90" id="MF5-Od-siF"/>
-                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4ic-Kn-9gQ" secondAttribute="trailing" constant="30" id="Rok-i8-9R5"/>
-                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="D8X-JA-RII" secondAttribute="trailing" constant="30" id="fpd-SC-yUn"/>
-                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="centerY" secondItem="Imj-o3-gfP" secondAttribute="centerY" id="hqa-q0-khS"/>
-                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="hrk-0Z-33O"/>
+                            <constraint firstItem="2ab-Uj-3GD" firstAttribute="top" secondItem="Gve-hV-4tn" secondAttribute="bottom" constant="8" id="3cw-Yh-X7w"/>
+                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="2ab-Uj-3GD" secondAttribute="trailing" constant="16" id="7F4-8T-AYN"/>
+                            <constraint firstItem="ggD-P3-Uvl" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="16" id="I6w-qN-wfG"/>
+                            <constraint firstItem="Gve-hV-4tn" firstAttribute="top" secondItem="rAS-9z-vzX" secondAttribute="top" constant="80" id="LvC-gI-kXz"/>
+                            <constraint firstItem="enc-xD-IYm" firstAttribute="top" secondItem="4ic-Kn-9gQ" secondAttribute="bottom" constant="11" id="NKu-jW-9rl"/>
+                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="30" id="NRh-XV-jQL"/>
+                            <constraint firstItem="2ab-Uj-3GD" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="16" id="SEy-3O-zlA"/>
+                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="ggD-P3-Uvl" secondAttribute="trailing" constant="16" id="UHw-go-kbq"/>
+                            <constraint firstItem="Gve-hV-4tn" firstAttribute="centerX" secondItem="Imj-o3-gfP" secondAttribute="centerX" id="Wl3-cV-3Bn"/>
+                            <constraint firstItem="ggD-P3-Uvl" firstAttribute="top" secondItem="2ab-Uj-3GD" secondAttribute="bottom" constant="8" id="Zgg-iQ-CFK"/>
+                            <constraint firstItem="enc-xD-IYm" firstAttribute="centerX" secondItem="Imj-o3-gfP" secondAttribute="centerX" id="bPX-FS-DR6"/>
+                            <constraint firstItem="YaW-mf-AiS" firstAttribute="top" relation="lessThanOrEqual" secondItem="ggD-P3-Uvl" secondAttribute="bottom" constant="150" id="bj2-JL-XcF"/>
+                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="YaW-mf-AiS" secondAttribute="trailing" constant="16" id="cOb-GE-ct3"/>
+                            <constraint firstItem="rAS-9z-vzX" firstAttribute="trailing" secondItem="4ic-Kn-9gQ" secondAttribute="trailing" constant="30" id="gsA-SR-I89"/>
+                            <constraint firstItem="4ic-Kn-9gQ" firstAttribute="top" secondItem="YaW-mf-AiS" secondAttribute="bottom" constant="20" id="vaH-mB-E2C"/>
+                            <constraint firstItem="YaW-mf-AiS" firstAttribute="leading" secondItem="rAS-9z-vzX" secondAttribute="leading" constant="16" id="xeP-4r-cOG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rAS-9z-vzX"/>
                     </view>
                     <connections>
-                        <outlet property="referralsTitle" destination="RJE-VN-dMG" id="RX3-Q1-mDE"/>
+                        <outlet property="signInButton" destination="4ic-Kn-9gQ" id="5mY-5S-lpX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQb-We-hFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="158"/>
+            <point key="canvasLocation" x="104.8" y="157.87106446776613"/>
         </scene>
     </scenes>
     <resources>
-        <image name="group" width="40" height="40"/>
+        <image name="footer" width="54" height="16"/>
+        <image name="login" width="352" height="353"/>
     </resources>
 </document>

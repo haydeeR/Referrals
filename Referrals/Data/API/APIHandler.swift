@@ -40,9 +40,16 @@ struct APIHandler {
         }
     }
     
-    static func sendEmail() -> Promise <[[String: Any]]> {
+    static func sendEmail(strong: Bool, year: String, month: String, whereWorked: String, why: String, recruiterId: String, referred: Referred) -> Promise <[[String: Any]]> {
         return Promise { resolve in
-            sessionManager.request(APIRouter.sendEmail)
+            sessionManager.request(APIRouter.sendEmail(
+                strong: strong,
+                year: year,
+                month: month,
+                whereWorked: whereWorked,
+                why: why,
+                recruiterId: recruiterId,
+                referred: referred))
                 .validate()
                 .responseJSON( completionHandler: { response in
                     if let json = response.result.value as? [[String: Any]] {
@@ -59,12 +66,44 @@ struct APIHandler {
             sessionManager.request(APIRouter.login(token: token))
             .validate()
                 .responseJSON(completionHandler: { response in
-                    if let json = response.result.value as? [String:Any] {
+                    if let json = response.result.value as? [String: Any] {
                         resolve.fulfill(json)
                     } else if let error = response.error {
                         resolve.reject(error)
                     }
                 })
+        }
+    }
+    
+    static func logOut() {
+        sessionManager.request(APIRouter.logout)
+    }
+    
+    static func getCompanies() -> Promise <[[String: Any]]> {
+        return Promise { resolve in
+            sessionManager.request(APIRouter.getCompanies)
+                .validate()
+                .responseJSON( completionHandler: { response in
+                    if let json = response.result.value as? [[String: Any]] {
+                        resolve.fulfill(json)
+                    } else if let error = response.error {
+                        resolve.reject(error)
+                    }
+                })
+        }
+    }
+    
+    static func getReferreds() -> Promise <[[String: Any]]> {
+        return Promise { resolve in
+            sessionManager.request(APIRouter.getReferreds)
+            .validate()
+            .responseJSON(completionHandler: { response in
+                if let json = response.result.value as? [[String: Any]] {
+                    resolve.fulfill(json)
+                } else if let error = response.error {
+                    resolve.reject(error)
+                }
+            })
         }
     }
 }

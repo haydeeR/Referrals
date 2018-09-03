@@ -29,5 +29,4 @@ struct Recruiter: Mappable {
         picture <- map["picture"]
     }
     
-    
 }

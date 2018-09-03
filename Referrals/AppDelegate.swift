@@ -11,27 +11,42 @@ import GoogleSignIn
 import PromiseKit
 import Fabric
 import Crashlytics
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        GIDSignIn.sharedInstance().clientID = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().hostedDomain = "nearsoft.com"
+        registerForPushNotifications()
+        GIDSignIn.sharedInstance().clientID = APIManager.googleClientId
+        GIDSignIn.sharedInstance().hostedDomain = APIManager.hostedDomain
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signOut()
         Fabric.with([Crashlytics.self])
+        application.applicationIconBadgeNumber = 0
+        customizeAppearance()
         verifyAuth()
-        
         return true
     }
     
+    func customizeAppearance() {
+        let navigationAppearance = UINavigationBar.appearance()
+        navigationAppearance.barTintColor = UIColor(red: 229/256, green: 72/256, blue: 0, alpha: 1)
+        navigationAppearance.tintColor = .white
+        navigationAppearance.barStyle = .black
+        navigationAppearance.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor.white
+        tabBarAppearance.tintColor = UIColor(red: 229/256, green: 72/256, blue: 0, alpha: 1)
+    }
+    
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])-> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: [:])
     }
     
@@ -42,7 +57,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // 1. Convert device token to string
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        // 2. Print device token to use for PNs payloads
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // 1. Print out error if PNs registration not successful
+        print("Failed to register for remote notifications with error: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        let badgeCount = application.applicationIconBadgeNumber
+        application.applicationIconBadgeNumber = badgeCount + 1
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+    
+}
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+                // //Guardar el token device
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let badgecount = UIApplication.shared.applicationIconBadgeNumber
+        UIApplication.shared.applicationIconBadgeNumber = badgecount + 1
+    }
+    
 }
 
 extension AppDelegate: GIDSignInDelegate {
@@ -50,7 +117,7 @@ extension AppDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let user = user,
             user.hostedDomain != signIn.hostedDomain {
-            ErrorHandler.handle(spellError: NSError(domain: "LOGIN", code: 001, userInfo: ["Account":"Your hosted domaini has to be nearsoft.com"]) )
+            ErrorHandler.handle(spellError: NSError(domain: "LOGIN", code: 001, userInfo: ["Account": "Your hosted domaini has to be nearsoft.com"]) )
             signIn.disconnect()
             return
         }
@@ -64,7 +131,7 @@ extension AppDelegate: GIDSignInDelegate {
                     DataHandler.login(token: idToken)
                     }.done { result in
                         print(result)
-                        self.initView(with: StoryboardPath.main.rawValue, viewControllerName: ViewControllerPath.navigationOpenings.rawValue)
+                        self.initView(with: StoryboardPath.newDesign.rawValue, viewControllerName: ViewControllerPath.tabBarOpenings.rawValue)
                     }.catch { error in
                         print(error.localizedDescription)
                 }
@@ -90,8 +157,8 @@ extension AppDelegate {
         
         GIDSignIn.sharedInstance().signInSilently()
         if GIDSignIn.sharedInstance().currentUser != nil {
-            storyboard =  StoryboardPath.main.rawValue
-            initialViewController = ViewControllerPath.navigationOpenings.rawValue
+            storyboard =  StoryboardPath.newDesign.rawValue
+            initialViewController = ViewControllerPath.tabBarOpenings.rawValue
         } else {
             storyboard =  StoryboardPath.login.rawValue
             initialViewController = ViewControllerPath.loginViewController.rawValue

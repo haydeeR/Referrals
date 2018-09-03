@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import Validator
 
 class ContactViewController: UIViewController {
 
     @IBOutlet weak var nameRefer: UITextField!
     @IBOutlet weak var emailRefer: UITextField!
     @IBOutlet weak var resumeBtn: UIButton!
+    @IBOutlet weak var statusName: UILabel!
+    @IBOutlet weak var statusemail: UILabel!
     
-    
+    var nameRuleSet: ValidationRuleSet<String>? {
+        didSet { nameRefer.validationRules = nameRuleSet }
+    }
+    var emailRuleSet: ValidationRuleSet<String>? {
+        didSet { nameRefer.validationRules = emailRuleSet }
+    }
     weak var delegate: OpeningDetailsVC?
     var activeField: UITextField?
     var lastOffset: CGPoint!
@@ -26,14 +34,52 @@ class ContactViewController: UIViewController {
         super.viewDidLoad()
         nameRefer.delegate = self
         emailRefer.delegate = self
-        
+        addValidationsForFields()
         // Observe keyboard change
         keyboardAppearObserver = NotificationCenter.default
         keyboardDisappearObserver = NotificationCenter.default
         
-        
         // Add touch gesture for contentView
         self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
+    }
+    
+    private func addValidationsForFields() {
+        nameRuleSet = ValidationRuleSet<String>()
+        emailRuleSet = ValidationRuleSet<String>()
+    
+        let minLengthRule = ValidationRuleLength(min: 5, error: ValidationError(message: "😫"))
+        nameRuleSet?.add(rule: minLengthRule)
+        let emailPattern = EmailValidationPattern.simple
+        let emailRule = ValidationRulePattern(pattern: emailPattern, error: ValidationError(message: "😫"))
+        emailRuleSet?.add(rule: emailRule)
+        
+        nameRefer.validationRules = nameRuleSet
+        nameRefer.validateOnInputChange(enabled: true)
+        nameRefer.validationHandler = { result in self.updateValidationNameState(result: result) }
+        
+        emailRefer.validationRules = emailRuleSet
+        emailRefer.validateOnInputChange(enabled: true)
+        emailRefer.validationHandler = { result in self.updateValidationEmailState(result: result) }
+    }
+    
+    private func updateValidationNameState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            statusName.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            statusName.text = messages.joined(separator: "")
+        }
+    }
+    
+    private func updateValidationEmailState(result: ValidationResult) {
+        switch result {
+        case .valid:
+            statusemail.text = "😀"
+        case .invalid(let failures):
+            let messages = failures.compactMap { $0 as? ValidationError }.map { $0.message }
+            statusemail.text = messages.joined(separator: "")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,8 +88,16 @@ class ContactViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        keyboardAppearObserver?.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        keyboardDisappearObserver?.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        keyboardAppearObserver?.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil)
+        keyboardDisappearObserver?.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil)
     }
     
     @objc func returnTextView(gesture: UIGestureRecognizer) {
@@ -69,8 +123,15 @@ class ContactViewController: UIViewController {
         if let activeField = activeField {
             activeField.resignFirstResponder()
         }
-        if let name = nameRefer?.text, let email = emailRefer?.text {
+        if let name = statusName?.text,
+            let email = statusemail?.text,
+            name == "😀", email == "😀"{
             delegate?.choseRecruiter(name: name, email: email)
+        } else {
+            let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -100,21 +161,17 @@ class ContactViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardHeight = keyboardHeight {
         UIView.animate(withDuration: 0.3) {
-            self.delegate?.bottomConstraint.constant -= self.keyboardHeight
+            self.delegate?.bottomConstraint.constant -= keyboardHeight
             self.delegate?.scrollView.contentOffset = self.lastOffset
+            }
         }
         keyboardHeight = nil
     }
     
     @IBAction func addResumeAction(_ sender: UIButton) {
-        /*
-        let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-        
-        let pdfFileName = documentsPath.stringByAppendingPathComponent("chart.pdf")
-        let fileData = NSData(contentsOfFile: pdfFileName)
-        mc.addAttachmentData(fileData, mimeType: "pdf", fileName: chart)
-        */
+       
     }
 }
 

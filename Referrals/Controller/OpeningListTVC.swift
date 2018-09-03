@@ -54,30 +54,29 @@ class OpeningListTVC: UITableViewController {
         let opening = openings[indexPath.row]
         performSegue(withIdentifier: SegueIdentifier.openingDetail.rawValue, sender: opening)
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let shareFacebook  = UITableViewRowAction(style: .normal, title: "Facebook") { action, indexPath in
+        let shareFacebook  = UITableViewRowAction(style: .normal, title: "Facebook") { (_, indexPath) in
             self.shareOnFacebook(indexPath: indexPath)
         }
-        let shareTwitter = UITableViewRowAction(style: .normal, title: "Twitter") { (action, indexPath) in
+        let shareTwitter = UITableViewRowAction(style: .normal, title: "Twitter") { (_, indexPath) in
             self.shareOnTwitter(indexPath: indexPath)
         }
         shareFacebook.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
         shareTwitter.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
         
-        return [shareFacebook,shareTwitter]
+        return [shareFacebook, shareTwitter]
     }
     
     func shareOnTwitter(indexPath: IndexPath) {
-        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        vc?.add(URL(string: APIManager.linkToShare))
-        vc?.setInitialText("Hey look out all positions")
-        self.present(vc!, animated: true, completion: nil)
+        let socialViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        socialViewController?.add(URL(string: APIManager.linkToShare))
+        socialViewController?.setInitialText("Hey look out all positions")
+        self.present(socialViewController!, animated: true, completion: nil)
     }
     
     func shareOnFacebook(indexPath: IndexPath) {
@@ -111,4 +110,3 @@ class OpeningListTVC: UITableViewController {
     }
     
 }
-

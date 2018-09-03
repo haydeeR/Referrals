@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpeningDetailsVC: UIViewController  {
+class OpeningDetailsVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -26,19 +26,11 @@ class OpeningDetailsVC: UIViewController  {
         setUpView()
         registerNib()
         splitRequirements()
-        guard let contactController = childViewControllers.first as? ContactViewController else  {
+        guard let contactController = childViewControllers.first as? ContactViewController else {
             fatalError("Check storyboard for missing contactController")
         }
         contactViewController = contactController
         contactController.delegate = self
-        
-        
-        // MARK:- Linked-In
-        //loadAccount(then: {
-        //    print("hello")
-        //}, or: { (error) in
-        //    print(error)
-        //})
     }
     
     func setUpView() {
@@ -55,54 +47,11 @@ class OpeningDetailsVC: UIViewController  {
         tableView.register(nib, forCellReuseIdentifier: PositionTableViewCell.reusableID)
     }
     
-    func loadAccount(then: (() -> Void)?, or: ((String) -> Void)?) { // then & or are handling closures
-        if let token = accessToken {
-            LISDKSessionManager.createSession(with: token)
-            if LISDKSessionManager.hasValidSession() {
-                LISDKAPIHelper.sharedInstance().getRequest("https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,headline,location,industry,current-share,num-connections,num-connections-capped,summary,specialties,positions,picture-url,picture-urls::(original))?format=json",
-                                                           success: {
-                                                            response in
-                                                            print(response?.data ?? "response")
-                                                            then?()
-                },
-                                                           error: {
-                                                            error in
-                                                            print(error ?? "error")
-                }
-                )
-            }
-        } else {
-            LISDKSessionManager.createSession(withAuth: [LISDK_BASIC_PROFILE_PERMISSION], state: nil, showGoToAppStoreDialog: true, successBlock: {
-                                                (state) in
-                                                self.accessToken = LISDKSessionManager.sharedInstance().session.accessToken
-                                                if LISDKSessionManager.hasValidSession() {
-                                                    LISDKAPIHelper.sharedInstance().getRequest("https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,formatted-name,headline,location,industry,current-share,num-connections,num-connections-capped,summary,specialties,positions,picture-url,picture-urls::(original))?format=json",
-                                                                                               success: {
-                                                                                                response in
-                                                                                                print(response?.data ?? "response")
-                                                                                                then?()
-                                                    },
-                                                                                               error: {
-                                                                                                error in
-                                                                                                print(error ?? "error")
-                                                    }
-                                                    )
-                                                }
-            },
-                                              errorBlock: {
-                                                (error) in
-                                                print(error.debugDescription)
-            }
-            )
-        }
-    }
-    
-    
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
             return
         }
-        let referred = Referred(name: name, email: email, resume: "No", openingToRefer: opening)
+        let referred = Referred(name: name, email: email, resume: "no", opening: opening, strongRefer: nil)
         performSegue(withIdentifier: SegueIdentifier.referSomeone.rawValue, sender: referred)
     }
     
@@ -121,25 +70,23 @@ class OpeningDetailsVC: UIViewController  {
         }
     }
     
-    func splitRequirements()
-    {
-        fields = []
+    func splitRequirements() {
         guard let opening = opening else {
             return
         }
-        if  opening.requirements.count > 0 {
+        if  opening.requirements.isEmpty == false {
             let field = Field(fieldName: "Requirements", fieldDescription: opening.requirements)
             fields.append(field)
         }
-        if  opening.responsabilities.count > 0 {
+        if  opening.responsabilities.isEmpty == false {
             let field = Field(fieldName: "Responsibilities", fieldDescription: opening.responsabilities)
             fields.append(field)
         }
-        if  opening.skills.count > 0 {
+        if  opening.skills.isEmpty == false {
             let field = Field(fieldName: "Skills", fieldDescription: opening.skills)
             fields.append(field)
         }
-        if  opening.generals.count > 0 {
+        if  opening.generals.isEmpty == false {
             let field = Field(fieldName: "Generals", fieldDescription: opening.generals)
             fields.append(field)
         }
@@ -147,6 +94,7 @@ class OpeningDetailsVC: UIViewController  {
     }
 
 }
+
 extension OpeningDetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,9 +102,8 @@ extension OpeningDetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as! PositionTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: PositionTableViewCell.reusableID, for: indexPath) as? PositionTableViewCell)!
         cell.config(with: fields[indexPath.row])
         return cell
     }
 }
-
