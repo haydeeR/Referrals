@@ -8,14 +8,23 @@
 
 import Foundation
 import GoogleSignIn
+import UIKit
 
 struct AuthHandler {
     
-    static func logOut() {
-        GIDSignIn.sharedInstance().signOut()
-    }
-    
-    static func getCurrentAuth() {
-        
+    static func logOut(logoutVC: ProfileTableViewController) {
+        let alert = UIAlertController(title: "Saying goodbye?", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        let calcelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            return
+        }
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+            DataHandler.logout()
+            GIDSignIn.sharedInstance().signOut()
+            logoutVC.changeView(with: StoryboardPath.login.rawValue, viewControllerName: ViewControllerPath.loginViewController.rawValue)
+            }
+        alert.addAction(calcelAction)
+        alert.addAction(logoutAction)
+        logoutVC.present(alert, animated: true, completion: nil)
+
     }
 }

@@ -12,14 +12,13 @@ import PromiseKit
 
 class ReferNDViewController: UIViewController {
 
-    @IBOutlet weak var recruiterLabel: SearchTextField!
+    @IBOutlet weak var recruiterName: UILabel!
     
     var accessToken: LISDKAccessToken?
     var recruitersName: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        recruiterLabel.delegate = self
         setUpRecruiterField()
     }
 
@@ -38,7 +37,7 @@ class ReferNDViewController: UIViewController {
     }
     
     private func setUpRecruiterField() {
-        recruiterLabel.startVisibleWithoutInteraction = false
+        recruiterName.text = ""
         getRecruiters()
     }
     
@@ -47,9 +46,9 @@ class ReferNDViewController: UIViewController {
             DataHandler.getRecruiters()
             }.done { recruiters in
                 self.recruitersName = recruiters.map({ (recruiter) -> String in
+                    print(recruiter.id, recruiter.name)
                     return recruiter.name
                 })
-                self.recruiterLabel.filterStrings(self.recruitersName)
             }.catch { error in
                 print(error.localizedDescription)
                 ErrorHandler.handle(spellError: error as NSError)
@@ -94,15 +93,17 @@ class ReferNDViewController: UIViewController {
         }
     }
 
-}
-
-extension ReferNDViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-       if textField == recruiterLabel {
-            recruiterLabel.startVisible = true
+    @IBAction func addRecruiter(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Add recruiter", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        recruitersName.map { recruiter in
+            alert.addAction(UIAlertAction(title: recruiter, style: .default) { _ in
+                self.recruiterName.text = recruiter
+            })
         }
-        return true
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
-    
 }

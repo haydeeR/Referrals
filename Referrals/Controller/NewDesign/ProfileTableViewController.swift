@@ -12,18 +12,18 @@ class ProfileTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        navigationItem.title = "Profile"
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func pushLogout() {
-        AuthHandler.logOut()
+        AuthHandler.logOut(logoutVC: self)
+    }
+    
+    func changeView(with storyboardName: String, viewControllerName: String) {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerName) as UIViewController
+        present(initialViewController, animated: true, completion: nil)
     }
 }

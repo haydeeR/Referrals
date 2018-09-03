@@ -75,6 +75,10 @@ struct APIHandler {
         }
     }
     
+    static func logOut() {
+        sessionManager.request(APIRouter.logout)
+    }
+    
     static func getCompanies() -> Promise <[[String: Any]]> {
         return Promise { resolve in
             sessionManager.request(APIRouter.getCompanies)

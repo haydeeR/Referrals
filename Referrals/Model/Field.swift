@@ -14,9 +14,9 @@ struct Field {
     
     init (fieldName: String, fieldDescription: [String]) {
         var rows = ""
-        self.fieldName = fieldName
+        self.fieldName = " \(fieldName)"
         for row in fieldDescription {
-            rows += "* " + row + "\n"
+            rows += " * \t" + row + "\n"
         }
         self.fieldDescription = rows
     }

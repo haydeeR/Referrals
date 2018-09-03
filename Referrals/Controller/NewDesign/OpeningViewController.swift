@@ -12,18 +12,24 @@ import PromiseKit
 class OpeningViewController: UIViewController {
 
     var openings: [Opening] = []
+    var searchActive: Bool = false
+    var filtered: [String] = []
+    var data: [String] = []
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
+        setUpView()
         getOpenings()
         
     }
 
     func setUpView() {
-        navigationItem.title = NSLocalizedString("Our openings", comment: "")
+        navigationItem.title = NSLocalizedString("Openings", comment: "")
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
@@ -33,6 +39,9 @@ class OpeningViewController: UIViewController {
             DataHandler.getOpenings()
             }.done { openings in
                 self.openings = openings
+                self.data = openings.map({ opening in
+                    return opening.name
+                })
                 self.tableView.reloadData()
                 self.toogleHUD(show: false)
             }.catch { error in
@@ -49,10 +58,10 @@ class OpeningViewController: UIViewController {
             guard let controller = segue.destination as? DetailViewController else {
                 return
             }
-            guard let referred = sender as? Referred else {
+            guard let opening = sender as? Opening else {
                 return
             }
-            controller.referred = referred
+            controller.opening = opening
         }
     }
     
@@ -61,12 +70,19 @@ class OpeningViewController: UIViewController {
 extension OpeningViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchActive {
+            return filtered.count
+        }
         return openings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: ReusableIdentifier.positionIdentifier.rawValue)
-        cell.textLabel?.text = openings[indexPath.row].name
+        if searchActive {
+            cell.textLabel?.text = filtered[indexPath.row]
+        } else {
+            cell.textLabel?.text = openings[indexPath.row].name
+        }
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -80,4 +96,38 @@ extension OpeningViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
+}
+
+extension OpeningViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered = data.filter({ (text) -> Bool in
+            let tmp: NSString = text as NSString
+            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound
+        })
+        if filtered.isEmpty {
+            searchActive = false
+        } else {
+            searchActive = true
+        }
+        self.tableView.reloadData()
+    }
 }

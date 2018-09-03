@@ -47,8 +47,6 @@ class OpeningDetailsVC: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: PositionTableViewCell.reusableID)
     }
     
-    
-    
     func choseRecruiter(name: String, email: String) {
         guard let opening = opening else {
             return

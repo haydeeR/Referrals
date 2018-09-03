@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = APIManager.googleClientId
         GIDSignIn.sharedInstance().hostedDomain = APIManager.hostedDomain
         GIDSignIn.sharedInstance().delegate = self
-        //GIDSignIn.sharedInstance().signOut()
         Fabric.with([Crashlytics.self])
         application.applicationIconBadgeNumber = 0
         customizeAppearance()
@@ -101,6 +100,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             // 2. Attempt registration for remote notifications on the main thread
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
+                // //Guardar el token device
             }
         }
     }

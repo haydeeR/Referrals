@@ -17,6 +17,7 @@ enum APIRouter: URLRequestConvertible {
     case getCompanies
     case getTokenLinkedIn
     case getReferreds
+    case logout
     
     var path: String {
         switch self {
@@ -30,6 +31,8 @@ enum APIRouter: URLRequestConvertible {
             return "refer"
         case .login:
             return "login"
+        case .logout:
+            return "log_out"
         case .getCompanies:
             return "companies"
         case .getTokenLinkedIn:
@@ -54,7 +57,7 @@ enum APIRouter: URLRequestConvertible {
                 "referred_email": referred.email,
                 "resume_file": referred.resume]
         case .login (let token):
-            parameters = ["token_id": token]
+            parameters = ["token_id": token, "token_device": "fac0bbf0ebe46395ba3011a79ff84edc90c179be3d200e4e1869b1b70450731f"]
         case .getReferreds:
             parameters = [:]
         default:
@@ -67,7 +70,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .getOpenings, .getRecruiters, .getCompanies, .getReferreds:
             return .get
-        case .sendEmail, .login:
+        case .sendEmail, .login, .logout:
             return .post
         case .getTokenLinkedIn:
             return .get
@@ -77,7 +80,7 @@ enum APIRouter: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest {
         var url: URL
         switch  self {
-        case .login, .getOpenings, .getRecruiters, .getCompanies, .sendEmail, .getReferreds:
+        case .login, .getOpenings, .getRecruiters, .getCompanies, .sendEmail, .getReferreds, .logout:
             url = try APIManager.githubDevUrl.asURL()
         default:
             url = try APIManager.linkedInBaseUrl.asURL()
