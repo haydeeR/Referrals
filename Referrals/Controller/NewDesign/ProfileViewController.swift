@@ -8,12 +8,17 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.clearsSelectionOnViewWillAppear = false
-        navigationItem.title = "Profile"
+        setupView()
+       }
+    
+    private func setupView() {
+        navigationItem.title = NSLocalizedString("Profile", comment: "")
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
     }
 
@@ -26,4 +31,18 @@ class ProfileTableViewController: UITableViewController {
         let initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerName) as UIViewController
         present(initialViewController, animated: true, completion: nil)
     }
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sections = 2
+        return sections
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    }
+    
+    
 }
