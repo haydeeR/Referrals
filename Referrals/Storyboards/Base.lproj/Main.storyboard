@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Opening ListTVC-->
+        <!--Table View Controller-->
         <scene sceneID="CK6-w8-0zL">
             <objects>
-                <tableViewController storyboardIdentifier="OpeningsViewController" id="IkQ-iT-IOD" customClass="OpeningListTVC" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="OpeningsViewController" id="IkQ-iT-IOD" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IaZ-A3-tDx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="1044" y="105"/>
         </scene>
-        <!--Contact View Controller-->
+        <!--View Controller-->
         <scene sceneID="LgE-g9-yPM">
             <objects>
-                <viewController id="XX2-rP-3Wl" customClass="ContactViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XX2-rP-3Wl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Udp-Bs-0dq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="171"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="1902" y="662"/>
         </scene>
-        <!--Opening DetailsVC-->
+        <!--View Controller-->
         <scene sceneID="Lwo-xz-air">
             <objects>
-                <viewController id="ghT-fx-6Er" customClass="OpeningDetailsVC" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ghT-fx-6Er" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WhH-oB-snW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +200,7 @@
                         <outlet property="scrollView" destination="Qfx-pF-8D7" id="XwV-3o-FES"/>
                         <outlet property="tableView" destination="jr5-20-dDn" id="BqR-SK-SUk"/>
                         <outlet property="typeOfViewSegment" destination="2ih-9t-d44" id="dBq-c3-dpU"/>
-                        <segue destination="KNp-Vo-Gxp" kind="show" identifier="referSomeone" id="F3S-iw-w86"/>
+                        <segue destination="KNp-Vo-Gxp" kind="show" id="dci-kd-s4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUL-Uw-S5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="245.59999999999999" y="114.69265367316342"/>
         </scene>
-        <!--Refer View Controller-->
+        <!--View Controller-->
         <scene sceneID="uwV-wP-6Uy">
             <objects>
-                <viewController id="KNp-Vo-Gxp" customClass="ReferViewController" customModule="Referrals" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KNp-Vo-Gxp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fiN-Mc-aki">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -254,9 +254,6 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u4F-sl-4h2">
                                                         <rect key="frame" x="243.5" y="0.0" width="101.5" height="31"/>
-                                                        <connections>
-                                                            <action selector="changeViewAction:" destination="KNp-Vo-Gxp" eventType="valueChanged" id="f5z-es-vBY"/>
-                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -358,20 +355,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mx0-lm-6Ck"/>
                     </view>
-                    <connections>
-                        <outlet property="bottomContraint" destination="HXo-6o-zDF" id="hfV-eR-LEW"/>
-                        <outlet property="contentView" destination="fbJ-sN-ukZ" id="Gcw-b1-ZHY"/>
-                        <outlet property="scrollView" destination="8Qg-TE-tBY" id="T1W-7q-i3v"/>
-                        <outlet property="stackStrongReferral" destination="vLq-6F-Oan" id="aFf-3m-8Zr"/>
-                        <outlet property="switchTypeReferral" destination="u4F-sl-4h2" id="Boi-Z7-xVF"/>
-                        <outlet property="tableView" destination="V0c-bc-yg4" id="h1R-Hm-b3e"/>
-                        <outlet property="whenLabel" destination="Ig6-I3-Vzm" id="ih9-D2-96K"/>
-                        <outlet property="whenStatusLabel" destination="r8D-RD-yqy" id="GKf-a1-278"/>
-                        <outlet property="whereLabel" destination="Gxk-ft-vwM" id="Vf9-wT-X1Z"/>
-                        <outlet property="whereStatusLabel" destination="VYA-vs-iuc" id="xUJ-lo-BjX"/>
-                        <outlet property="whyLabel" destination="FgF-dG-1HK" id="b9D-p6-PJR"/>
-                        <outlet property="whyStatusLabel" destination="gj5-Sb-aLb" id="JSP-yn-QVn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMf-yf-F9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

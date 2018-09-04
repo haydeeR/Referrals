@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register for remote notifications with error: \(error)")
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         let badgeCount = application.applicationIconBadgeNumber
         application.applicationIconBadgeNumber = badgeCount + 1
     }
@@ -84,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
     }
-    
     
 }
 

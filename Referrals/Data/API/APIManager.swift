@@ -14,7 +14,7 @@ struct APIManager {
     static var githubAppUrl = "https://referrals-app.herokuapp.com"
     static var linkedInBaseUrl = ""
     static var githubDevUrl = "https://referrals-dev.herokuapp.com"
-    static var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicnJzbGRwbHNkY3NkY3BzZCIsInJlZmVycmFsc2FwcGp3dHJlc291cmNlaWQiXSwiZXhwIjoxNTM1NDM0MTI1LCJ1c2VyX25hbWUiOiJocm9kcmlndWV6QG5lYXJzb2Z0LmNvbSIsImp0aSI6IjFkMjllMjViLTUyM2EtNGEwNy04NmQ4LTIyZjkwYzZiNGY4ZSIsImNsaWVudF9pZCI6IjI1MDcxODhkZG9qdiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.Z5OvGKrqn0j1Gv9lalsXOThpDhF9G3EzOs0kAg0b8VY"
+    static var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicnJzbGRwbHNkY3NkY3BzZCIsInJlZmVycmFsc2FwcGp3dHJlc291cmNlaWQiXSwiZXhwIjoxNTM2MDM1NjM1LCJ1c2VyX25hbWUiOiJocm9kcmlndWV6QG5lYXJzb2Z0LmNvbSIsImp0aSI6ImE0ZWVkY2JhLTI5NWMtNGVhOS04OWU4LTkwZTY4MTQyOGQyMCIsImNsaWVudF9pZCI6IjI1MDcxODhkZG9qdiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.pnna4dnjcYr69ZDX4NUcNQJRBeUfl0KSU6v9bRERUEY"
     static var googleClientId = "619285192685-dubas0eo9nf37c5it81fi72f8ghkgr30.apps.googleusercontent.com"
     static var hostedDomain = "nearsoft.com"
 }

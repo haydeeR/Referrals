@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52524F04DE9514B705431296 /* Pods_Referrals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD27335C3636CCA1C5AD913F /* Pods_Referrals.framework */; };
-		9B1365B42114CD2F000639E7 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */; };
+		9B1365B42114CD2F000639E7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1365B32114CD2F000639E7 /* ProfileViewController.swift */; };
 		9B1365B62114CE93000639E7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1365B52114CE93000639E7 /* DetailViewController.swift */; };
 		9B14223D2104253F0066A3A0 /* StrongReferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14223C2104253F0066A3A0 /* StrongReferred.swift */; };
 		9B14223F2104261E0066A3A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14223E2104261E0066A3A0 /* User.swift */; };
@@ -32,6 +32,8 @@
 		9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */; };
 		9B763A012135C36A005B0B38 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7639FF2135C36A005B0B38 /* ProfileTableViewCell.xib */; };
 		9B763A022135C36A005B0B38 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B763A002135C36A005B0B38 /* ProfileTableViewCell.swift */; };
+		9B763A06213D8F9B005B0B38 /* ReferedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B763A04213D8F9B005B0B38 /* ReferedTableViewCell.xib */; };
+		9B763A07213D8F9B005B0B38 /* ReferedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B763A05213D8F9B005B0B38 /* ReferedTableViewCell.swift */; };
 		9BBB5ED320D189F5006D1801 /* PositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */; };
 		9BBB5ED420D189F5006D1801 /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */; };
 		9BBFFE5120E2A6850029A772 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFFE5020E2A6850029A772 /* Field.swift */; };
@@ -59,7 +61,7 @@
 
 /* Begin PBXFileReference section */
 		2B38A6D5E9DE37B120CCBA76 /* Pods-Referrals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referrals.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Referrals/Pods-Referrals.debug.xcconfig"; sourceTree = "<group>"; };
-		9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		9B1365B32114CD2F000639E7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9B1365B52114CE93000639E7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9B14223C2104253F0066A3A0 /* StrongReferred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongReferred.swift; sourceTree = "<group>"; };
 		9B14223E2104261E0066A3A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -88,6 +90,8 @@
 		9B6C2C1B20F8F1E100D47685 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		9B7639FF2135C36A005B0B38 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		9B763A002135C36A005B0B38 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		9B763A04213D8F9B005B0B38 /* ReferedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferedTableViewCell.xib; sourceTree = "<group>"; };
+		9B763A05213D8F9B005B0B38 /* ReferedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferedTableViewCell.swift; sourceTree = "<group>"; };
 		9BBB5ED120D189F5006D1801 /* PositionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PositionTableViewCell.xib; sourceTree = "<group>"; };
 		9BBB5ED220D189F5006D1801 /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
 		9BBFFE5020E2A6850029A772 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
@@ -159,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				9B56EC91210B8BAD007634D8 /* OpeningViewController.swift */,
-				9B1365B32114CD2F000639E7 /* ProfileTableViewController.swift */,
+				9B1365B32114CD2F000639E7 /* ProfileViewController.swift */,
 				9B1365B52114CE93000639E7 /* DetailViewController.swift */,
 				9B48CEB02121ED5800C0AA44 /* ReferNDViewController.swift */,
 				9BDB0DB4212600EB00DC10DF /* CongratsViewController.swift */,
@@ -239,6 +243,8 @@
 				9BD1E35F20EFBF92009B973C /* RecruiterTableViewCell.swift */,
 				9B7639FF2135C36A005B0B38 /* ProfileTableViewCell.xib */,
 				9B763A002135C36A005B0B38 /* ProfileTableViewCell.swift */,
+				9B763A04213D8F9B005B0B38 /* ReferedTableViewCell.xib */,
+				9B763A05213D8F9B005B0B38 /* ReferedTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE7377120C83C760020AAD4 /* Login.storyboard in Resources */,
+				9B763A06213D8F9B005B0B38 /* ReferedTableViewCell.xib in Resources */,
 				9B56EC8F210B6C4D007634D8 /* ReferralsNP.storyboard in Resources */,
 				9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */,
 				9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */,
@@ -528,11 +535,12 @@
 				9BDB0DB5212600EB00DC10DF /* CongratsViewController.swift in Sources */,
 				9B39809820DD4F97003FE747 /* ContactViewController.swift in Sources */,
 				9BE7377E20C87AAD0020AAD4 /* APIHandler.swift in Sources */,
-				9B1365B42114CD2F000639E7 /* ProfileTableViewController.swift in Sources */,
+				9B1365B42114CD2F000639E7 /* ProfileViewController.swift in Sources */,
 				9BE7378020C87E1C0020AAD4 /* DataHandler.swift in Sources */,
 				9BCD953620D42DEE008B0A87 /* Recruiter.swift in Sources */,
 				9BBFFE5320E2AAEB0029A772 /* UITableViewCell+ReusableIdentifier.swift in Sources */,
 				9BE7377620C8539D0020AAD4 /* ProjectPath.swift in Sources */,
+				9B763A07213D8F9B005B0B38 /* ReferedTableViewCell.swift in Sources */,
 				9B5E4BE421021334005CD336 /* ValidationErrorType.swift in Sources */,
 				9BBFFE5120E2A6850029A772 /* Field.swift in Sources */,
 				9B6C2C1C20F8F1E100D47685 /* ErrorHandler.swift in Sources */,

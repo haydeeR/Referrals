@@ -20,34 +20,16 @@ class OpeningViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+        getOpenings()
+    }
+    
+    func setUpView() {
+        navigationItem.title = NSLocalizedString("Openings", comment: "")
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        setUpView()
-        getOpenings()
-        
-    }
-
-    func setUpView() {
-        navigationItem.title = NSLocalizedString("Openings", comment: "")
         tableView.tableFooterView = UIView(frame: .zero)
-    }
-    
-    func getOpenings() {
-        toogleHUD(show: true)
-        firstly {
-            DataHandler.getOpenings()
-            }.done { openings in
-                self.openings = openings
-                self.data = openings.map({ opening in
-                    return opening.name
-                })
-                self.tableView.reloadData()
-                self.toogleHUD(show: false)
-            }.catch { error in
-                self.toogleHUD(show: false)
-                ErrorHandler.handle(spellError: error as NSError)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,14 +88,18 @@ extension OpeningViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.resignFirstResponder()
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -129,5 +115,25 @@ extension OpeningViewController: UISearchBarDelegate {
             searchActive = true
         }
         self.tableView.reloadData()
+    }
+}
+
+extension OpeningViewController {
+    
+    func getOpenings() {
+        toogleHUD(show: true)
+        firstly {
+            DataHandler.getOpenings()
+            }.done { openings in
+                self.openings = openings
+                self.data = openings.map({ opening in
+                    return opening.name
+                })
+                self.tableView.reloadData()
+                self.toogleHUD(show: false)
+            }.catch { error in
+                self.toogleHUD(show: false)
+                ErrorHandler.handle(spellError: error as NSError)
+        }
     }
 }

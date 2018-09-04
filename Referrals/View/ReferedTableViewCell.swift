@@ -10,6 +10,10 @@ import UIKit
 
 class ReferedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leftImage: UIImageView!
+    @IBOutlet weak var labelUp: UILabel!
+    @IBOutlet weak var labelDown: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

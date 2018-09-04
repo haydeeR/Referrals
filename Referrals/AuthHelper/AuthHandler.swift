@@ -12,7 +12,7 @@ import UIKit
 
 struct AuthHandler {
     
-    static func logOut(logoutVC: ProfileTableViewController) {
+    static func logOut(logoutVC: ProfileViewController) {
         let alert = UIAlertController(title: "Saying goodbye?", message: "Are you sure you want to logout?", preferredStyle: .alert)
         let calcelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             return
