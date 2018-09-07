@@ -13,16 +13,14 @@ class StrongReferred {
     var userId: Int
     var year: Int
     var month: Int
-    var recruiterId: Int
     var why: String
     var whereWorked: Company
     
-    init(id: Int, userId: Int, year: Int, month: Int, recruiterId: Int, why: String, whereWorked: Company) {
+    init(id: Int, userId: Int, year: Int, month: Int, why: String, whereWorked: Company) {
         self.id = id
         self.userId = userId
         self.year = year
         self.month = month
-        self.recruiterId = recruiterId
         self.why = why
         self.whereWorked = whereWorked
     }

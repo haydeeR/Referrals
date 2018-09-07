@@ -43,7 +43,6 @@
 		9BD1E36120EFBF92009B973C /* RecruiterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD1E35F20EFBF92009B973C /* RecruiterTableViewCell.swift */; };
 		9BDB0DB5212600EB00DC10DF /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB0DB4212600EB00DC10DF /* CongratsViewController.swift */; };
 		9BE7375920C839E20020AAD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375820C839E20020AAD4 /* AppDelegate.swift */; };
-		9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */; };
 		9BE7375E20C839E20020AAD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375C20C839E20020AAD4 /* Main.storyboard */; };
 		9BE7376020C839E30020AAD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7375F20C839E30020AAD4 /* Assets.xcassets */; };
 		9BE7376320C839E30020AAD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE7376120C839E30020AAD4 /* LaunchScreen.storyboard */; };
@@ -102,7 +101,6 @@
 		9BDB0DB4212600EB00DC10DF /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		9BE7375520C839E20020AAD4 /* Referrals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Referrals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE7375820C839E20020AAD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningListTVC.swift; sourceTree = "<group>"; };
 		9BE7375D20C839E20020AAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BE7375F20C839E30020AAD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE7376220C839E30020AAD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				9B56EC90210B8B8D007634D8 /* NewDesign */,
-				9BE7375A20C839E20020AAD4 /* OpeningListTVC.swift */,
 				9BE7377320C83CEA0020AAD4 /* LoginViewController.swift */,
 				9B39807320D81A16003FE747 /* OpeningDetailsVC.swift */,
 				9B39809720DD4F97003FE747 /* ContactViewController.swift */,
@@ -549,7 +546,6 @@
 				9B22E2D720E68400005BA8FA /* Referred.swift in Sources */,
 				9B6C2C1420F7B9FD00D47685 /* UIViewController+ProgressHUD.swift in Sources */,
 				9B14223D2104253F0066A3A0 /* StrongReferred.swift in Sources */,
-				9BE7375B20C839E20020AAD4 /* OpeningListTVC.swift in Sources */,
 				9B39809A20DD5CF0003FE747 /* ReferViewController.swift in Sources */,
 				9B5E4BE621025011005CD336 /* Company.swift in Sources */,
 				9B5E4BD420FE3C01005CD336 /* OAuthHandler.swift in Sources */,

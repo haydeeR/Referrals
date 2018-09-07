@@ -51,7 +51,7 @@ class OpeningDetailsVC: UIViewController {
         guard let opening = opening else {
             return
         }
-        let referred = Referred(name: name, email: email, resume: "no", opening: opening, strongRefer: nil)
+        let referred = Referred(id: "0", name: name, email: email, resume: "no", opening: opening, strongRefer: nil)
         performSegue(withIdentifier: SegueIdentifier.referSomeone.rawValue, sender: referred)
     }
     

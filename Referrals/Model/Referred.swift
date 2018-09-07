@@ -10,13 +10,15 @@ import Foundation
 import ObjectMapper
 
 class Referred: Mappable {
+    var id: String
     var name: String
     var email: String
     var resume: String
     var openingToRefer: Opening?
     var strongRefer: StrongReferred?
     
-    init(name: String, email: String, resume: String, opening: Opening, strongRefer: StrongReferred? ) {
+    init(id: String, name: String, email: String, resume: String, opening: Opening, strongRefer: StrongReferred? ) {
+        self.id = id
         self.name = name
         self.email = email
         self.resume = resume
@@ -25,6 +27,7 @@ class Referred: Mappable {
     }
     
     required init?(map: Map) {
+        self.id = ""
         self.name = ""
         self.email = ""
         self.resume = ""
@@ -33,6 +36,7 @@ class Referred: Mappable {
     }
     
     func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
         email <- map["email"]
         resume <- map["resume"]
