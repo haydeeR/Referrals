@@ -27,4 +27,10 @@ struct DataParser {
         companies = Mapper<Company>().mapArray(JSONArray: json)
         return companies
     }
+    
+    static func parseReferrals(with json: [[String: Any]]) -> [Referred] {
+        var referrals = [Referred]()
+        referrals = Mapper<Referred>().mapArray(JSONArray: json)
+        return referrals
+    }
 }

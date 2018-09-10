@@ -24,7 +24,6 @@ class ReferNDViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func referLinkedin() {
@@ -103,7 +102,6 @@ class ReferNDViewController: UIViewController {
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        // show the alert
         self.present(alert, animated: true, completion: nil)
     }
 }

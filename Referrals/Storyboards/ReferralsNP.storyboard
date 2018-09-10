@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,7 +65,7 @@
                                 <rect key="frame" x="16" y="72" width="343" height="530"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yB2-nP-8Hz">
-                                        <rect key="frame" x="8" y="8" width="327" height="267.5"/>
+                                        <rect key="frame" x="8" y="8" width="327" height="292.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in sollicitudin nisl. Suspendisse sodales velit ut lobortis ultricies. Aenean ligula mauris, bibendum eu erat ut, consequat tristique ipsum. Maecenas iaculis justo porta eros hendrerit elementum. Etiam arcu leo, tempus sagittis tincidunt non, consequat at velit. Sed posuere fermentum lorem, et porta odio commodo eget. Quisque dui dui, vulputate eget mollis vitae, scelerisque imperdiet sapien. Ut ut leo eu massa mollis viverra. Suspendisse lacinia pretium tortor. Sed id bibendum purus, sit amet ullamcorper tortor. Ut finibus eleifend enim, at tempor nisi hendrerit ut. Quisque semper consectetur eros, vel tempor dolor semper vel. Sed augue metus, facilisis vel pulvinar quis, vulputate nec ligula. Nunc condimentum nec est eu pulvinar. Nam accumsan lorem est, sit amet faucibus nisl maximus ut.
 
@@ -129,24 +130,26 @@ Duis at ultrices odio, quis lacinia lacus. Nulla cursus aliquet metus, et tristi
                                             <action selector="sendReferral" destination="5EA-e8-3eD" eventType="touchUpInside" id="fH3-qq-cFv"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-1q-I71">
-                                        <rect key="frame" x="8" y="295.5" width="327" height="47"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-1q-I71">
+                                        <rect key="frame" x="8" y="320.5" width="327" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vH6-qA-doI">
-                                                <rect key="frame" x="0.0" y="0.0" width="47" height="47"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="47" id="XPt-Fk-LQt"/>
-                                                    <constraint firstAttribute="height" constant="47" id="bma-M9-sRV"/>
-                                                </constraints>
-                                                <state key="normal" image="prize_down"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="65.5" height="22"/>
+                                                <state key="normal" image="Down"/>
+                                                <connections>
+                                                    <action selector="readMore:" destination="5EA-e8-3eD" eventType="touchUpInside" id="akL-If-cj8"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prize" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb5-KN-d4A">
-                                                <rect key="frame" x="47" y="0.0" width="280" height="20.5"/>
+                                                <rect key="frame" x="65.5" y="0.0" width="261.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" red="0.8901960784313725" green="0.28627450980392155" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="vH6-qA-doI" firstAttribute="width" secondItem="ON7-1q-I71" secondAttribute="width" multiplier="1:5" id="Whg-mh-kuo"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,6 +191,7 @@ Duis at ultrices odio, quis lacinia lacus. Nulla cursus aliquet metus, et tristi
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="showPrizeButton" destination="vH6-qA-doI" id="QXy-08-6co"/>
                         <outlet property="textDescription" destination="yB2-nP-8Hz" id="fIt-Ra-gbe"/>
                         <segue destination="TqW-vc-5wF" kind="show" identifier="detailtoCreateRefer" id="CiF-dC-exD"/>
                     </connections>
@@ -491,6 +495,7 @@ Duis at ultrices odio, quis lacinia lacus. Nulla cursus aliquet metus, et tristi
     </scenes>
     <resources>
         <image name="ButtonReferral" width="230" height="48"/>
+        <image name="Down" width="21" height="21"/>
         <image name="Facebook" width="41" height="40"/>
         <image name="Gmail" width="41" height="40"/>
         <image name="LinkedIn" width="41" height="40"/>
@@ -502,7 +507,6 @@ Duis at ultrices odio, quis lacinia lacus. Nulla cursus aliquet metus, et tristi
         <image name="addRecruiter" width="65" height="61"/>
         <image name="congrats" width="380" height="669"/>
         <image name="continueBtn" width="236" height="51"/>
-        <image name="prize_down" width="75" height="62"/>
         <image name="prof" width="16" height="20"/>
         <image name="profile" width="16" height="20"/>
     </resources>

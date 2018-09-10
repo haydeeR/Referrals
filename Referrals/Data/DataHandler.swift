@@ -33,17 +33,17 @@ struct DataHandler {
         return APIHandler.login(token: token)
     }
     
+    static func getReferreds() -> Promise <[Referred]> {
+        return APIHandler.getReferreds().map { data -> [Referred] in
+            return DataParser.parseReferrals(with: data)
+        }
+    }
+    
     static func logout() {
         APIHandler.logOut()
     }
 
     static func sendRefer(strong: Bool, year: String, month: String, whereWorked: String, why: String, recruiterId: String, referred: Referred) -> Promise <[[String: Any]]> {
         return APIHandler.sendEmail(strong: strong, year: year, month: month, whereWorked: whereWorked, why: why, recruiterId: recruiterId, referred: referred)
-    }
-    
-    static func getReferreds() -> Promise <[Company]> {
-        return APIHandler.getReferreds().map { data -> [Company] in
-            return DataParser.parseCompanies(with: data)
-        }
     }
 }

@@ -13,15 +13,17 @@ import FacebookShare
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var textDescription: UITextView!
+    @IBOutlet weak var showPrizeButton: UIButton!
+    
     var referred: Referred?
     var opening: Opening?
     var fields: [Field] = []
+    var detailPrize: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         loadTextDescription()
-        // Do any additional setup after loading the view.
     }
     
     func setUpView() {
@@ -57,7 +59,6 @@ class DetailViewController: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func pushLogout() {
@@ -96,13 +97,21 @@ class DetailViewController: UIViewController {
         shareDialog.mode = .native
         shareDialog.failsOnInvalidData = true
         shareDialog.completion = { result in
-            // Handle share results
         }
         do {
             try shareDialog.show()
         } catch {
             print(error)
         }
+    }
+    
+    @IBAction func readMore(_ sender: UIButton) {
+        if detailPrize {
+            showPrizeButton.imageView?.image = #imageLiteral(resourceName: "Down")
+        } else {
+            showPrizeButton.imageView?.image = #imageLiteral(resourceName: "Up")
+        }
+        detailPrize = !detailPrize
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

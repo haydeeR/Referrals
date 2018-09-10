@@ -23,7 +23,6 @@ class ContactViewController: UIViewController {
     var emailRuleSet: ValidationRuleSet<String>? {
         didSet { nameRefer.validationRules = emailRuleSet }
     }
-    weak var delegate: OpeningDetailsVC?
     var activeField: UITextField?
     var lastOffset: CGPoint!
     var keyboardHeight: CGFloat!
@@ -32,15 +31,6 @@ class ContactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameRefer.delegate = self
-        emailRefer.delegate = self
-        addValidationsForFields()
-        // Observe keyboard change
-        keyboardAppearObserver = NotificationCenter.default
-        keyboardDisappearObserver = NotificationCenter.default
-        
-        // Add touch gesture for contentView
-        self.delegate?.linkedInContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(returnTextView(gesture:))))
     }
     
     private func addValidationsForFields() {
@@ -126,7 +116,6 @@ class ContactViewController: UIViewController {
         if let name = statusName?.text,
             let email = statusemail?.text,
             name == "😀", email == "😀"{
-            delegate?.choseRecruiter(name: name, email: email)
         } else {
             let alert = UIAlertController(title: "Ups", message: "Remember fill out all required fields 😩", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -136,56 +125,14 @@ class ContactViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if keyboardHeight != nil {
-            return
-        }
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            keyboardHeight = keyboardSize.height
-            // so increase contentView's height by keyboard height
-            UIView.animate(withDuration: 0.3, animations: {
-                self.delegate?.bottomConstraint.constant += self.keyboardHeight
-            })
-            // move if keyboard hide input field
-            let distanceToBottom = (self.delegate?.scrollView.frame.size.height)! - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
-            let collapseSpace = keyboardHeight - distanceToBottom
-            if collapseSpace < 0 {
-                // no collapse
-                return
-            }
-            // set new offset for scroll view
-            UIView.animate(withDuration: 0.3, animations: {
-                // scroll to the position above keyboard 10 points
-                self.delegate?.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
-            })
-        }
+      
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardHeight = keyboardHeight {
-        UIView.animate(withDuration: 0.3) {
-            self.delegate?.bottomConstraint.constant -= keyboardHeight
-            self.delegate?.scrollView.contentOffset = self.lastOffset
-            }
-        }
-        keyboardHeight = nil
+      
     }
     
     @IBAction func addResumeAction(_ sender: UIButton) {
        
-    }
-}
-
-extension ContactViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        activeField = textField
-        lastOffset = delegate?.scrollView.contentOffset
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        activeField?.resignFirstResponder()
-        activeField = nil
-        return true
     }
 }

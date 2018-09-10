@@ -58,7 +58,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reusableID, for: indexPath)
+        let cell = (tableview.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reusableID, for: indexPath) as? ProfileTableViewCell)!
+        cell.config(with: referred[indexPath.row])
         return cell
     }
     
@@ -67,14 +68,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileViewController {
     
     func getReferrals() {
-//        toogleHUD(show: true)
-//        firstly {
-//            DataHandler.getReferreds()
-//            }.done {
-//                self.toogleHUD(show: false)
-//            }.catch { error in
-//                self.toogleHUD(show: false)
-//                ErrorHandler.handle(spellError: error as NSError)
-//        }
+        toogleHUD(show: true)
+        firstly {
+            DataHandler.getReferreds()
+            }.done { referrals in
+                self.referred = referrals
+                self.tableview.reloadData()
+                self.toogleHUD(show: false)
+            }.catch { error in
+                self.toogleHUD(show: false)
+                ErrorHandler.handle(spellError: error as NSError)
+        }
     }
 }

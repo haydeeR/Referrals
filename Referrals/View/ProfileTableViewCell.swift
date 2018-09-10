@@ -18,4 +18,7 @@ class ProfileTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func config(with: Referred) {
+        
+    }
 }
